@@ -1,5 +1,5 @@
 import { IColumn } from "office-ui-fabric-react/lib/DetailsList";
-import { IMockData } from "./types/IMockData";
+import { IMockData } from "../types/IMockData";
 
 export const mockColumns = [
   { name: "transactionId", fieldName: "transactionId", currentWidth: 100, isPrimary: true },

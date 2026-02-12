@@ -2,6 +2,7 @@ import {IInputs, IOutputs} from "./generated/ManifestTypes";
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {IProps, DetailListGridControl}  from './DetailListGridControl'
+import { IColumnLabel } from "./types/IColumnLabel";
 // import {IProps, DetailListGridControl}  from './DetailListGridControl_original'
 
 export class DetailListGrid implements ComponentFramework.StandardControl<IInputs, IOutputs> {
@@ -42,7 +43,8 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 		this._props = {
 			pcfContext: this._context,
 			isModelApp: this._isModelApp,
-			dataSetVersion: this._dataSetVersion
+			dataSetVersion: this._dataSetVersion,
+			columnLabels: {}
 		}
 
 		// set the container to display to relative so that our Scrollable Panel does not cover up the
@@ -84,7 +86,6 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 	public updateView(context: ComponentFramework.Context<IInputs>): void
 	{
 		const dataSet = context.parameters.sampleDataSet;
-		
 		if (dataSet.loading) return;
 
 		//Are we in a canvas app?
@@ -108,6 +109,16 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 			dataSet.paging.loadNextPage();
 			return;
 		}
+
+		const raw = context.parameters.columnLabels.raw;
+		if(raw !== null && raw !== "val"){
+			this._props.columnLabels = JSON.parse(raw) as IColumnLabel;
+		} else {
+			// this._props.columnLabels = [];
+		}
+
+		console.log(this._props.columnLabels)
+	
 
 		//useEffect on the dataSet itself was not picking up on all the updates so pass in a dataset version
 		// and update it in the props so the react control knows it was updated.

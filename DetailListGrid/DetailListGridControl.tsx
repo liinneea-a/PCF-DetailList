@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { IInputs } from "./generated/ManifestTypes";
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
@@ -10,17 +8,18 @@ import { IRenderFunction, SelectionMode } from 'office-ui-fabric-react/lib/Utili
 import { DetailsList, DetailsListLayoutMode, Selection, IColumn, ConstrainMode, IDetailsFooterProps, IDetailsHeaderProps, ColumnActionsMode } from 'office-ui-fabric-react/lib/DetailsList';
 import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
 import { initializeIcons } from '@uifabric/icons';
-import * as lcid from 'lcid';
 import { ColorPicker, Stack } from 'office-ui-fabric-react';
 
-import { mockColumns, mockData } from './testData';
-import { IMockData } from './types/IMockData';
-import { IMockColumn } from './types/IMockColumn';
+import { getColumns, getItems } from './helpers/dataHelper';
+import { getUserLanguage } from './helpers/languageHelper';
+import { mockColumns, mockData } from './mockData/testData';
+import { IColumnLabel } from './types/IColumnLabel';
 
 export interface IProps {
     pcfContext: ComponentFramework.Context<IInputs>,
     isModelApp: boolean,
     dataSetVersion: number;
+    columnLabels: IColumnLabel;
 }
 
 interface IColumnWidth {
@@ -39,7 +38,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
     // we have passed in an empty array as the default.
     // const [columns, setColumns] = React.useState(_getColumns);
     // const [items, setItems] = React.useState(_getItems);
-    const [columns, setColumns] = React.useState(getColumns(mockColumns));
+    const [columns, setColumns] = React.useState(getColumns(mockColumns, props.columnLabels));
     const [items, setItems] = React.useState(getItems(columns, mockData));
     const [isDataLoaded, setIsDataLoaded] = React.useState(props.isModelApp);
     // react hook to store the number of selected items in the grid which will be displayed in the grid footer.
@@ -124,7 +123,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                 root: {
                     width: "100%",
                     height: "inherit",
-                    border: "1px solid red"
+                    // border: "1px solid red"
                 },
             }}>
             <Stack.Item
@@ -175,80 +174,6 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
 //     pcfContext.parameters.sampleDataSet.openDatasetItem(item[linkReference + "_ref"])
 // };
 
-// get the items from the dataset
-const getItems = (columns: IColumn[], mockData: IMockData[]) => {
-
-    const resultSet = mockData.map(function (item) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const newRecord: any = {
-            key: item.transactionId
-        };
-
-        for (const column of columns) {
-            newRecord[column.key] = item[column.key as keyof IMockData];
-        }
-
-        return newRecord;
-    });
-    console.log(resultSet);
-    return resultSet;
-};
-
-// get the columns from the dataset
-const getColumns = (columns: IMockColumn[]): IColumn[] => {
-    const iColumns: IColumn[] = [];
-    // const columnWidthDistribution = getColumnWidthDistribution(pcfContext);
-
-    for (const column of columns) {
-        const iColumn: IColumn = {
-            key: column.name,
-            name: column.name,
-            fieldName: column.fieldName,
-            currentWidth: 100,
-            minWidth: 5,
-            maxWidth: 100,
-            isResizable: true,
-            sortAscendingAriaLabel: 'Sorted A to Z',
-            sortDescendingAriaLabel: 'Sorted Z to A',
-            className: 'detailList-cell',
-            headerClassName: 'detailList-gridLabels',
-            data: { isPrimary: column.isPrimary }
-        };
-
-        // //create links for primary field and entity reference.            
-        // if (column.dataType.startsWith('Lookup.') || column.isPrimary)
-        // {
-        //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        //     iColumn.onRender = (item: any, index: number | undefined, column: IColumn | undefined)=> (                                    
-        //         <Link key={item.key} onClick={() => navigate(item, column!.fieldName, pcfContext) }>{item[column!.fieldName!]}</Link>                    
-        //     );
-        // }
-        // else if(column.dataType === 'SingleLine.Email'){
-        //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        //     iColumn.onRender = (item: any, index: number | undefined, column: IColumn | undefined)=> (                                    
-        //         <Link href={`mailto:${item[column!.fieldName!]}`} >{item[column!.fieldName!]}</Link>  
-        //     );
-        // }
-        // else if(column.dataType === 'SingleLine.Phone'){
-        //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        //     iColumn.onRender = (item: any, index: number | undefined, column: IColumn | undefined)=> (                                    
-        //         <Link href={`skype:${item[column!.fieldName!]}?call`} >{item[column!.fieldName!]}</Link>                    
-        //     );
-        // }
-
-        //set sorting information
-        // console.log(dataSet.sorting)
-        // const isSorted = dataSet?.sorting?.findIndex(s => s.name === column.name) !== -1 || false
-        // iColumn.isSorted = isSorted;
-        // if (isSorted){
-        //     iColumn.isSortedDescending = dataSet?.sorting?.find(s => s.name === column.name)?.sortDirection === 1 || false;
-        // }
-
-        iColumn.isSorted = false;
-        iColumns.push(iColumn);
-    }
-    return iColumns;
-};
 
 const getColumnWidthDistribution = (pcfContext: ComponentFramework.Context<IInputs>): IColumnWidth[] => {
 
@@ -312,10 +237,6 @@ const copyAndSort = <T,>(items: T[], columnKey: string, pcfContext: ComponentFra
     return sortedItems;
 };
 
-const getUserLanguage = (pcfContext: ComponentFramework.Context<IInputs>): string => {
-    const language = lcid.from(pcfContext.userSettings.languageId);
-    return language.substring(0, language.indexOf('_'));
-};
 
 // determine if object is an entity reference.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,0 +1,21 @@
+// [
+//   { "key": "transactionId", "label": "Transaction ID" },
+//   { "key": "transactionDateTime", "label": "Transaction date" },
+//   { "key": "passageReportId", "label": "Passage report" },
+//   { "key": "tollEventTime", "label": "Toll event time" }
+// ]
+
+{
+  "transactionId": {"label": "Transaction ID"},
+  "transactionDateTime": {"label": "Transaction date"},
+  "passageReportId": {"label": "Passage report"},
+  "tollEventTime": {"label": "Toll event time"}
+}
+
+
+// {
+//   "transactionId": "Transaction ID",
+//   "transactionDateTime": "Transaction date",
+//   "passageReportId": "Passage report",
+//   "tollEventTime": "Toll event time",
+// }
