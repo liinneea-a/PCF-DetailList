@@ -1,7 +1,7 @@
-import { IColumn } from "office-ui-fabric-react";
 import { IMockData } from "../types/IMockData";
 import { IMockColumn } from "../types/IMockColumn";
 import { IColumnLabel } from "../types/IColumnLabel";
+import { IColumn } from "@fluentui/react";
 
 export const getItems = (columns: IColumn[], mockData: IMockData[]) => {
     const resultSet = mockData.map(function (item) {

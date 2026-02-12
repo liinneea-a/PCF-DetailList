@@ -1,4 +1,4 @@
-import { IColumn } from "office-ui-fabric-react/lib/DetailsList";
+// import { IColumn } from "office-ui-fabric-react/lib/DetailsList";
 import { IMockData } from "../types/IMockData";
 
 export const mockColumns = [

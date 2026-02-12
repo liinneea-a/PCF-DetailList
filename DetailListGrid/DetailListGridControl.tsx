@@ -1,19 +1,10 @@
 import * as React from 'react';
 import { IInputs } from "./generated/ManifestTypes";
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
-import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
-import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
-import { IRenderFunction, SelectionMode } from 'office-ui-fabric-react/lib/Utilities';
-import { DetailsList, DetailsListLayoutMode, Selection, IColumn, ConstrainMode, IDetailsFooterProps, IDetailsHeaderProps, ColumnActionsMode } from 'office-ui-fabric-react/lib/DetailsList';
-import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
-import { initializeIcons } from '@uifabric/icons';
-import { ColorPicker, Stack } from 'office-ui-fabric-react';
-
 import { getColumns, getItems } from './helpers/dataHelper';
 import { getUserLanguage } from './helpers/languageHelper';
 import { mockColumns, mockData } from './mockData/testData';
 import { IColumnLabel } from './types/IColumnLabel';
+import { ConstrainMode, DetailsListLayoutMode, IColumn, IDetailsHeaderProps, initializeIcons, IRenderFunction, ITooltipHostProps, Label, ScrollablePane, ScrollbarVisibility, SelectionMode, ShimmeredDetailsList, Stack, Sticky, StickyPositionType, TooltipHost } from '@fluentui/react';
 
 export interface IProps {
     pcfContext: ComponentFramework.Context<IInputs>,
@@ -67,24 +58,24 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
     }, [props.pcfContext.mode.allocatedWidth]);
 
     // the selector used by the DetailList
-    const _selection = new Selection({
-        onSelectionChanged: () => {
-            _setSelectedItemsOnDataSet();
-        }
-    });
+    // const _selection = new Selection({
+    //     onSelectionChanged: () => {
+    //         _setSelectedItemsOnDataSet();
+    //     }
+    // });
 
     // sets the selected record id's on the Dynamics dataset.
     // this will allow us to utilize the ribbon buttons since they need
     // that data set in order to do things such as delete/deactivate/activate/ect..
-    const _setSelectedItemsOnDataSet = () => {
-        const selectedKeys = [];
-        const selections = _selection.getSelection();
-        for (const selection of selections) {
-            selectedKeys.push(selection.key as string);
-        }
-        setSelectedItemCount(selectedKeys.length);
-        props.pcfContext.parameters.sampleDataSet.setSelectedRecordIds(selectedKeys);
-    };
+    // const _setSelectedItemsOnDataSet = () => {
+    //     const selectedKeys = [];
+    //     const selections = _selection.getSelection();
+    //     for (const selection of selections) {
+    //         selectedKeys.push(selection.key as string);
+    //     }
+    //     setSelectedItemCount(selectedKeys.length);
+    //     props.pcfContext.parameters.sampleDataSet.setSelectedRecordIds(selectedKeys);
+    // };
 
     // when a column header is clicked sort the items
     const _onColumnClick = (ev?: React.MouseEvent<HTMLElement>, column?: IColumn): void => {
@@ -145,7 +136,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                             items={items}
                             columns={columns}
                             setKey="set"
-                            selection={_selection} // updates the dataset so that we can utilize the ribbon buttons in Dynamics                                        
+                            // selection={_selection} // updates the dataset so that we can utilize the ribbon buttons in Dynamics                                        
                             onColumnHeaderClick={_onColumnClick} // used to implement sorting for the columns.                    
                             selectionPreservedOnEmptyClick={true}
                             ariaLabelForSelectionColumn="Toggle selection"
