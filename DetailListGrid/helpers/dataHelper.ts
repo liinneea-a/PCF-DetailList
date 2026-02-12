@@ -3,8 +3,8 @@ import { IMockColumn } from "../types/IMockColumn";
 import { IColumnLabel } from "../types/IColumnLabel";
 import { IColumn } from "@fluentui/react";
 
-export const getItems = (columns: IColumn[], mockData: IMockData[]) => {
-    const resultSet = mockData.map(function (item) {
+export const getItems = (columns: IColumn[], data: IMockData[]) => {
+    const resultSet = data.map(function (item) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const newRecord: any = {
             key: item.transactionId

@@ -4,7 +4,8 @@ import { getColumns, getItems } from './helpers/dataHelper';
 import { getUserLanguage } from './helpers/languageHelper';
 import { mockColumns, mockData } from './mockData/testData';
 import { IColumnLabel } from './types/IColumnLabel';
-import { ConstrainMode, DetailsListLayoutMode, IColumn, IDetailsHeaderProps, initializeIcons, IRenderFunction, ITooltipHostProps, Label, ScrollablePane, ScrollbarVisibility, SelectionMode, ShimmeredDetailsList, Stack, Sticky, StickyPositionType, TooltipHost } from '@fluentui/react';
+import { ConstrainMode, DetailsListLayoutMode, Dropdown, IColumn, IDetailsHeaderProps, initializeIcons, IRenderFunction, ISearchBoxStyles, ITooltipHostProps, Label, ScrollablePane, ScrollbarVisibility, SearchBox, SelectionMode, ShimmeredDetailsList, Stack, Sticky, StickyPositionType, TooltipHost } from '@fluentui/react';
+import { fetchData, fetchFilterdData } from './dataService';
 
 export interface IProps {
     pcfContext: ComponentFramework.Context<IInputs>,
@@ -34,6 +35,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
     const [isDataLoaded, setIsDataLoaded] = React.useState(props.isModelApp);
     // react hook to store the number of selected items in the grid which will be displayed in the grid footer.
     const [selectedItemCount, setSelectedItemCount] = React.useState(0);
+    const [selectedDropdownKey, setSelectedDropdownKey] = React.useState("all");
 
     // Set the isDataLoaded state based upon the paging totalRecordCount
     React.useEffect(() => {
@@ -108,15 +110,67 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
             </Sticky>
         );
     };
+
+    const handleSearch = (newValue: string) => {
+        setIsDataLoaded(false);
+        const result = fetchFilterdData(newValue, selectedDropdownKey);
+        setItems(result)
+        setIsDataLoaded(true);
+    }
+
+    const searchBoxStyles: Partial<ISearchBoxStyles> = { root: { width: 200 } };
+
     return (
         <Stack grow
             styles={{
                 root: {
                     width: "100%",
                     height: "inherit",
-                    // border: "1px solid red"
                 },
             }}>
+            <Stack
+                horizontal
+                horizontalAlign='end'
+                tokens={{
+                    childrenGap: 10
+                }}
+                // styles={{
+                //     root: {
+                //         border: "1px solid red",
+                //     },
+                // }}
+            >
+                <SearchBox
+                    styles={searchBoxStyles}
+                    placeholder="Search transactions"
+                    onEscape={ev => {
+                        console.log('Custom onEscape Called');
+                    }}
+                    onClear={ev => {
+                        console.log('Custom onClear Called');
+                    }}
+                    onChange={(_, newValue) => console.log('SearchBox onChange fired: ' + newValue)}
+                    onSearch={(newValue) => {
+                        handleSearch(newValue);
+                    }}
+                />
+                <Dropdown
+                    placeholder="Select an option"
+                    options={[
+                        { key: "all", text: "All" },
+                        { key: 'transactionId', text: 'Transaction ID' },
+                        { key: 'passageReportId', text: 'Passage Report ID' },
+                    ]}
+                    styles={{ 
+                        root: { width: 150, marginLeft: 10 },
+                        title: { textAlign: 'left' }
+                    }}
+                    onChange={(_, option) => setSelectedDropdownKey(option?.key as string)}
+                >
+
+                </Dropdown>
+            </Stack>
+
             <Stack.Item
                 verticalFill
                 styles={{
