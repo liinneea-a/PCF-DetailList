@@ -1,0 +1,68 @@
+[
+  {
+    "transactionId": 301245001,
+    "transactionDateTime": "2026-02-09T07:55:22Z",
+    "passageReportId": 88451230,
+    "tollEventTime": "2026-02-09T07:55:10Z",
+    "laneNumber": 2,
+    "vehicleClass": 1,
+    "localAgreementNumber": "LA-2025-000331",
+    "customerNumber": "CUST-552200",
+    "transactionType": "toll",
+    "lpn": {
+      "number": "KTB402",
+      "countryCode": "SE"
+    },
+    "personalAccountNumber": "PAN-000123456",
+    "iTicketId": null,
+    "lpnFromTss": {
+      "front": { "number": "KTB402", "countryCode": "SE" },
+      "rear": { "number": "KTB402", "countryCode": "SE" },
+      "manual": null
+    },
+    "price": {
+      "amountWithoutVAT": 28.0,
+      "amountWithVAT": 35.0,
+      "vat": 25.0,
+      "currency": "SEK"
+    },
+    "credited": false,
+    "passageType": "FreePassage",
+    "billingDetailsAdu": 900112233,
+    "paymentClaimReferense": "PCR-2026-10010001",
+    "informationRecipientId": "A4000C"
+  },
+  {
+    "transactionId": 301245002,
+    "transactionDateTime": "2026-02-09T08:14:03Z",
+    "passageReportId": 88451231,
+    "tollEventTime": "2026-02-09T08:13:59Z",
+    "laneNumber": 4,
+    "vehicleClass": 3,
+    "localAgreementNumber": "LA-2024-005678",
+    "customerNumber": "CUST-774411",
+    "transactionType": "serviceFee",
+    "lpn": {
+      "number": "DE12345",
+      "countryCode": "DE"
+    },
+    "personalAccountNumber": "PAN-998877665",
+    "iTicketId": 5566001,
+    "lpnFromTss": {
+      "front": { "number": "DE12345", "countryCode": "DE" },
+      "rear": null,
+      "manual": null
+    },
+    "price": {
+      "amountWithoutVAT": 12.0,
+      "amountWithVAT": 15.0,
+      "vat": 25.0,
+      "currency": "SEK"
+    },
+    "credited": true,
+    "passageType": "Voucher",
+    "billingDetailsAdu": 900112234,
+    "paymentClaimReferense": "PCR-2026-10010002",
+    "informationRecipientId": "A4000C"
+  }
+]
