@@ -19,3 +19,9 @@
 //   "passageReportId": "Passage report",
 //   "tollEventTime": "Toll event time",
 // }
+
+
+// [
+//   { "key": "transactionId", "text": "Transaction ID" },
+//   { "key": "passageReportId", "text": "Passage report" },
+// ]

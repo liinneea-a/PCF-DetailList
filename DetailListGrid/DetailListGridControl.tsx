@@ -6,12 +6,14 @@ import { mockColumns, mockData } from './mockData/testData';
 import { IColumnLabel } from './types/IColumnLabel';
 import { ConstrainMode, DetailsListLayoutMode, Dropdown, IColumn, IDetailsHeaderProps, initializeIcons, IRenderFunction, ISearchBoxStyles, ITooltipHostProps, Label, ScrollablePane, ScrollbarVisibility, SearchBox, SelectionMode, ShimmeredDetailsList, Stack, Sticky, StickyPositionType, TooltipHost } from '@fluentui/react';
 import { fetchData, fetchFilterdData } from './dataService';
+import { IDropdownFilterableField } from './types/IDropdownFilterableFields';
 
 export interface IProps {
     pcfContext: ComponentFramework.Context<IInputs>,
     isModelApp: boolean,
     dataSetVersion: number;
     columnLabels: IColumnLabel;
+    dropdownFilterableFields: IDropdownFilterableField[];
 }
 
 interface IColumnWidth {
@@ -35,7 +37,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
     const [isDataLoaded, setIsDataLoaded] = React.useState(props.isModelApp);
     // react hook to store the number of selected items in the grid which will be displayed in the grid footer.
     const [selectedItemCount, setSelectedItemCount] = React.useState(0);
-    const [selectedDropdownKey, setSelectedDropdownKey] = React.useState("all");
+    const [selectedDropdownKey, setSelectedDropdownKey] = React.useState("");
 
     // Set the isDataLoaded state based upon the paging totalRecordCount
     React.useEffect(() => {
@@ -43,7 +45,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
         if (dataSet.loading || props.isModelApp) return;
         setIsDataLoaded(dataSet.paging.totalResultCount !== -1);
         // setIsDataLoaded(false);
-    },[items]);
+    }, [items]);
 
     // When the component is updated this will determine if the sampleDataSet has changed.  
     // If it has we will go get the udpated items.
@@ -114,11 +116,16 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
     const handleSearch = (newValue: string) => {
         setIsDataLoaded(false);
         const result = fetchFilterdData(newValue, selectedDropdownKey);
-        setItems(result)
+        setItems(result);
         setIsDataLoaded(true);
-    }
+    };
 
     const searchBoxStyles: Partial<ISearchBoxStyles> = { root: { width: 200 } };
+
+    const dropdownOptions = React.useMemo(() =>
+        props.dropdownFilterableFields.map(field => ({ key: field.key, text: field.text })),
+        [props.dropdownFilterableFields]
+    );
 
     return (
         <Stack grow
@@ -134,11 +141,11 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                 tokens={{
                     childrenGap: 10
                 }}
-                // styles={{
-                //     root: {
-                //         border: "1px solid red",
-                //     },
-                // }}
+            // styles={{
+            //     root: {
+            //         border: "1px solid red",
+            //     },
+            // }}
             >
                 <SearchBox
                     styles={searchBoxStyles}
@@ -158,14 +165,14 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                     placeholder="Select an option"
                     options={[
                         { key: "all", text: "All" },
-                        { key: 'transactionId', text: 'Transaction ID' },
-                        { key: 'passageReportId', text: 'Passage Report ID' },
+                        ...dropdownOptions
                     ]}
-                    styles={{ 
+
+                    styles={{
                         root: { width: 150, marginLeft: 10 },
                         title: { textAlign: 'left' }
                     }}
-                    onChange={(_, option) => setSelectedDropdownKey(option?.key as string)}
+                    onChange={(_, option) => { setSelectedDropdownKey(option?.key as string); console.log(option?.key); }}
                 >
 
                 </Dropdown>

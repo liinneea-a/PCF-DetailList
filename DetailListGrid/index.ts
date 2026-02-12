@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {IProps, DetailListGridControl}  from './DetailListGridControl'
 import { IColumnLabel } from "./types/IColumnLabel";
+import { IDropdownFilterableField } from "./types/IDropdownFilterableFields";
 // import {IProps, DetailListGridControl}  from './DetailListGridControl_original'
 
 export class DetailListGrid implements ComponentFramework.StandardControl<IInputs, IOutputs> {
@@ -44,7 +45,8 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 			pcfContext: this._context,
 			isModelApp: this._isModelApp,
 			dataSetVersion: this._dataSetVersion,
-			columnLabels: {}
+			columnLabels: {},
+			dropdownFilterableFields: []
 		}
 
 		// set the container to display to relative so that our Scrollable Panel does not cover up the
@@ -110,16 +112,21 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 			return;
 		}
 
-		const raw = context.parameters.columnLabels.raw;
-		if(raw !== null && raw !== "val"){
-			this._props.columnLabels = JSON.parse(raw) as IColumnLabel;
+		const columnLabelsRaw = context.parameters.columnLabels.raw;
+		if(columnLabelsRaw !== null && columnLabelsRaw !== "val"){
+			this._props.columnLabels = JSON.parse(columnLabelsRaw) as IColumnLabel;
 		} else {
 			// this._props.columnLabels = [];
 		}
 
-		console.log(this._props.columnLabels)
-	
+		const dropdownFilterableFieldsRaw = context.parameters.dropdownFilterableFields.raw;
 
+		if(dropdownFilterableFieldsRaw !== null && dropdownFilterableFieldsRaw !== "val"){
+			this._props.dropdownFilterableFields = JSON.parse(dropdownFilterableFieldsRaw) as IDropdownFilterableField[];
+		} else {
+			this._props.dropdownFilterableFields = [];
+		}
+		console.log(dropdownFilterableFieldsRaw);
 		//useEffect on the dataSet itself was not picking up on all the updates so pass in a dataset version
 		// and update it in the props so the react control knows it was updated.
 		this._props.dataSetVersion = this._dataSetVersion++;
