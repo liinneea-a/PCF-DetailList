@@ -1,8 +1,8 @@
-import {IInputs, IOutputs} from "./generated/ManifestTypes";
+import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {IProps, DetailListGridControl}  from './DetailListGridControl'
-import { IColumnLabel } from "./types/IColumnLabel";
+import { IProps, DetailListGridControl } from './DetailListGridControl';
+import { IColumnLabelOverride } from "./types/IColumnLabel";
 import { IDropdownFilterableField } from "./types/IDropdownFilterableFields";
 // import {IProps, DetailListGridControl}  from './DetailListGridControl_original'
 
@@ -12,12 +12,11 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 	private _container: HTMLDivElement;
 	private _detailList: HTMLDivElement;
 	private _dataSetVersion: number;
-	private _isModelApp: boolean
+	private _isModelApp: boolean;
 
 	private _props: IProps;
 
-	constructor()
-	{
+	constructor() {
 
 	}
 
@@ -29,8 +28,7 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 	 * @param state A piece of data that persists in one session for a single user. Can be set at any point in a controls life cycle by calling 'setControlState' in the Mode interface.
 	 * @param container If a control is marked control-type='standard', it will receive an empty div element within which it can render its content.
 	 */
-	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement)
-	{
+	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container: HTMLDivElement) {
 		// Need to track container resize so that control could get the available width. 
 		// The available height won't be provided even when this is true
 		context.mode.trackContainerResize(true);
@@ -45,9 +43,9 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 			pcfContext: this._context,
 			isModelApp: this._isModelApp,
 			dataSetVersion: this._dataSetVersion,
-			columnLabels: {},
+			columnLabelOverrides: {},
 			dropdownFilterableFields: []
-		}
+		};
 
 		// set the container to display to relative so that our Scrollable Panel does not cover up the
 		// Dynamics ribbon or quick search.
@@ -57,21 +55,24 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 		this._detailList.setAttribute("id", "detailList");
 		// if data-is-scrollable is not set then grid will not show all results.
 		this._detailList.setAttribute("data-is-scrollable", "true");
-		
+
 		//we need to set the grid height.  If the allocated height is not -1 then we are in a canvas app 
 		//and we need to set the heigh based upon the allocated height of the container.
-		if (this._context.mode.allocatedHeight !== -1)
-		{
-			this._detailList.style.height = `${(this._context.mode.allocatedHeight).toString()}px`
+		console.log(`TS: init, allocatedHeight ${this._context.mode.allocatedHeight}`);
+		if (this._context.mode.allocatedHeight !== -1) {
+			this._detailList.style.height = `${(this._context.mode.allocatedHeight).toString()}px`;
+			console.log("this._detailList.style.height: ", this._detailList.style.height);
 		}
-		else
-		{
+		else {
 			// sets the height based upon the rowSpan which is there but not included in the Mode interace when
 			// the control is a subgrid.
 			// Then multiple by 1.5 em which is what MS uses per row.	
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			const rowspan = (this._context.mode as any).rowSpan;
-			if (rowspan) this._detailList.style.height = `${(rowspan * 1.5).toString()}em`;
+			// const rowspan = (this._context.mode as any).rowSpan;
+			// if (rowspan) this._detailList.style.height = `${(rowspan * 1.5).toString()}em`;
+
+			this._detailList.style.height = '500px'; //default height if rowSpan is not available
+			console.log("this._detailList.style.height: ", this._detailList.style.height);
 		}
 
 		this._container.appendChild(this._detailList);
@@ -85,22 +86,20 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 	 * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
 	 * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
 	 */
-	public updateView(context: ComponentFramework.Context<IInputs>): void
-	{
+	public updateView(context: ComponentFramework.Context<IInputs>): void {
 		const dataSet = context.parameters.sampleDataSet;
 		if (dataSet.loading) return;
 
 		//Are we in a canvas app?
-		if (!this._isModelApp)
-		{
+		if (!this._isModelApp) {
 			//since we are in a canvas app let's make sure we set the height of the control
-			this._detailList.style.height = `${(this._context.mode.allocatedHeight).toString()}px`
-			
+			this._detailList.style.height = `${(this._context.mode.allocatedHeight).toString()}px`;
+
 			//Setting the page size in a Canvas app works on the first load of the component.  If you navigate
 			// away from the page on which the component is located though the paging get reset to 25 when you
 			// navigate back.  In order to fix this we need to reset the paging to the count of the records that
 			// will come back and do a reset on the paging.  I believe this is all due to a MS bug.	
-	
+
 			//console.log(`TS: updateView, dataSet.paging.pageSize ${dataSet.paging.pageSize}`);	
 			//console.log(`TS: updateView, dataSet.paging.totalResultCount ${dataSet.paging.totalResultCount}`)
 			dataSet.paging.setPageSize(dataSet.paging.totalResultCount);
@@ -112,37 +111,42 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 			return;
 		}
 
-		const columnLabelsRaw = context.parameters.columnLabels.raw;
-		if(columnLabelsRaw !== null && columnLabelsRaw !== "val"){
-			this._props.columnLabels = JSON.parse(columnLabelsRaw) as IColumnLabel;
-		} else {
-			// this._props.columnLabels = [];
+		try {
+			const columnLabelOverridesRaw = context.parameters.columnLabelOverrides.raw;
+			if (columnLabelOverridesRaw !== null && columnLabelOverridesRaw !== "val") {
+				this._props.columnLabelOverrides = JSON.parse(columnLabelOverridesRaw) as IColumnLabelOverride;
+			} else {
+				this._props.columnLabelOverrides = {};
+			}
+
+			const dropdownFilterableFieldsRaw = context.parameters.dropdownFilterableFields.raw;
+
+			if (dropdownFilterableFieldsRaw !== null && dropdownFilterableFieldsRaw !== "val") {
+				this._props.dropdownFilterableFields = JSON.parse(dropdownFilterableFieldsRaw) as IDropdownFilterableField[];
+			} else {
+				this._props.dropdownFilterableFields = [];
+			}
+
+		} catch (error) {
+			console.error("Error parsing JSON input for column labels or dropdown filterable fields. Please check the input format.", error);
 		}
 
-		const dropdownFilterableFieldsRaw = context.parameters.dropdownFilterableFields.raw;
 
-		if(dropdownFilterableFieldsRaw !== null && dropdownFilterableFieldsRaw !== "val"){
-			this._props.dropdownFilterableFields = JSON.parse(dropdownFilterableFieldsRaw) as IDropdownFilterableField[];
-		} else {
-			this._props.dropdownFilterableFields = [];
-		}
-		console.log(dropdownFilterableFieldsRaw);
 		//useEffect on the dataSet itself was not picking up on all the updates so pass in a dataset version
 		// and update it in the props so the react control knows it was updated.
 		this._props.dataSetVersion = this._dataSetVersion++;
-		
+
 		// render the DetailsList control
 		ReactDOM.render(
-			React.createElement(DetailListGridControl, this._props), 
-				this._detailList);
-		}
+			React.createElement(DetailListGridControl, this._props),
+			this._detailList);
+	}
 
 	/** 
 	 * It is called by the framework prior to a control receiving new data. 
 	 * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as “bound” or “output”
 	 */
-	public getOutputs(): IOutputs
-	{
+	public getOutputs(): IOutputs {
 		return {};
 	}
 
@@ -150,8 +154,7 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 	 * Called when the control is to be removed from the DOM tree. Controls should use this call for cleanup.
 	 * i.e. cancelling any pending remote calls, removing listeners, etc.
 	 */
-	public destroy(): void
-	{
+	public destroy(): void {
 		// Add code to cleanup control if necessary
 	}
 

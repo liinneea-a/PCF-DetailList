@@ -6,6 +6,7 @@ export const mockColumns = [
   { name: "transactionDateTime", fieldName: "transactionDateTime", currentWidth: 100, isPrimary: false },
   { name: "passageReportId", fieldName: "passageReportId", currentWidth: 100, isPrimary: false },
   { name: "tollEventTime", fieldName: "tollEventTime", currentWidth: 100, isPrimary: false },
+  { name: "localAgreementNumber", fieldName: "localAgreementNumber", currentWidth: 100, isPrimary: false },
   // { name: "laneNumber", fieldName: "laneNumber", currentWidth: 100, isPrimary: false  },
   // { name: "vehicleClass", fieldName: "vehicleClass", currentWidth: 100, isPrimary: false  },
   // { name: "localAgreementNumber", fieldName: "localAgreementNumber", currentWidth: 100, isPrimary: false  },

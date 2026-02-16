@@ -1,9 +1,11 @@
 import { IMockData } from "../types/IMockData";
 import { IMockColumn } from "../types/IMockColumn";
-import { IColumnLabel } from "../types/IColumnLabel";
+import { IColumnLabelOverride } from "../types/IColumnLabel";
 import { IColumn } from "@fluentui/react";
+// import { getTransactions } from "../services/tollingService";
+// getTransactions();
 
-export const getItems = (columns: IColumn[], data: IMockData[]) => {
+export const mapTransactionsToRows = (columns: IColumn[], data: IMockData[]) => {
     const resultSet = data.map(function (item) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const newRecord: any = {
@@ -19,16 +21,15 @@ export const getItems = (columns: IColumn[], data: IMockData[]) => {
     return resultSet;
 };
 
-export const getColumns = (columns: IMockColumn[], columnLabels: IColumnLabel): IColumn[] => {
+export const getColumns = (columns: IMockColumn[], columnLabelOverrides: IColumnLabelOverride): IColumn[] => {
     const iColumns: IColumn[] = [];
-    const hasColumnOverrides = Object.keys(columnLabels).length > 0;
+    const hasColumnOverrides = Object.keys(columnLabelOverrides).length > 0;
     // const columnWidthDistribution = getColumnWidthDistribution(pcfContext);
  
     for (const column of columns) {
-
         const iColumn: IColumn = {
             key: column.name,
-            name: hasColumnOverrides && columnLabels[column.fieldName] ? columnLabels[column.fieldName].label :column.name,
+            name: hasColumnOverrides && columnLabelOverrides[column.fieldName] ? columnLabelOverrides[column.fieldName].label : column.name,
             fieldName: column.fieldName,
             currentWidth: 100,
             minWidth: 5,

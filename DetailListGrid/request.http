@@ -1,0 +1,10 @@
+### Get all transactions
+GET http://localhost:3001/transactions
+
+### Get a transaction by transactionId
+GET http://localhost:3001/transactions?transactionId=301245001
+
+
+###
+GET http://localhost:3001/transactions?transactionId_like=00
+

@@ -3,7 +3,7 @@
 //     label: string
 // }
 
-export interface IColumnLabel {
+export interface IColumnLabelOverride {
     [key: string]: {
         label: string
     }

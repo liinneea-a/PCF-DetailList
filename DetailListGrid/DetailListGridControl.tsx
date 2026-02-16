@@ -1,18 +1,23 @@
 import * as React from 'react';
 import { IInputs } from "./generated/ManifestTypes";
-import { getColumns, getItems } from './helpers/dataHelper';
+import { getColumns, mapTransactionsToRows } from './helpers/dataHelper';
 import { getUserLanguage } from './helpers/languageHelper';
 import { mockColumns, mockData } from './mockData/testData';
-import { IColumnLabel } from './types/IColumnLabel';
-import { ConstrainMode, DetailsListLayoutMode, Dropdown, IColumn, IDetailsHeaderProps, initializeIcons, IRenderFunction, ISearchBoxStyles, ITooltipHostProps, Label, ScrollablePane, ScrollbarVisibility, SearchBox, SelectionMode, ShimmeredDetailsList, Stack, Sticky, StickyPositionType, TooltipHost } from '@fluentui/react';
-import { fetchData, fetchFilterdData } from './dataService';
+import { IColumnLabelOverride } from './types/IColumnLabel';
+import { ConstrainMode, DetailsListLayoutMode, Dropdown, IColumn, IDetailsHeaderProps, initializeIcons, IObjectWithKey, IRenderFunction, ISearchBoxStyles, ITooltipHostProps, Label, ScrollablePane, ScrollbarVisibility, SearchBox, SelectionMode, ShimmeredDetailsList, Stack, Sticky, StickyPositionType, TooltipHost } from '@fluentui/react';
+// import { fetchData, fetchFilterdData } from './dataService';
 import { IDropdownFilterableField } from './types/IDropdownFilterableFields';
+// import { getFilteredTransactions, getTransactions } from './services/tollingService';
+import { IMockData } from './types/IMockData';
+import { getFilteredTransactions, getTransactions } from './services/mockService';
+import { Selection  } from "@fluentui/react";
+
 
 export interface IProps {
     pcfContext: ComponentFramework.Context<IInputs>,
     isModelApp: boolean,
     dataSetVersion: number;
-    columnLabels: IColumnLabel;
+    columnLabelOverrides:   IColumnLabelOverride;
     dropdownFilterableFields: IDropdownFilterableField[];
 }
 
@@ -26,18 +31,13 @@ interface IColumnWidth {
 initializeIcons();
 
 export const DetailListGridControl: React.FC<IProps> = (props) => {
-
-    // using react hooks to create functional which will allow us to set these values in our code
-    // eg. when we calculate the columns we can then udpate the state of them using setColums([our new columns]);
-    // we have passed in an empty array as the default.
-    // const [columns, setColumns] = React.useState(_getColumns);
-    // const [items, setItems] = React.useState(_getItems);
-    const [columns, setColumns] = React.useState(getColumns(mockColumns, props.columnLabels));
-    const [items, setItems] = React.useState(getItems(columns, mockData));
+    const [columns, setColumns] = React.useState(getColumns(mockColumns, props.columnLabelOverrides));
+    const [items, setItems] = React.useState<IMockData[]>([]);
     const [isDataLoaded, setIsDataLoaded] = React.useState(props.isModelApp);
     // react hook to store the number of selected items in the grid which will be displayed in the grid footer.
     const [selectedItemCount, setSelectedItemCount] = React.useState(0);
     const [selectedDropdownKey, setSelectedDropdownKey] = React.useState("");
+    const [listSelection, setListSelection] = React.useState<IObjectWithKey[]>([]);
 
     // Set the isDataLoaded state based upon the paging totalRecordCount
     React.useEffect(() => {
@@ -51,7 +51,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
     // If it has we will go get the udpated items.
     React.useEffect(() => {
         //console.log('TSX: props.dataSetVersion was updated');        
-        setItems(getItems(columns, mockData));
+        // setItems(getItems(columns, mockData));
     }, [props.dataSetVersion]);
 
     // When the component is updated this will determine if the width of the control has changed.
@@ -61,25 +61,18 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
         setColumns(updateColumnWidths(columns, props.pcfContext));
     }, [props.pcfContext.mode.allocatedWidth]);
 
-    // the selector used by the DetailList
-    // const _selection = new Selection({
-    //     onSelectionChanged: () => {
-    //         _setSelectedItemsOnDataSet();
-    //     }
-    // });
+    React.useEffect(() => {
+        const loadData = async () => {
+            setIsDataLoaded(false);
+            const transactions = await getTransactions();
+            if(transactions.length > 0) {
+                setItems(mapTransactionsToRows(columns, transactions));
+            }
+            setIsDataLoaded(true);
+        }
+        loadData();
 
-    // sets the selected record id's on the Dynamics dataset.
-    // this will allow us to utilize the ribbon buttons since they need
-    // that data set in order to do things such as delete/deactivate/activate/ect..
-    // const _setSelectedItemsOnDataSet = () => {
-    //     const selectedKeys = [];
-    //     const selections = _selection.getSelection();
-    //     for (const selection of selections) {
-    //         selectedKeys.push(selection.key as string);
-    //     }
-    //     setSelectedItemCount(selectedKeys.length);
-    //     props.pcfContext.parameters.sampleDataSet.setSelectedRecordIds(selectedKeys);
-    // };
+    }, [])
 
     // when a column header is clicked sort the items
     const _onColumnClick = (ev?: React.MouseEvent<HTMLElement>, column?: IColumn): void => {
@@ -113,19 +106,44 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
         );
     };
 
-    const handleSearch = (newValue: string) => {
+    const handleSearch = async (newValue: string) => {
+        if(!selectedDropdownKey) {
+            return;
+        }
+
         setIsDataLoaded(false);
-        const result = fetchFilterdData(newValue, selectedDropdownKey);
-        setItems(result);
+        if(selectedDropdownKey === "all" || selectedDropdownKey === ""){
+            const allTransactions = await getTransactions();
+            setItems(mapTransactionsToRows(columns, allTransactions));
+        } else {
+            const filteredTransactions = await getFilteredTransactions(newValue, selectedDropdownKey);
+            setItems(mapTransactionsToRows(columns, filteredTransactions));
+        }
+
         setIsDataLoaded(true);
     };
 
+    const handleSearchBoxClear = async () => {
+        setIsDataLoaded(false);
+        const allTransactions = await getTransactions();
+        setItems(mapTransactionsToRows(columns, allTransactions));
+        setIsDataLoaded(true);
+    }
+
     const searchBoxStyles: Partial<ISearchBoxStyles> = { root: { width: 200 } };
 
-    const dropdownOptions = React.useMemo(() =>
-        props.dropdownFilterableFields.map(field => ({ key: field.key, text: field.text })),
-        [props.dropdownFilterableFields]
+    const dropdownOptions = props.dropdownFilterableFields.map(field => ({ key: field.key, text: field.text }));
+
+    const selection = React.useRef(
+        new Selection({
+            onSelectionChanged: () => {
+                const selected = selection.current.getSelection();
+                setListSelection(selected);
+                console.log("Selected rows:", selected);
+            }
+        })
     );
+
 
     return (
         <Stack grow
@@ -147,20 +165,6 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
             //     },
             // }}
             >
-                <SearchBox
-                    styles={searchBoxStyles}
-                    placeholder="Search transactions"
-                    onEscape={ev => {
-                        console.log('Custom onEscape Called');
-                    }}
-                    onClear={ev => {
-                        console.log('Custom onClear Called');
-                    }}
-                    onChange={(_, newValue) => console.log('SearchBox onChange fired: ' + newValue)}
-                    onSearch={(newValue) => {
-                        handleSearch(newValue);
-                    }}
-                />
                 <Dropdown
                     placeholder="Select an option"
                     options={[
@@ -173,9 +177,23 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                         title: { textAlign: 'left' }
                     }}
                     onChange={(_, option) => { setSelectedDropdownKey(option?.key as string); console.log(option?.key); }}
-                >
+                />
+                <Stack.Item>
+                    <SearchBox
+                        styles={searchBoxStyles}
+                        placeholder="Search transactions"
+                        onEscape={ev => {
+                            console.log('Custom onEscape Called');
+                        }}
+                        onClear={ev => handleSearchBoxClear()}
+                        onChange={(_, newValue) => console.log('SearchBox onChange fired: ' + newValue)}
+                        onSearch={(newValue) => {
+                            handleSearch(newValue);
+                        }}
+                    />
+                    {/* <span>*Välj ett fält i dropdownen först</span> */}
+                </Stack.Item>
 
-                </Dropdown>
             </Stack>
 
             <Stack.Item
@@ -207,6 +225,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                             onRenderDetailsHeader={_onRenderDetailsHeader}
                             layoutMode={DetailsListLayoutMode.justified}
                             constrainMode={ConstrainMode.unconstrained}
+                            selection={selection.current}
                         />
                     </ScrollablePane>
                 </div>
