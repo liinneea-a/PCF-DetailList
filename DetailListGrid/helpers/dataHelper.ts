@@ -1,5 +1,5 @@
 import { IMockData } from "../types/IMockData";
-import { IMockColumn } from "../types/IMockColumn";
+import { DataType, IMockColumn } from "../types/IMockColumn";
 import { IColumnLabelOverride } from "../types/IColumnLabel";
 import { IColumn } from "@fluentui/react";
 // import { getTransactions } from "../services/tollingService";
@@ -13,7 +13,14 @@ export const mapTransactionsToRows = (columns: IColumn[], data: IMockData[]) => 
         };
 
         for (const column of columns) {
+            // let value = item[column.key as keyof IMockData];
+
+            //  if(column.data && column.data.dataType === DataType.Date){
+            //     value = new Date(item[column.key as keyof IMockData] as string).toLocaleString();
+            // }
+
             newRecord[column.key] = item[column.key as keyof IMockData];
+            // newRecord[column.key] = value;
         }
 
         return newRecord;
@@ -27,6 +34,7 @@ export const getColumns = (columns: IMockColumn[], columnLabelOverrides: IColumn
     // const columnWidthDistribution = getColumnWidthDistribution(pcfContext);
  
     for (const column of columns) {
+        
         const iColumn: IColumn = {
             key: column.name,
             name: hasColumnOverrides && columnLabelOverrides[column.fieldName] ? columnLabelOverrides[column.fieldName].label : column.name,
@@ -39,8 +47,19 @@ export const getColumns = (columns: IMockColumn[], columnLabelOverrides: IColumn
             sortDescendingAriaLabel: 'Sorted Z to A',
             className: 'detailList-cell',
             headerClassName: 'detailList-gridLabels',
-            data: { isPrimary: column.isPrimary }
+            data: { isPrimary: column.isPrimary, dataType: column.dataType },
+            // onRender: (item) => item. // Pass additional metadata for use in onRender and sorting
         };
+
+        // If column contains date data, format it in the grid.
+        if (column.dataType === DataType.Date) {
+            iColumn.onRender = (item: any, i: any, col: any) => {
+                const value = item[col.fieldName];
+                if(!value) {return}
+
+                return new Date(value).toLocaleString();
+            };
+        }
 
         // //create links for primary field and entity reference.            
         // if (column.dataType.startsWith('Lookup.') || column.isPrimary)

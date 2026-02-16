@@ -10,14 +10,17 @@ import { IDropdownFilterableField } from './types/IDropdownFilterableFields';
 // import { getFilteredTransactions, getTransactions } from './services/tollingService';
 import { IMockData } from './types/IMockData';
 import { getFilteredTransactions, getTransactions } from './services/mockService';
-import { Selection  } from "@fluentui/react";
+import { Selection } from "@fluentui/react";
+import { DataType } from './types/IMockColumn';
+import { useBoolean } from '@fluentui/react-hooks';
+import { FilterDateCallout } from './components/FilterDateCallout';
 
 
 export interface IProps {
     pcfContext: ComponentFramework.Context<IInputs>,
     isModelApp: boolean,
     dataSetVersion: number;
-    columnLabelOverrides:   IColumnLabelOverride;
+    columnLabelOverrides: IColumnLabelOverride;
     dropdownFilterableFields: IDropdownFilterableField[];
 }
 
@@ -37,7 +40,24 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
     // react hook to store the number of selected items in the grid which will be displayed in the grid footer.
     const [selectedItemCount, setSelectedItemCount] = React.useState(0);
     const [selectedDropdownKey, setSelectedDropdownKey] = React.useState("");
-    const [listSelection, setListSelection] = React.useState<IObjectWithKey[]>([]);
+
+    const [calloutAnchor, setCalloutAnchor] = React.useState<HTMLElement | null>(null);
+    const [calloutFilterColumn, setCalloutFilterColumn] = React.useState<IColumn | null>(null);
+    // const [isCalloutVisible, setIsCalloutVisible] = React.useState(false);
+    const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
+
+    React.useEffect(() => {
+        const loadData = async () => {
+            setIsDataLoaded(false);
+            const transactions = await getTransactions();
+            if (transactions.length > 0) {
+                setItems(mapTransactionsToRows(columns, transactions));
+            }
+            setIsDataLoaded(true);
+        };
+        loadData();
+
+    }, []);
 
     // Set the isDataLoaded state based upon the paging totalRecordCount
     React.useEffect(() => {
@@ -61,21 +81,19 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
         setColumns(updateColumnWidths(columns, props.pcfContext));
     }, [props.pcfContext.mode.allocatedWidth]);
 
-    React.useEffect(() => {
-        const loadData = async () => {
-            setIsDataLoaded(false);
-            const transactions = await getTransactions();
-            if(transactions.length > 0) {
-                setItems(mapTransactionsToRows(columns, transactions));
-            }
-            setIsDataLoaded(true);
-        }
-        loadData();
-
-    }, [])
-
+    const handleFilterDate = (column: IColumn, anchor: HTMLElement) => {
+        setCalloutAnchor(anchor);
+        setCalloutFilterColumn(column);
+        toggleIsCalloutVisible();
+    };
     // when a column header is clicked sort the items
     const _onColumnClick = (ev?: React.MouseEvent<HTMLElement>, column?: IColumn): void => {
+
+        if (column?.data.dataType === DataType.Date && ev?.currentTarget) {
+            handleFilterDate(column, ev.currentTarget as HTMLElement);
+            return;
+        }
+
         let isSortedDescending = column?.isSortedDescending;
 
         // If we've sorted this column, flip it.
@@ -107,12 +125,12 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
     };
 
     const handleSearch = async (newValue: string) => {
-        if(!selectedDropdownKey) {
+        if (!selectedDropdownKey) {
             return;
         }
 
         setIsDataLoaded(false);
-        if(selectedDropdownKey === "all" || selectedDropdownKey === ""){
+        if (selectedDropdownKey === "all" || selectedDropdownKey === "") {
             const allTransactions = await getTransactions();
             setItems(mapTransactionsToRows(columns, allTransactions));
         } else {
@@ -128,7 +146,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
         const allTransactions = await getTransactions();
         setItems(mapTransactionsToRows(columns, allTransactions));
         setIsDataLoaded(true);
-    }
+    };
 
     const searchBoxStyles: Partial<ISearchBoxStyles> = { root: { width: 200 } };
 
@@ -138,12 +156,11 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
         new Selection({
             onSelectionChanged: () => {
                 const selected = selection.current.getSelection();
-                setListSelection(selected);
+                // setListSelection(selected);
                 console.log("Selected rows:", selected);
             }
         })
     );
-
 
     return (
         <Stack grow
@@ -159,12 +176,16 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                 tokens={{
                     childrenGap: 10
                 }}
-            // styles={{
-            //     root: {
-            //         border: "1px solid red",
-            //     },
-            // }}
             >
+                {isCalloutVisible && calloutAnchor && (
+                    <FilterDateCallout
+                        anchor={calloutAnchor}
+                        onDismiss={() => toggleIsCalloutVisible()}
+                        onApplyDateFilter={(date: Date, operator: string) => {
+                            console.log(date, operator);
+                        }}
+                    />
+                )}
                 <Dropdown
                     placeholder="Select an option"
                     options={[
@@ -226,6 +247,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                             layoutMode={DetailsListLayoutMode.justified}
                             constrainMode={ConstrainMode.unconstrained}
                             selection={selection.current}
+                        // onRenderRow={}
                         />
                     </ScrollablePane>
                 </div>
@@ -311,6 +333,6 @@ const copyAndSort = <T,>(items: T[], columnKey: string, pcfContext: ComponentFra
 
 // determine if object is an entity reference.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const isEntityReference = (obj: any): obj is ComponentFramework.EntityReference => {
-    return typeof obj?.etn === 'string';
-};
+// const isEntityReference = (obj: any): obj is ComponentFramework.EntityReference => {
+//     return typeof obj?.etn === 'string';
+// };

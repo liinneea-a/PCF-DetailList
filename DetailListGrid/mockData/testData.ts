@@ -1,18 +1,18 @@
 // import { IColumn } from "office-ui-fabric-react/lib/DetailsList";
+import { DataType, IMockColumn } from "../types/IMockColumn";
 import { IMockData } from "../types/IMockData";
 
-export const mockColumns = [
-  { name: "transactionId", fieldName: "transactionId", currentWidth: 100, isPrimary: true },
-  { name: "transactionDateTime", fieldName: "transactionDateTime", currentWidth: 100, isPrimary: false },
-  { name: "passageReportId", fieldName: "passageReportId", currentWidth: 100, isPrimary: false },
-  { name: "tollEventTime", fieldName: "tollEventTime", currentWidth: 100, isPrimary: false },
-  { name: "localAgreementNumber", fieldName: "localAgreementNumber", currentWidth: 100, isPrimary: false },
-  // { name: "laneNumber", fieldName: "laneNumber", currentWidth: 100, isPrimary: false  },
-  // { name: "vehicleClass", fieldName: "vehicleClass", currentWidth: 100, isPrimary: false  },
-  // { name: "localAgreementNumber", fieldName: "localAgreementNumber", currentWidth: 100, isPrimary: false  },
-  // { name: "customerNumber", fieldName: "customerNumber", currentWidth: 100, isPrimary: false  },
-  // { name: "transactionType", fieldName: "transactionType", currentWidth: 100, isPrimary: false  },
-  // { name: "lpn.number", fieldName: "lpn.number", currentWidth: 100, isPrimary: false  },
+export const mockColumns: IMockColumn[] = [
+  { name: "transactionId", fieldName: "transactionId", currentWidth: 100, isPrimary: true, dataType: DataType.Number },
+  { name: "transactionDateTime", fieldName: "transactionDateTime", currentWidth: 100, isPrimary: false, dataType: DataType.Date },
+  { name: "passageReportId", fieldName: "passageReportId", currentWidth: 100, isPrimary: false, dataType: DataType.Number },
+  { name: "tollEventTime", fieldName: "tollEventTime", currentWidth: 100, isPrimary: false, dataType: DataType.Date },
+  { name: "localAgreementNumber", fieldName: "localAgreementNumber", currentWidth: 100, isPrimary: false, dataType: DataType.String },
+  { name: "laneNumber", fieldName: "laneNumber", currentWidth: 100, isPrimary: false, dataType: DataType.Number },
+  { name: "vehicleClass", fieldName: "vehicleClass", currentWidth: 100, isPrimary: false, dataType: DataType.Number },
+  { name: "customerNumber", fieldName: "customerNumber", currentWidth: 100, isPrimary: false, dataType: DataType.String },
+  { name: "transactionType", fieldName: "transactionType", currentWidth: 100, isPrimary: false, dataType: DataType.String },
+  // { name: "lpn.number", fieldName: "lpn.number", currentWidth: 100, isPrimary: false, dataType: DataType.String },
   // { name: "lpn.countryCode", fieldName: "lpn.countryCode", currentWidth: 100, isPrimary: false  },
   // { name: "personalAccountNumber", fieldName: "personalAccountNumber", currentWidth: 100, isPrimary: false  },
   // { name: "iTicketId", fieldName: "iTicketId", currentWidth: 100, isPrimary: false  },
