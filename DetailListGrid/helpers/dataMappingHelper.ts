@@ -5,6 +5,9 @@ import { IColumn } from "@fluentui/react";
 // import { getTransactions } from "../services/tollingService";
 // getTransactions();
 
+
+
+
 export const mapTransactionsToRows = (columns: IColumn[], data: IMockData[]) => {
     const resultSet = data.map(function (item) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -22,9 +25,9 @@ export const mapTransactionsToRows = (columns: IColumn[], data: IMockData[]) => 
             newRecord[column.key] = item[column.key as keyof IMockData];
             // newRecord[column.key] = value;
         }
-
         return newRecord;
     });
+    console.log(resultSet)
     return resultSet;
 };
 
@@ -48,13 +51,14 @@ export const getColumns = (columns: IMockColumn[], columnLabelOverrides: IColumn
             className: 'detailList-cell',
             headerClassName: 'detailList-gridLabels',
             data: { isPrimary: column.isPrimary, dataType: column.dataType },
+            // iconName: "Filter",
             // onRender: (item) => item. // Pass additional metadata for use in onRender and sorting
         };
 
         // If column contains date data, format it in the grid.
         if (column.dataType === DataType.Date) {
-            iColumn.onRender = (item: any, i: any, col: any) => {
-                const value = item[col.fieldName];
+            iColumn.onRender = (item?: any, i?: number, col?: IColumn) => {
+                const value = item && item[col!.fieldName as keyof any];
                 if(!value) {return}
 
                 return new Date(value).toLocaleString();

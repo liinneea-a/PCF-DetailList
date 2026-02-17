@@ -5,6 +5,17 @@ GET http://localhost:3001/transactions
 GET http://localhost:3001/transactions?transactionId=301245001
 
 
-###
+### Includes transactions with transactionId that contains "00"
 GET http://localhost:3001/transactions?transactionId_like=00
 
+### Datumfiler: onafter (_gte)
+GET http://localhost:3001/transactions?tollEventTime_gte=2026-02-09T07:55:10Z
+
+### Datumfiler: date & today (=)
+GET http://localhost:3001/transactions?tollEventTime=2026-02-09T07:55:10Z
+
+### Datumfiler: onbefore (_lte)
+GET http://localhost:3001/transactions?tollEventTime_lte=2026-02-09T07:55:10Z
+
+### 
+GET http://localhost:3001/transactions?transactionDateTime_gte=2026-02-08T23:00:00.000Z&transactionDateTime_lte=2026-02-09T22:59:59.999Z

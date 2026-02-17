@@ -1,19 +1,25 @@
 import * as React from 'react';
 import { IInputs } from "./generated/ManifestTypes";
-import { getColumns, mapTransactionsToRows } from './helpers/dataHelper';
+import { getColumns, mapTransactionsToRows } from './helpers/dataMappingHelper';
 import { getUserLanguage } from './helpers/languageHelper';
 import { mockColumns, mockData } from './mockData/testData';
 import { IColumnLabelOverride } from './types/IColumnLabel';
-import { ConstrainMode, DetailsListLayoutMode, Dropdown, IColumn, IDetailsHeaderProps, initializeIcons, IObjectWithKey, IRenderFunction, ISearchBoxStyles, ITooltipHostProps, Label, ScrollablePane, ScrollbarVisibility, SearchBox, SelectionMode, ShimmeredDetailsList, Stack, Sticky, StickyPositionType, TooltipHost } from '@fluentui/react';
+import { CommandBarButton, ConstrainMode, DetailsListLayoutMode, Dropdown, IColumn, IDetailsHeaderProps, IIconProps, initializeIcons, IObjectWithKey, IRenderFunction, ISearchBoxStyles, ITooltipHostProps, Label, ScrollablePane, ScrollbarVisibility, SearchBox, SelectionMode, ShimmeredDetailsList, Stack, Sticky, StickyPositionType, TooltipHost } from '@fluentui/react';
 // import { fetchData, fetchFilterdData } from './dataService';
 import { IDropdownFilterableField } from './types/IDropdownFilterableFields';
-// import { getFilteredTransactions, getTransactions } from './services/tollingService';
 import { IMockData } from './types/IMockData';
-import { getFilteredTransactions, getTransactions } from './services/mockService';
+
+// switch between using mock service or real service
+// import { getSearchFilteredTransactions, getTransactions,getDateFilteredTransactions } from './services/tollingService';
+// import { getSearchFilteredTransactions, getTransactions, getDateFilteredTransactions } from './services/mockService';
+
 import { Selection } from "@fluentui/react";
 import { DataType } from './types/IMockColumn';
 import { useBoolean } from '@fluentui/react-hooks';
 import { FilterDateCallout } from './components/FilterDateCallout';
+import { DateFilterOperator } from './types/DateFilterOperator';
+import { TransactionService } from './services/TransactionService';
+import { IActiveFilter } from './types/IActiveFilter';
 
 
 export interface IProps {
@@ -22,12 +28,15 @@ export interface IProps {
     dataSetVersion: number;
     columnLabelOverrides: IColumnLabelOverride;
     dropdownFilterableFields: IDropdownFilterableField[];
+    service: TransactionService;
 }
 
 interface IColumnWidth {
     name: string,
     width: number;
 }
+
+
 
 //Initialize the icons otherwise they will not display in a Canvas app.
 //They will display in Model app because Microsoft initializes them in their controls.
@@ -42,14 +51,15 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
     const [selectedDropdownKey, setSelectedDropdownKey] = React.useState("");
 
     const [calloutAnchor, setCalloutAnchor] = React.useState<HTMLElement | null>(null);
-    const [calloutFilterColumn, setCalloutFilterColumn] = React.useState<IColumn | null>(null);
-    // const [isCalloutVisible, setIsCalloutVisible] = React.useState(false);
-    const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
+    const [calloutFilterColumn, setCalloutFilterColumn] = React.useState<string>("");
+    const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);    
+
+    const [activeFilters, setActiveFilters] = React.useState<IActiveFilter[]>([]);
 
     React.useEffect(() => {
         const loadData = async () => {
             setIsDataLoaded(false);
-            const transactions = await getTransactions();
+            const transactions = await props.service.getTransactions();
             if (transactions.length > 0) {
                 setItems(mapTransactionsToRows(columns, transactions));
             }
@@ -61,6 +71,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
 
     // Set the isDataLoaded state based upon the paging totalRecordCount
     React.useEffect(() => {
+        console.log(items)
         const dataSet = props.pcfContext.parameters.sampleDataSet;
         if (dataSet.loading || props.isModelApp) return;
         setIsDataLoaded(dataSet.paging.totalResultCount !== -1);
@@ -83,16 +94,17 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
 
     const handleFilterDate = (column: IColumn, anchor: HTMLElement) => {
         setCalloutAnchor(anchor);
-        setCalloutFilterColumn(column);
+        setCalloutFilterColumn(column.key);
         toggleIsCalloutVisible();
     };
+
     // when a column header is clicked sort the items
     const _onColumnClick = (ev?: React.MouseEvent<HTMLElement>, column?: IColumn): void => {
-
         if (column?.data.dataType === DataType.Date && ev?.currentTarget) {
             handleFilterDate(column, ev.currentTarget as HTMLElement);
             return;
         }
+
 
         let isSortedDescending = column?.isSortedDescending;
 
@@ -131,36 +143,79 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
 
         setIsDataLoaded(false);
         if (selectedDropdownKey === "all" || selectedDropdownKey === "") {
-            const allTransactions = await getTransactions();
+            const allTransactions = await props.service.getTransactions();
             setItems(mapTransactionsToRows(columns, allTransactions));
         } else {
-            const filteredTransactions = await getFilteredTransactions(newValue, selectedDropdownKey);
+            const filteredTransactions = await props.service.getSearchFilteredTransactions(newValue, selectedDropdownKey);
             setItems(mapTransactionsToRows(columns, filteredTransactions));
         }
 
         setIsDataLoaded(true);
     };
 
-    const handleSearchBoxClear = async () => {
+    // const handleSearchBoxClear = async () => {
+    //     setIsDataLoaded(false);
+    //     const allTransactions = await props.service.getTransactions();
+    //     setItems(mapTransactionsToRows(columns, allTransactions));
+    //     setIsDataLoaded(true);
+    // };
+
+    React.useEffect(() => {
+        
+        columns.forEach(col => {
+            const activeFilterForColumn = activeFilters.find(f => f.columnKey === col.key);
+            if (activeFilterForColumn) {
+                col.isFiltered = true;
+            } else {
+                col.isFiltered = false;
+            }
+        });
+        
+        setColumns([...columns]);
+
+    }, [activeFilters]);
+
+    const applyDateFilter = async (date: Date, operator: DateFilterOperator, columnKey: string) => {
         setIsDataLoaded(false);
-        const allTransactions = await getTransactions();
-        setItems(mapTransactionsToRows(columns, allTransactions));
+        const filteredTransactions = await props.service.getDateFilteredTransactions(date, operator, columnKey);
+        setItems(mapTransactionsToRows(columns, filteredTransactions));
+
+        setActiveFilters(prevFilters => {
+            prevFilters = prevFilters.filter(f => f.columnKey !== columnKey);
+            return [
+                ...prevFilters,
+                {
+                    columnKey: columnKey,
+                    operator: operator,
+                    value: date
+                }
+            ];
+        });
+
+
         setIsDataLoaded(true);
-    };
+    }
 
-    const searchBoxStyles: Partial<ISearchBoxStyles> = { root: { width: 200 } };
-
-    const dropdownOptions = props.dropdownFilterableFields.map(field => ({ key: field.key, text: field.text }));
-
+    const clearFilters = async () => {
+        setIsDataLoaded(false);
+        const allTransactions = await props.service.getTransactions();
+        setItems(mapTransactionsToRows(columns, allTransactions));
+        setActiveFilters([]);
+        setIsDataLoaded(true);
+    }
+    
     const selection = React.useRef(
         new Selection({
             onSelectionChanged: () => {
                 const selected = selection.current.getSelection();
-                // setListSelection(selected);
-                console.log("Selected rows:", selected);
+                setSelectedItemCount(selected.length);
             }
         })
     );
+
+    const searchBoxStyles: Partial<ISearchBoxStyles> = { root: { width: 200 } };
+    const dropdownOptions = props.dropdownFilterableFields.map(field => ({ key: field.key, text: field.text }));
+
 
     return (
         <Stack grow
@@ -181,11 +236,22 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                     <FilterDateCallout
                         anchor={calloutAnchor}
                         onDismiss={() => toggleIsCalloutVisible()}
-                        onApplyDateFilter={(date: Date, operator: string) => {
-                            console.log(date, operator);
+                        columnKey={calloutFilterColumn}
+                        onApplyDateFilter={(date: Date, operator: DateFilterOperator, columnKey: string) => {
+                            applyDateFilter(date, operator, columnKey);
+                            toggleIsCalloutVisible();
                         }}
                     />
                 )}
+                {activeFilters.length > 0 && (
+                    <CommandBarButton
+                        iconProps={{ iconName: 'ClearFilter' }}
+                        text="Clear filters"
+                        disabled={false}
+                        onClick={clearFilters}
+                    />
+                )}
+
                 <Dropdown
                     placeholder="Select an option"
                     options={[
@@ -206,7 +272,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                         onEscape={ev => {
                             console.log('Custom onEscape Called');
                         }}
-                        onClear={ev => handleSearchBoxClear()}
+                        // onClear={ev => handleSearchBoxClear()}
                         onChange={(_, newValue) => console.log('SearchBox onChange fired: ' + newValue)}
                         onSearch={(newValue) => {
                             handleSearch(newValue);
@@ -247,14 +313,22 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                             layoutMode={DetailsListLayoutMode.justified}
                             constrainMode={ConstrainMode.unconstrained}
                             selection={selection.current}
-                        // onRenderRow={}
                         />
                     </ScrollablePane>
                 </div>
             </Stack.Item>
-            <Stack.Item align="start">
+            <Stack.Item 
+                align="start"  
+                styles={{root: {border:"1px solid red", width: "100%", overflow: "hidden"}}}
+                >
                 <div className="detailList-footer">
                     <Label className="detailList-gridLabels">Records: {items.length.toString()} ({selectedItemCount} selected)</Label>
+                    <CommandBarButton
+                        // iconProps={{ iconName: 'ClearFilter' }}
+                        text="Next"
+                        disabled={false}
+                        // onClick={clearFilters}
+                    />
                 </div>
             </Stack.Item>
         </Stack>

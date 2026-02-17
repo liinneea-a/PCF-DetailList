@@ -1,9 +1,9 @@
-// enum TransactionTypes {
+// enum TransactionType {
 //     Toll = "toll",
 //     TollCredit = "tollCredit",
 //     ServiceFee = "serviceFee",
 // }
-
+// export type TransactionType = 'toll' | 'tollCredit' | 'serviceFee';
 // enum PassageType {
 //     FreePassage = "FreePassage"
 // }

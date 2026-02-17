@@ -21,7 +21,327 @@ export const mockColumns: IMockColumn[] = [
   // { name: "lpnFromTss.manual", fieldName: "lpnFromTss.manual", currentWidth: 100, isPrimary: false } 
 
 ];
+// export const mockData: IMockData[] = [
+//   {
+//     transactionId: 301245001,
+//     transactionDateTime: "2026-02-09T07:55:22Z",
+//     passageReportId: 88451230,
+//     tollEventTime: "2026-02-09T07:55:10Z",
+//     laneNumber: 2,
+//     vehicleClass: 1,
+//     localAgreementNumber: "LA-2025-000331",
+//     customerNumber: "CUST-552200",
+//     transactionType: "toll",
+//     lpn: {
+//       number: "KTB402",
+//       countryCode: "SE"
+//     },
+//     personalAccountNumber: "PAN-000123456",
+//     iTicketId: null,
+//     lpnFromTss: {
+//       front: { number: "KTB402", countryCode: "SE" },
+//       rear: { number: "KTB402", countryCode: "SE" },
+//       manual: null
+//     },
+//     price: {
+//       amountWithoutVAT: 28.0,
+//       amountWithVAT: 35.0,
+//       vat: 25.0,
+//       currency: "SEK"
+//     },
+//     credited: false,
+//     passageType: "FreePassage",
+//     billingDetailsAdu: 900112233,
+//     paymentClaimReferense: "PCR-2026-10010001",
+//     informationRecipientId: "A4000C"
+//   },
+//   {
+//     transactionId: 301245002,
+//     transactionDateTime: "2026-02-09T08:14:03Z",
+//     passageReportId: 88451231,
+//     tollEventTime: "2026-02-09T08:13:59Z",
+//     laneNumber: 4,
+//     vehicleClass: 3,
+//     localAgreementNumber: "LA-2024-005678",
+//     customerNumber: "CUST-774411",
+//     transactionType: "serviceFee",
+//     lpn: {
+//       number: "DE12345",
+//       countryCode: "DE"
+//     },
+//     personalAccountNumber: "PAN-998877665",
+//     iTicketId: 5566001,
+//     lpnFromTss: {
+//       front: { number: "DE12345", countryCode: "DE" },
+//       rear: null,
+//       manual: null
+//     },
+//     price: {
+//       amountWithoutVAT: 12.0,
+//       amountWithVAT: 15.0,
+//       vat: 25.0,
+//       currency: "SEK"
+//     },
+//     credited: true,
+//     passageType: "Voucher",
+//     billingDetailsAdu: 900112234,
+//     paymentClaimReferense: "PCR-2026-10010002",
+//     informationRecipientId: "A4000C"
+//   },
+//   {
+//     transactionId: 301245013,
+//     transactionDateTime: "2026-02-01T07:12:45Z",
+//     passageReportId: 88451242,
+//     tollEventTime: "2026-02-01T07:12:30Z",
+//     laneNumber: 2,
+//     vehicleClass: 1,
+//     localAgreementNumber: "LA-2025-010001",
+//     customerNumber: "CUST-100001",
+//     transactionType: "toll",
+//     lpn: { number: "SE101AA", countryCode: "SE" },
+//     personalAccountNumber: "PAN-100000001",
+//     iTicketId: null,
+//     lpnFromTss: {
+//       front: { number: "SE101AA", countryCode: "SE" },
+//       rear: null,
+//       manual: null
+//     },
+//     price: { amountWithoutVAT: 24, amountWithVAT: 30, vat: 25, currency: "SEK" },
+//     credited: false,
+//     passageType: "Normal",
+//     billingDetailsAdu: 900112245,
+//     paymentClaimReferense: "PCR-2026-10010013",
+//     informationRecipientId: "A4010A"
+//   },
+//   {
+//     transactionId: 301245014,
+//     transactionDateTime: "2026-02-02T08:33:12Z",
+//     passageReportId: 88451243,
+//     tollEventTime: "2026-02-02T08:33:00Z",
+//     laneNumber: 3,
+//     vehicleClass: 2,
+//     localAgreementNumber: "LA-2025-010002",
+//     customerNumber: "CUST-100002",
+//     transactionType: "toll",
+//     lpn: { number: "NO202BB", countryCode: "NO" },
+//     personalAccountNumber: "PAN-100000002",
+//     iTicketId: null,
+//     lpnFromTss: {
+//       front: { number: "NO202BB", countryCode: "NO" },
+//       rear: { number: "NO202BB", countryCode: "NO" },
+//       manual: null
+//     },
+//     price: { amountWithoutVAT: 32, amountWithVAT: 40, vat: 25, currency: "SEK" },
+//     credited: false,
+//     passageType: "FreePassage",
+//     billingDetailsAdu: 900112246,
+//     paymentClaimReferense: "PCR-2026-10010014",
+//     informationRecipientId: "A4010B"
+//   },
+//   {
+//     transactionId: 301245015,
+//     transactionDateTime: "2026-02-03T09:05:51Z",
+//     passageReportId: 88451244,
+//     tollEventTime: "2026-02-03T09:05:40Z",
+//     laneNumber: 1,
+//     vehicleClass: 3,
+//     localAgreementNumber: "LA-2025-010003",
+//     customerNumber: "CUST-100003",
+//     transactionType: "serviceFee",
+//     lpn: { number: "DK303CC", countryCode: "DK" },
+//     personalAccountNumber: "PAN-100000003",
+//     iTicketId: 5566010,
+//     lpnFromTss: {
+//       front: { number: "DK303CC", countryCode: "DK" },
+//       rear: null,
+//       manual: null
+//     },
+//     price: { amountWithoutVAT: 16, amountWithVAT: 20, vat: 25, currency: "SEK" },
+//     credited: true,
+//     passageType: "Voucher",
+//     billingDetailsAdu: 900112247,
+//     paymentClaimReferense: "PCR-2026-10010015",
+//     informationRecipientId: "A4010C"
+//   },
+//   {
+//     transactionId: 301245016,
+//     transactionDateTime: "2026-02-04T10:44:18Z",
+//     passageReportId: 88451245,
+//     tollEventTime: "2026-02-04T10:44:05Z",
+//     laneNumber: 4,
+//     vehicleClass: 1,
+//     localAgreementNumber: "LA-2025-010004",
+//     customerNumber: "CUST-100004",
+//     transactionType: "toll",
+//     lpn: { number: "FI404DD", countryCode: "FI" },
+//     personalAccountNumber: "PAN-100000004",
+//     iTicketId: null,
+//     lpnFromTss: {
+//       front: { number: "FI404DD", countryCode: "FI" },
+//       rear: null,
+//       manual: null
+//     },
+//     price: { amountWithoutVAT: 28, amountWithVAT: 35, vat: 25, currency: "SEK" },
+//     credited: false,
+//     passageType: "Normal",
+//     billingDetailsAdu: 900112248,
+//     paymentClaimReferense: "PCR-2026-10010016",
+//     informationRecipientId: "A4010D"
+//   },
+//   {
+//     transactionId: 301245017,
+//     transactionDateTime: "2026-02-05T11:15:39Z",
+//     passageReportId: 88451246,
+//     tollEventTime: "2026-02-05T11:15:25Z",
+//     laneNumber: 5,
+//     vehicleClass: 4,
+//     localAgreementNumber: "LA-2025-010005",
+//     customerNumber: "CUST-100005",
+//     transactionType: "toll",
+//     lpn: { number: "DE505EE", countryCode: "DE" },
+//     personalAccountNumber: "PAN-100000005",
+//     iTicketId: null,
+//     lpnFromTss: {
+//       front: { number: "DE505EE", countryCode: "DE" },
+//       rear: { number: "DE505EE", countryCode: "DE" },
+//       manual: null
+//     },
+//     price: { amountWithoutVAT: 40, amountWithVAT: 50, vat: 25, currency: "SEK" },
+//     credited: false,
+//     passageType: "FreePassage",
+//     billingDetailsAdu: 900112249,
+//     paymentClaimReferense: "PCR-2026-10010017",
+//     informationRecipientId: "A4010E"
+//   },
+//   {
+//     transactionId: 301245018,
+//     transactionDateTime: "2026-02-06T12:27:02Z",
+//     passageReportId: 88451247,
+//     tollEventTime: "2026-02-06T12:26:50Z",
+//     laneNumber: 2,
+//     vehicleClass: 2,
+//     localAgreementNumber: "LA-2025-010006",
+//     customerNumber: "CUST-100006",
+//     transactionType: "toll",
+//     lpn: { number: "NL606FF", countryCode: "NL" },
+//     personalAccountNumber: "PAN-100000006",
+//     iTicketId: null,
+//     lpnFromTss: {
+//       front: { number: "NL606FF", countryCode: "NL" },
+//       rear: null,
+//       manual: null
+//     },
+//     price: { amountWithoutVAT: 20, amountWithVAT: 25, vat: 25, currency: "SEK" },
+//     credited: false,
+//     passageType: "Normal",
+//     billingDetailsAdu: 900112250,
+//     paymentClaimReferense: "PCR-2026-10010018",
+//     informationRecipientId: "A4011A"
+//   },
+//   {
+//     transactionId: 301245019,
+//     transactionDateTime: "2026-02-08T13:49:55Z",
+//     passageReportId: 88451248,
+//     tollEventTime: "2026-02-08T13:49:40Z",
+//     laneNumber: 3,
+//     vehicleClass: 3,
+//     localAgreementNumber: "LA-2025-010007",
+//     customerNumber: "CUST-100007",
+//     transactionType: "serviceFee",
+//     lpn: { number: "FR707GG", countryCode: "FR" },
+//     personalAccountNumber: "PAN-100000007",
+//     iTicketId: 5566011,
+//     lpnFromTss: {
+//       front: { number: "FR707GG", countryCode: "FR" },
+//       rear: null,
+//       manual: null
+//     },
+//     price: { amountWithoutVAT: 12, amountWithVAT: 15, vat: 25, currency: "SEK" },
+//     credited: true,
+//     passageType: "Voucher",
+//     billingDetailsAdu: 900112251,
+//     paymentClaimReferense: "PCR-2026-10010019",
+//     informationRecipientId: "A4011B"
+//   },
+//   {
+//     transactionId: 301245020,
+//     transactionDateTime: "2026-02-10T15:03:21Z",
+//     passageReportId: 88451249,
+//     tollEventTime: "2026-02-10T15:03:10Z",
+//     laneNumber: 1,
+//     vehicleClass: 1,
+//     localAgreementNumber: "LA-2025-010008",
+//     customerNumber: "CUST-100008",
+//     transactionType: "toll",
+//     lpn: { number: "GB808HH", countryCode: "GB" },
+//     personalAccountNumber: "PAN-100000008",
+//     iTicketId: null,
+//     lpnFromTss: {
+//       front: { number: "GB808HH", countryCode: "GB" },
+//       rear: null,
+//       manual: null
+//     },
+//     price: { amountWithoutVAT: 22, amountWithVAT: 27.5, vat: 25, currency: "SEK" },
+//     credited: false,
+//     passageType: "Normal",
+//     billingDetailsAdu: 900112252,
+//     paymentClaimReferense: "PCR-2026-10010020",
+//     informationRecipientId: "A4011C"
+//   },
+//   {
+//     transactionId: 301245021,
+//     transactionDateTime: "2026-02-11T16:41:09Z",
+//     passageReportId: 88451250,
+//     tollEventTime: "2026-02-11T16:40:55Z",
+//     laneNumber: 4,
+//     vehicleClass: 5,
+//     localAgreementNumber: "LA-2025-010009",
+//     customerNumber: "CUST-100009",
+//     transactionType: "toll",
+//     lpn: { number: "ES909II", countryCode: "ES" },
+//     personalAccountNumber: "PAN-100000009",
+//     iTicketId: null,
+//     lpnFromTss: {
+//       front: { number: "ES909II", countryCode: "ES" },
+//       rear: { number: "ES909II", countryCode: "ES" },
+//       manual: null
+//     },
+//     price: { amountWithoutVAT: 36, amountWithVAT: 45, vat: 25, currency: "SEK" },
+//     credited: false,
+//     passageType: "FreePassage",
+//     billingDetailsAdu: 900112253,
+//     paymentClaimReferense: "PCR-2026-10010021",
+//     informationRecipientId: "A4011D"
+//   },
+//   {
+//     transactionId: 301245022,
+//     transactionDateTime: "2026-02-12T18:02:37Z",
+//     passageReportId: 88451251,
+//     tollEventTime: "2026-02-12T18:02:20Z",
+//     laneNumber: 6,
+//     vehicleClass: 2,
+//     localAgreementNumber: "LA-2025-010010",
+//     customerNumber: "CUST-100010",
+//     transactionType: "toll",
+//     lpn: { number: "PL010JJ", countryCode: "PL" },
+//     personalAccountNumber: "PAN-100000010",
+//     iTicketId: null,
+//     lpnFromTss: {
+//       front: { number: "PL010JJ", countryCode: "PL" },
+//       rear: null,
+//       manual: null
+//     },
+//     price: { amountWithoutVAT: 30, amountWithVAT: 37.5, vat: 25, currency: "SEK" },
+//     credited: false,
+//     passageType: "Normal",
+//     billingDetailsAdu: 900112254,
+//     paymentClaimReferense: "PCR-2026-10010022",
+//     informationRecipientId: "A4011E"
+//   }
+// ]
+
 export const mockData: IMockData[] = [
+  // ---- Dina befintliga 12 (oförändrade) ----
   {
     transactionId: 301245001,
     transactionDateTime: "2026-02-09T07:55:22Z",
@@ -32,10 +352,7 @@ export const mockData: IMockData[] = [
     localAgreementNumber: "LA-2025-000331",
     customerNumber: "CUST-552200",
     transactionType: "toll",
-    lpn: {
-      number: "KTB402",
-      countryCode: "SE"
-    },
+    lpn: { number: "KTB402", countryCode: "SE" },
     personalAccountNumber: "PAN-000123456",
     iTicketId: null,
     lpnFromTss: {
@@ -43,12 +360,7 @@ export const mockData: IMockData[] = [
       rear: { number: "KTB402", countryCode: "SE" },
       manual: null
     },
-    price: {
-      amountWithoutVAT: 28.0,
-      amountWithVAT: 35.0,
-      vat: 25.0,
-      currency: "SEK"
-    },
+    price: { amountWithoutVAT: 28, amountWithVAT: 35, vat: 25, currency: "SEK" },
     credited: false,
     passageType: "FreePassage",
     billingDetailsAdu: 900112233,
@@ -65,10 +377,7 @@ export const mockData: IMockData[] = [
     localAgreementNumber: "LA-2024-005678",
     customerNumber: "CUST-774411",
     transactionType: "serviceFee",
-    lpn: {
-      number: "DE12345",
-      countryCode: "DE"
-    },
+    lpn: { number: "DE12345", countryCode: "DE" },
     personalAccountNumber: "PAN-998877665",
     iTicketId: 5566001,
     lpnFromTss: {
@@ -76,18 +385,15 @@ export const mockData: IMockData[] = [
       rear: null,
       manual: null
     },
-    price: {
-      amountWithoutVAT: 12.0,
-      amountWithVAT: 15.0,
-      vat: 25.0,
-      currency: "SEK"
-    },
+    price: { amountWithoutVAT: 12, amountWithVAT: 15, vat: 25, currency: "SEK" },
     credited: true,
     passageType: "Voucher",
     billingDetailsAdu: 900112234,
     paymentClaimReferense: "PCR-2026-10010002",
     informationRecipientId: "A4000C"
   },
+
+  // --- dina 013–022 ---
   {
     transactionId: 301245013,
     transactionDateTime: "2026-02-01T07:12:45Z",
@@ -101,11 +407,7 @@ export const mockData: IMockData[] = [
     lpn: { number: "SE101AA", countryCode: "SE" },
     personalAccountNumber: "PAN-100000001",
     iTicketId: null,
-    lpnFromTss: {
-      front: { number: "SE101AA", countryCode: "SE" },
-      rear: null,
-      manual: null
-    },
+    lpnFromTss: { front: { number: "SE101AA", countryCode: "SE" }, rear: null, manual: null },
     price: { amountWithoutVAT: 24, amountWithVAT: 30, vat: 25, currency: "SEK" },
     credited: false,
     passageType: "Normal",
@@ -151,11 +453,7 @@ export const mockData: IMockData[] = [
     lpn: { number: "DK303CC", countryCode: "DK" },
     personalAccountNumber: "PAN-100000003",
     iTicketId: 5566010,
-    lpnFromTss: {
-      front: { number: "DK303CC", countryCode: "DK" },
-      rear: null,
-      manual: null
-    },
+    lpnFromTss: { front: { number: "DK303CC", countryCode: "DK" }, rear: null, manual: null },
     price: { amountWithoutVAT: 16, amountWithVAT: 20, vat: 25, currency: "SEK" },
     credited: true,
     passageType: "Voucher",
@@ -176,11 +474,7 @@ export const mockData: IMockData[] = [
     lpn: { number: "FI404DD", countryCode: "FI" },
     personalAccountNumber: "PAN-100000004",
     iTicketId: null,
-    lpnFromTss: {
-      front: { number: "FI404DD", countryCode: "FI" },
-      rear: null,
-      manual: null
-    },
+    lpnFromTss: { front: { number: "FI404DD", countryCode: "FI" }, rear: null, manual: null },
     price: { amountWithoutVAT: 28, amountWithVAT: 35, vat: 25, currency: "SEK" },
     credited: false,
     passageType: "Normal",
@@ -226,11 +520,7 @@ export const mockData: IMockData[] = [
     lpn: { number: "NL606FF", countryCode: "NL" },
     personalAccountNumber: "PAN-100000006",
     iTicketId: null,
-    lpnFromTss: {
-      front: { number: "NL606FF", countryCode: "NL" },
-      rear: null,
-      manual: null
-    },
+    lpnFromTss: { front: { number: "NL606FF", countryCode: "NL" }, rear: null, manual: null },
     price: { amountWithoutVAT: 20, amountWithVAT: 25, vat: 25, currency: "SEK" },
     credited: false,
     passageType: "Normal",
@@ -251,11 +541,7 @@ export const mockData: IMockData[] = [
     lpn: { number: "FR707GG", countryCode: "FR" },
     personalAccountNumber: "PAN-100000007",
     iTicketId: 5566011,
-    lpnFromTss: {
-      front: { number: "FR707GG", countryCode: "FR" },
-      rear: null,
-      manual: null
-    },
+    lpnFromTss: { front: { number: "FR707GG", countryCode: "FR" }, rear: null, manual: null },
     price: { amountWithoutVAT: 12, amountWithVAT: 15, vat: 25, currency: "SEK" },
     credited: true,
     passageType: "Voucher",
@@ -276,11 +562,7 @@ export const mockData: IMockData[] = [
     lpn: { number: "GB808HH", countryCode: "GB" },
     personalAccountNumber: "PAN-100000008",
     iTicketId: null,
-    lpnFromTss: {
-      front: { number: "GB808HH", countryCode: "GB" },
-      rear: null,
-      manual: null
-    },
+    lpnFromTss: { front: { number: "GB808HH", countryCode: "GB" }, rear: null, manual: null },
     price: { amountWithoutVAT: 22, amountWithVAT: 27.5, vat: 25, currency: "SEK" },
     credited: false,
     passageType: "Normal",
@@ -326,17 +608,53 @@ export const mockData: IMockData[] = [
     lpn: { number: "PL010JJ", countryCode: "PL" },
     personalAccountNumber: "PAN-100000010",
     iTicketId: null,
-    lpnFromTss: {
-      front: { number: "PL010JJ", countryCode: "PL" },
-      rear: null,
-      manual: null
-    },
+    lpnFromTss: { front: { number: "PL010JJ", countryCode: "PL" }, rear: null, manual: null },
     price: { amountWithoutVAT: 30, amountWithVAT: 37.5, vat: 25, currency: "SEK" },
     credited: false,
     passageType: "Normal",
     billingDetailsAdu: 900112254,
     paymentClaimReferense: "PCR-2026-10010022",
     informationRecipientId: "A4011E"
-  }
-]
+  },
 
+  // ---- 38 NYA (023–060) ----
+  // (förkortar kommentarerna här — alla följer samma schema)
+
+  ...Array.from({ length: 38 }, (_, i) => {
+    const id = 23 + i;
+    return {
+      transactionId: 301245000 + id,
+      transactionDateTime: `2026-02-${(13 + i % 10)
+        .toString()
+        .padStart(2, "0")}T0${(i % 9) + 1}:15:00Z`,
+      passageReportId: 88451251 + id,
+      tollEventTime: `2026-02-${(13 + i % 10)
+        .toString()
+        .padStart(2, "0")}T0${(i % 9) + 1}:14:45Z`,
+      laneNumber: (i % 6) + 1,
+      vehicleClass: (i % 5) + 1,
+      localAgreementNumber: `LA-2025-02${id}`,
+      customerNumber: `CUST-20${id}`,
+      transactionType: i % 4 === 0 ? "serviceFee" : "toll",
+      lpn: { number: `EU${id}XX`, countryCode: ["SE","NO","DK","DE","FI"][i%5] },
+      personalAccountNumber: `PAN-2000000${id}`,
+      iTicketId: i % 4 === 0 ? 6000000 + id : null,
+      lpnFromTss: {
+        front: { number: `EU${id}XX`, countryCode: ["SE","NO","DK","DE","FI"][i%5] },
+        rear: i % 2 === 0 ? null : { number: `EU${id}XX`, countryCode: ["SE","NO","DK","DE","FI"][i%5] },
+        manual: null
+      },
+      price: {
+        amountWithoutVAT: 20 + (i % 5) * 4,
+        amountWithVAT: (20 + (i % 5) * 4) * 1.25,
+        vat: 25,
+        currency: "SEK"
+      },
+      credited: i % 4 === 0,
+      passageType: ["Normal","FreePassage","Voucher"][i%3],
+      billingDetailsAdu: 900113000 + id,
+      paymentClaimReferense: `PCR-2026-10010${id}`,
+      informationRecipientId: `A402${i%5}X`
+    };
+  })
+];

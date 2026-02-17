@@ -1,0 +1,160 @@
+openapi: 3.0.3
+info:
+  title: PAY Tolling Platform – Transaction API
+  description: >
+    API for managing transaction data in the PAY Tolling Platform.
+    Transactions contain the minimal required data set for invoicing customers.
+  version: 0.1.0
+
+paths:
+  /transactions:
+    post:
+      summary: Create transaction.
+      description: Creates a new credit or debit transaction.
+      operationId: createTransaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+      responses:
+        '201':
+          description: Transaction successfully created
+        '400':
+          description: Invalid request payload
+
+    get:
+      summary: Get transactions list
+      description: Returns a list of transactions for a given agreement number.
+      operationId: GetTransactionsList
+      parameters:
+        - name: agreementNumber
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Agreement number
+
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+          description: Page number
+
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+          description: Number of items per page
+
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+          description: Sort by field
+          
+      responses:
+        '200':
+          description: List of transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionListItem'
+        '400':
+          description: Invalid request parameters
+
+components:
+  schemas:
+    Transaction:
+      type: object
+      required:
+        - transactionDate
+        - feeAmount
+        - feeAmountInclVat
+        - currency
+        - billingDetailId
+        - reason
+        - createdBy
+      properties:
+        transactionDate:
+          type: string
+          format: date-time
+          description: Date and time of the transaction
+
+        feeAmount:
+          type: number
+          format: decimal
+          description: Fee amount excluding VAT
+
+        feeAmountInclVat:
+          type: number
+          format: decimal
+          description: Fee amount including VAT
+
+        currency:
+          type: string
+          example: SEK
+          description: Currency code (ISO 4217)
+
+        billingDetailId:
+          type: string
+          description: Billing detail ID/reference
+
+        reason:
+          type: string
+          description: Reason for creating the transaction
+
+        comment:
+          type: string
+          nullable: true
+          description: Optional comment with additional details
+
+        createdBy:
+          type: string
+          example: agent.name@company.com
+          description: Identifier or email of the CRM user who created the transaction
+
+    TransactionListItem:
+      type: object
+      required:
+        - beginOfPeriod
+        - tollStation
+        - roadSection
+        - feeAmount
+        - feeAmountInclVat
+        - currency
+      properties:
+        beginOfPeriod:
+          type: string
+          format: date-time
+          description: Start date and time of the transaction period
+
+        tollStation:
+          type: string
+          description: Toll station
+
+        roadSection:
+          type: string
+          description: Road section
+
+        feeAmount:
+          type: number
+          format: decimal
+          description: Fee amount excluding VAT
+          
+        feeAmountInclVat:
+          type: number
+          format: decimal
+          description: Fee amount including VAT
+
+        currency:
+          type: string
+          example: SEK
+          description: Currency code (ISO 4217)         

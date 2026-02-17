@@ -28,8 +28,12 @@
 }
 
 .detailList-footer {
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
     padding: 10px;
+    border: 1px solid blue;
+    /* width: 100%; */
+
 }
 
 .detailList-gridLabels {

@@ -5,6 +5,7 @@ import { IProps, DetailListGridControl } from './DetailListGridControl';
 import { IColumnLabelOverride } from "./types/IColumnLabel";
 import { IDropdownFilterableField } from "./types/IDropdownFilterableFields";
 // import {IProps, DetailListGridControl}  from './DetailListGridControl_original'
+import { TransactionService } from "./services/TransactionService";
 
 export class DetailListGrid implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
@@ -13,6 +14,8 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 	private _detailList: HTMLDivElement;
 	private _dataSetVersion: number;
 	private _isModelApp: boolean;
+	private _service: TransactionService;
+
 
 	private _props: IProps;
 
@@ -39,8 +42,13 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 		this._isModelApp = window.hasOwnProperty('getGlobalContextObject');
 		this._dataSetVersion = 0;
 
+		const isLocal = window.location.hostname === "localhost";
+		console.log({isLocal})
+		this._service = new TransactionService(isLocal);
+
 		this._props = {
 			pcfContext: this._context,
+			service: this._service,
 			isModelApp: this._isModelApp,
 			dataSetVersion: this._dataSetVersion,
 			columnLabelOverrides: {},
@@ -156,6 +164,7 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 	 */
 	public destroy(): void {
 		// Add code to cleanup control if necessary
+		ReactDOM.unmountComponentAtNode(this._detailList);
 	}
 
 }
