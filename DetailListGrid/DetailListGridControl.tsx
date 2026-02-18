@@ -20,6 +20,7 @@ import { FilterDateCallout } from './components/FilterDateCallout';
 import { DateFilterOperator } from './types/DateFilterOperator';
 import { TransactionService } from './services/TransactionService';
 import { IActiveFilter } from './types/IActiveFilter';
+import { useStrings } from './contexts/StringsContext';
 
 
 export interface IProps {
@@ -31,18 +32,19 @@ export interface IProps {
     service: TransactionService;
 }
 
-interface IColumnWidth {
-    name: string,
-    width: number;
-}
-
-
+// interface IColumnWidth {
+//     name: string,
+//     width: number;
+// }
 
 //Initialize the icons otherwise they will not display in a Canvas app.
 //They will display in Model app because Microsoft initializes them in their controls.
 initializeIcons();
 
 export const DetailListGridControl: React.FC<IProps> = (props) => {
+    const strings = useStrings();
+    console.log({strings})
+    console.log("rendered")
     const [columns, setColumns] = React.useState(getColumns(mockColumns, props.columnLabelOverrides));
     const [items, setItems] = React.useState<IMockData[]>([]);
     const [isDataLoaded, setIsDataLoaded] = React.useState(props.isModelApp);
@@ -70,36 +72,35 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
     }, []);
 
     // Set the isDataLoaded state based upon the paging totalRecordCount
-    React.useEffect(() => {
-        console.log(items)
-        const dataSet = props.pcfContext.parameters.sampleDataSet;
-        if (dataSet.loading || props.isModelApp) return;
-        setIsDataLoaded(dataSet.paging.totalResultCount !== -1);
-        // setIsDataLoaded(false);
-    }, [items]);
+    // React.useEffect(() => {
+    //     const dataSet = props.pcfContext.parameters.sampleDataSet;
+    //     if (dataSet.loading || props.isModelApp) return;
+    //     setIsDataLoaded(dataSet.paging.totalResultCount !== -1);
+    //     // setIsDataLoaded(false);
+    // }, [items]);
 
     // When the component is updated this will determine if the sampleDataSet has changed.  
     // If it has we will go get the udpated items.
-    React.useEffect(() => {
-        //console.log('TSX: props.dataSetVersion was updated');        
-        // setItems(getItems(columns, mockData));
-    }, [props.dataSetVersion]);
+    // React.useEffect(() => {
+    //     //console.log('TSX: props.dataSetVersion was updated');        
+    //     // setItems(getItems(columns, mockData));
+    // }, [props.dataSetVersion]);
 
     // When the component is updated this will determine if the width of the control has changed.
     // If so the column widths will be adjusted.
-    React.useEffect(() => {
-        //console.log('width was updated');
-        setColumns(updateColumnWidths(columns, props.pcfContext));
-    }, [props.pcfContext.mode.allocatedWidth]);
+    // React.useEffect(() => {
+    //     //console.log('width was updated');
+    //     setColumns(updateColumnWidths(columns, props.pcfContext));
+    // }, [props.pcfContext.mode.allocatedWidth]);
 
-    const handleFilterDate = (column: IColumn, anchor: HTMLElement) => {
+    const handleFilterDate = React.useCallback((column: IColumn, anchor: HTMLElement) => {
         setCalloutAnchor(anchor);
         setCalloutFilterColumn(column.key);
         toggleIsCalloutVisible();
-    };
+    }, [toggleIsCalloutVisible]);
 
     // when a column header is clicked sort the items
-    const _onColumnClick = (ev?: React.MouseEvent<HTMLElement>, column?: IColumn): void => {
+    const onColumnClick = React.useCallback((ev?: React.MouseEvent<HTMLElement>, column?: IColumn): void => {
         if (column?.data.dataType === DataType.Date && ev?.currentTarget) {
             handleFilterDate(column, ev.currentTarget as HTMLElement);
             return;
@@ -123,7 +124,9 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                 return col;
             })
         );
-    };
+    },
+        [items, props.pcfContext, handleFilterDate]
+    );
 
     const _onRenderDetailsHeader = (props: IDetailsHeaderProps | undefined, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element => {
         return (
@@ -162,16 +165,23 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
 
     React.useEffect(() => {
         
-        columns.forEach(col => {
-            const activeFilterForColumn = activeFilters.find(f => f.columnKey === col.key);
-            if (activeFilterForColumn) {
-                col.isFiltered = true;
-            } else {
-                col.isFiltered = false;
-            }
-        });
+        // columns.forEach(col => {
+        //     const activeFilterForColumn = activeFilters.find(f => f.columnKey === col.key);
+        //     if (activeFilterForColumn) {
+        //         col.isFiltered = true;
+        //     } else {
+        //         col.isFiltered = false;
+        //     }
+        // });
         
-        setColumns([...columns]);
+        // setColumns([...columns]);
+        
+        setColumns(prevColumns =>
+            prevColumns.map(col => ({
+                ...col,
+                isFiltered: activeFilters.some(f => f.columnKey === col.key)
+            }))
+        )
 
     }, [activeFilters]);
 
@@ -225,6 +235,8 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                     height: "inherit",
                 },
             }}>
+
+
             <Stack
                 horizontal
                 horizontalAlign='end'
@@ -246,16 +258,16 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                 {activeFilters.length > 0 && (
                     <CommandBarButton
                         iconProps={{ iconName: 'ClearFilter' }}
-                        text="Clear filters"
+                        text={strings.ButtonClearFilters}
                         disabled={false}
                         onClick={clearFilters}
                     />
                 )}
 
                 <Dropdown
-                    placeholder="Select an option"
+                    placeholder={strings.DropdownPlaceholder}
                     options={[
-                        { key: "all", text: "All" },
+                        { key: "all", text: strings.DropdownOptionAll },
                         ...dropdownOptions
                     ]}
 
@@ -263,12 +275,13 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                         root: { width: 150, marginLeft: 10 },
                         title: { textAlign: 'left' }
                     }}
-                    onChange={(_, option) => { setSelectedDropdownKey(option?.key as string); console.log(option?.key); }}
+                    onChange={(_, option) => setSelectedDropdownKey(option?.key as string)}
                 />
                 <Stack.Item>
                     <SearchBox
                         styles={searchBoxStyles}
-                        placeholder="Search transactions"
+                        // placeholder="Search transactions"
+                        placeholder={strings.SearchBoxPlaceholder}
                         onEscape={ev => {
                             console.log('Custom onEscape Called');
                         }}
@@ -303,7 +316,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                             columns={columns}
                             setKey="set"
                             // selection={_selection} // updates the dataset so that we can utilize the ribbon buttons in Dynamics                                        
-                            onColumnHeaderClick={_onColumnClick} // used to implement sorting for the columns.                    
+                            onColumnHeaderClick={onColumnClick} // used to implement sorting for the columns.                    
                             selectionPreservedOnEmptyClick={true}
                             ariaLabelForSelectionColumn="Toggle selection"
                             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
@@ -322,15 +335,17 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                 styles={{root: {border:"1px solid red", width: "100%", overflow: "hidden"}}}
                 >
                 <div className="detailList-footer">
-                    <Label className="detailList-gridLabels">Records: {items.length.toString()} ({selectedItemCount} selected)</Label>
+                    <Label className="detailList-gridLabels">{strings.FooterRecordsLabel}: {items.length.toString()} ({selectedItemCount} {strings.FooterSelected})</Label>
                     <CommandBarButton
                         // iconProps={{ iconName: 'ClearFilter' }}
-                        text="Next"
+                        text={strings.FooterButtonNext}
                         disabled={false}
                         // onClick={clearFilters}
                     />
                 </div>
             </Stack.Item>
+
+            
         </Stack>
     );
 };
@@ -342,53 +357,53 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
 // };
 
 
-const getColumnWidthDistribution = (pcfContext: ComponentFramework.Context<IInputs>): IColumnWidth[] => {
+// const getColumnWidthDistribution = (pcfContext: ComponentFramework.Context<IInputs>): IColumnWidth[] => {
 
-    const widthDistribution: IColumnWidth[] = [];
-    const columnsOnView = pcfContext.parameters.sampleDataSet.columns;
+//     const widthDistribution: IColumnWidth[] = [];
+//     const columnsOnView = pcfContext.parameters.sampleDataSet.columns;
 
-    // Considering need to remove border & padding length
-    const totalWidth: number = pcfContext.mode.allocatedWidth - 250;
-    //console.log(`new total width: ${totalWidth}`);
-    let widthSum = 0;
+//     // Considering need to remove border & padding length
+//     const totalWidth: number = pcfContext.mode.allocatedWidth - 250;
+//     //console.log(`new total width: ${totalWidth}`);
+//     let widthSum = 0;
 
-    columnsOnView.forEach(function (columnItem) {
-        widthSum += columnItem.visualSizeFactor;
-    });
+//     columnsOnView.forEach(function (columnItem) {
+//         widthSum += columnItem.visualSizeFactor;
+//     });
 
-    let remainWidth: number = totalWidth;
+//     let remainWidth: number = totalWidth;
 
-    columnsOnView.forEach(function (item, index) {
-        let widthPerCell = 0;
-        if (index !== columnsOnView.length - 1) {
-            const cellWidth = Math.round((item.visualSizeFactor / widthSum) * totalWidth);
-            remainWidth = remainWidth - cellWidth;
-            widthPerCell = cellWidth;
-        }
-        else {
-            widthPerCell = remainWidth;
-        }
-        widthDistribution.push({ name: item.alias, width: widthPerCell });
-    });
+//     columnsOnView.forEach(function (item, index) {
+//         let widthPerCell = 0;
+//         if (index !== columnsOnView.length - 1) {
+//             const cellWidth = Math.round((item.visualSizeFactor / widthSum) * totalWidth);
+//             remainWidth = remainWidth - cellWidth;
+//             widthPerCell = cellWidth;
+//         }
+//         else {
+//             widthPerCell = remainWidth;
+//         }
+//         widthDistribution.push({ name: item.alias, width: widthPerCell });
+//     });
 
-    return widthDistribution;
+//     return widthDistribution;
 
-};
+// };
 
 // Updates the column widths based upon the current side of the control on the form.
-const updateColumnWidths = (columns: IColumn[], pcfContext: ComponentFramework.Context<IInputs>): IColumn[] => {
-    const columnWidthDistribution = getColumnWidthDistribution(pcfContext);
-    const currentColumns = columns;
+// const updateColumnWidths = (columns: IColumn[], pcfContext: ComponentFramework.Context<IInputs>): IColumn[] => {
+//     const columnWidthDistribution = getColumnWidthDistribution(pcfContext);
+//     const currentColumns = columns;
 
-    //make sure to use map here which returns a new array, otherwise the state/grid will not update.
-    return currentColumns.map(col => {
+//     //make sure to use map here which returns a new array, otherwise the state/grid will not update.
+//     return currentColumns.map(col => {
 
-        const newMaxWidth = columnWidthDistribution.find(x => x.name === col.fieldName);
-        if (newMaxWidth) col.maxWidth = newMaxWidth.width;
+//         const newMaxWidth = columnWidthDistribution.find(x => x.name === col.fieldName);
+//         if (newMaxWidth) col.maxWidth = newMaxWidth.width;
 
-        return col;
-    });
-};
+//         return col;
+//     });
+// };
 
 //sort the items in the grid.
 const copyAndSort = <T,>(items: T[], columnKey: string, pcfContext: ComponentFramework.Context<IInputs>, isSortedDescending?: boolean): T[] => {

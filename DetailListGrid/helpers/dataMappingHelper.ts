@@ -27,7 +27,6 @@ export const mapTransactionsToRows = (columns: IColumn[], data: IMockData[]) => 
         }
         return newRecord;
     });
-    console.log(resultSet)
     return resultSet;
 };
 
@@ -57,7 +56,9 @@ export const getColumns = (columns: IMockColumn[], columnLabelOverrides: IColumn
 
         // If column contains date data, format it in the grid.
         if (column.dataType === DataType.Date) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             iColumn.onRender = (item?: any, i?: number, col?: IColumn) => {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 const value = item && item[col!.fieldName as keyof any];
                 if(!value) {return}
 

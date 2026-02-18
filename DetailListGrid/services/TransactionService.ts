@@ -29,17 +29,14 @@ export class TransactionService {
             }
         }
 
-        console.log("TransactionService: getTransactions");
         return mockData;
     }
 
     public async getSearchFilteredTransactions(param: string, field: string): Promise<IMockData[]> {
         if (!this.useMock) {
             try {
-                console.log(`${this.url}?${field}=${param}`);
                 const res = await fetch(`${this.url}?${field}_like=${param}`);
                 const data = await res.json();
-                console.log({ data });
 
                 if (data && data.length > 0) {
                     return data as IMockData[];
@@ -64,37 +61,39 @@ export class TransactionService {
     public async getDateFilteredTransactions(date: Date, operator: DateFilterOperator, col: string): Promise<IMockData[]> {
         if (!this.useMock) {
             let queryParam = '';
-            console.log(date);
-            let filterDate = new Date(date);
-            filterDate.setHours(0, 0, 0, 0); // Set to the start of the day for accurate filtering
 
             switch (operator) {
                 case DateFilterOperator.Date:
-                case DateFilterOperator.Today: 
+                case DateFilterOperator.Today: {
+                    const filterDate = new Date(date);
+                    filterDate.setHours(0, 0, 0, 0);
                     const endOfDay = new Date(date);
                     endOfDay.setHours(23, 59, 59, 999);
 
                     queryParam = `${col}_gte=${filterDate.toISOString()}&${col}_lte=${endOfDay.toISOString()}`;
                     break;
-
-                case DateFilterOperator.On_or_after:
+                }
+                case DateFilterOperator.On_or_after: {
+                    const filterDate = new Date(date);
+                    filterDate.setHours(0, 0, 0, 0);
                     queryParam = `${col}_gte=${filterDate.toISOString()}`;
                     break;
-
-                case DateFilterOperator.On_or_before:
+                }
+                case DateFilterOperator.On_or_before: {
+                    const filterDate = new Date(date);
                     filterDate.setHours(23, 59, 59, 999); // Set to the end of the day to include the entire day
                     queryParam = `${col}_lte=${filterDate.toISOString()}`;
                     break;
-
-                default:
+                }
+                default: {
                     console.error('Invalid operator');
                     break;
+                }
             }
 
             try {
                 const res = await fetch(`${this.url}?${queryParam}`);
                 const data = await res.json();
-                console.log({ data });
                 return data;
 
             } catch (error) {

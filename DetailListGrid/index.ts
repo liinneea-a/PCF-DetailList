@@ -1,11 +1,16 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { IProps, DetailListGridControl } from './DetailListGridControl';
+import { IProps, DetailListGridControl } from './DetailListGridControl'; 
 import { IColumnLabelOverride } from "./types/IColumnLabel";
 import { IDropdownFilterableField } from "./types/IDropdownFilterableFields";
 // import {IProps, DetailListGridControl}  from './DetailListGridControl_original'
 import { TransactionService } from "./services/TransactionService";
+import { loadStrings, Strings } from "./localizations/loadStrings";
+import { StringsContext } from "./contexts/StringsContext";
+// import { StringsContext } from "./localization/useStrings";
+
+
 
 export class DetailListGrid implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
@@ -16,7 +21,8 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 	private _isModelApp: boolean;
 	private _service: TransactionService;
 
-
+	private strings!: Strings
+	
 	private _props: IProps;
 
 	constructor() {
@@ -35,7 +41,6 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 		// Need to track container resize so that control could get the available width. 
 		// The available height won't be provided even when this is true
 		context.mode.trackContainerResize(true);
-
 		this._container = container;
 		this._context = context;
 		// eslint-disable-next-line no-prototype-builtins
@@ -43,8 +48,8 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 		this._dataSetVersion = 0;
 
 		const isLocal = window.location.hostname === "localhost";
-		console.log({isLocal})
 		this._service = new TransactionService(isLocal);
+		this.strings = loadStrings(this._context);
 
 		this._props = {
 			pcfContext: this._context,
@@ -66,10 +71,8 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 
 		//we need to set the grid height.  If the allocated height is not -1 then we are in a canvas app 
 		//and we need to set the heigh based upon the allocated height of the container.
-		console.log(`TS: init, allocatedHeight ${this._context.mode.allocatedHeight}`);
 		if (this._context.mode.allocatedHeight !== -1) {
 			this._detailList.style.height = `${(this._context.mode.allocatedHeight).toString()}px`;
-			console.log("this._detailList.style.height: ", this._detailList.style.height);
 		}
 		else {
 			// sets the height based upon the rowSpan which is there but not included in the Mode interace when
@@ -80,7 +83,6 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 			// if (rowspan) this._detailList.style.height = `${(rowspan * 1.5).toString()}em`;
 
 			this._detailList.style.height = '500px'; //default height if rowSpan is not available
-			console.log("this._detailList.style.height: ", this._detailList.style.height);
 		}
 
 		this._container.appendChild(this._detailList);
@@ -95,6 +97,7 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 	 * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
 	 */
 	public updateView(context: ComponentFramework.Context<IInputs>): void {
+		console.log("updateView")
 		const dataSet = context.parameters.sampleDataSet;
 		if (dataSet.loading) return;
 
@@ -145,9 +148,17 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 		this._props.dataSetVersion = this._dataSetVersion++;
 
 		// render the DetailsList control
+		// ReactDOM.render(
+		// 	React.createElement(DetailListGridControl, this._props),
+		// 	this._detailList);
 		ReactDOM.render(
-			React.createElement(DetailListGridControl, this._props),
-			this._detailList);
+			React.createElement(
+				StringsContext.Provider,
+				{ value: this.strings },
+				React.createElement(DetailListGridControl, this._props)
+			),
+			this._detailList
+		);
 	}
 
 	/** 
@@ -164,7 +175,7 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 	 */
 	public destroy(): void {
 		// Add code to cleanup control if necessary
-		ReactDOM.unmountComponentAtNode(this._detailList);
+		// ReactDOM.unmountComponentAtNode(this._detailList);
 	}
 
 }

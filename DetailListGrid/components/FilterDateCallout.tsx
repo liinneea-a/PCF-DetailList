@@ -3,6 +3,7 @@ import { Callout, Link, mergeStyleSets, Text, FontWeights, Calendar, Dropdown, I
 import { useBoolean, useId } from '@fluentui/react-hooks';
 import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 import { DateFilterOperator } from '../types/DateFilterOperator';
+import { useStrings } from '../contexts/StringsContext';
 
 interface IProps {
   anchor: HTMLElement;
@@ -17,6 +18,7 @@ interface IOption {
 }
 
 export const FilterDateCallout = ({ anchor, onDismiss, columnKey, onApplyDateFilter }: IProps) => {
+  const strings = useStrings();
   const labelId = useId('callout-label');
   const descriptionId = useId('callout-description');
   const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
@@ -24,10 +26,10 @@ export const FilterDateCallout = ({ anchor, onDismiss, columnKey, onApplyDateFil
   const [isCalendarVisible, { setTrue: showCalendar, setFalse: hideCalendar }] = useBoolean(false);
 
   const options = [
-    { key: DateFilterOperator.Date, text: 'Datum' },
-    { key: DateFilterOperator.On_or_after, text: 'På eller efter' },
-    { key: DateFilterOperator.On_or_before, text: 'På eller före' },
-    { key: DateFilterOperator.Today, text: 'Idag' },
+    { key: DateFilterOperator.Date, text: strings.DateFilterCalloutDropdownOptionDate},
+    { key: DateFilterOperator.On_or_after, text: strings.DateFilterCalloutDropdownOptionOnAfter},
+    { key: DateFilterOperator.On_or_before, text: strings.DateFilterCalloutDropdownOptionOnBefore },
+    { key: DateFilterOperator.Today, text: strings.DateFilterCalloutDropdownOptionToday },
   ];
 
 
@@ -57,7 +59,7 @@ export const FilterDateCallout = ({ anchor, onDismiss, columnKey, onApplyDateFil
       <Stack
         tokens={{ childrenGap: 15 }}
       >
-        <Text variant="large">Filtrera efter</Text>
+        <Text variant="large">{strings.DateFilterCalloutTitle}</Text>
         <Dropdown
           placeholder="Select an option"
           // label="Basic uncontrolled example"
@@ -68,7 +70,7 @@ export const FilterDateCallout = ({ anchor, onDismiss, columnKey, onApplyDateFil
         />
         {isCalendarVisible && (
           <>
-            <Text>Valt datum: {selectedDate.toLocaleDateString()}</Text>
+            <Text>{strings.DateFilterCalloutSelectedDate}: {selectedDate.toLocaleDateString()}</Text>
             <Calendar
               showGoToToday
               onSelectDate={setSelectedDate}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- Required headers -->
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- ===== PCF control strings (default/neutral) ===== -->
+
+  <!-- Config properties -->
+  <data name="Column_Label_Overrides_Display_Key" xml:space="preserve">
+    <value>Kolumnetiketter overrides</value>
+  </data>
+  <data name="Column_Label_Overrides_Desc_Key" xml:space="preserve">
+    <value>Dropdown_Options_Key SVE</value>
+  </data>
+
+    <data name="Dropdown_Options_Display_Key" xml:space="preserve">
+        <value>Test key sve</value>
+    </data>
+    <data name="Dropdown_Options_Desc_Key" xml:space="preserve">
+        <value>Test key sve</value>
+    </data>
+
+    <!-- Component labels -->
+
+    <!-- Search bar -->
+      <data name="SearchBoxPlaceholder" xml:space="preserve">
+        <value>Sök efter transaktioner</value>
+    </data>
+   <data name="ButtonClearFilters" xml:space="preserve">
+        <value>Rensa filter</value>
+    </data>
+      <data name="DropdownPlaceholder" xml:space="preserve">
+        <value>Välj ett alternativ</value>
+    </data>
+    <data name="DropdownOptionAll" xml:space="preserve">
+        <value>Alla</value>
+    </data>
+
+    <!-- Footer -->
+      <data name="FooterRecordsLabel" xml:space="preserve">
+        <value>Rader</value>
+    </data>
+    <data name="FooterSelected" xml:space="preserve">
+        <value>valda</value>
+    </data>
+    <data name="FooterButtonNext" xml:space="preserve">
+        <value>Nästa</value>
+    </data>
+
+    <!-- Date filter callout -->
+      <data name="DateFilterCalloutTitle" xml:space="preserve">
+        <value>Filtrera efter</value>
+    </data>
+    <data name="DateFilterCalloutSelectedDate" xml:space="preserve">
+        <value>Valt datum</value>
+    </data>
+
+    <!-- Callout dropdown option labels -->
+    <data name="DateFilterCalloutDropdownOptionDate" xml:space="preserve">
+        <value>Datum</value>
+    </data>
+    <data name="DateFilterCalloutDropdownOptionOnAfter" xml:space="preserve">
+        <value>På eller efter</value>
+    </data>
+    <data name="DateFilterCalloutDropdownOptionOnBefore" xml:space="preserve">
+        <value>På eller före</value>
+    </data>
+    <data name="DateFilterCalloutDropdownOptionToday" xml:space="preserve">
+        <value>Idag</value>
+    </data>
+</root>
