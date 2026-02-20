@@ -1,316 +1,1854 @@
 {
   "transactions": [
     {
-      "id": 301245001,
-      "transactionId": 301245001,
-      "transactionDateTime": "2026-02-09T07:55:22Z",
-      "passageReportId": 88451230,
-      "tollEventTime": "2026-02-09T07:55:10Z",
-      "laneNumber": 2,
+      "id": 500000000,
+      "transactionId": 500000000,
+      "transactionDateTime": "2026-02-13T12:26:00Z",
+      "passageReportId": 90203340,
+      "tollEventTime": "2026-02-13T12:25:50Z",
+      "laneNumber": 6,
       "vehicleClass": 1,
-      "localAgreementNumber": "LA-2025-000331",
-      "customerNumber": "CUST-552200",
-      "transactionType": "toll",
-      "lpn": { "number": "KTB402", "countryCode": "SE" },
-      "personalAccountNumber": "PAN-000123456",
-      "iTicketId": null,
-      "lpnFromTss": {
-        "front": { "number": "KTB402", "countryCode": "SE" },
-        "rear": { "number": "KTB402", "countryCode": "SE" },
-        "manual": null
-      },
-      "price": { "amountWithoutVAT": 28.0, "amountWithVAT": 35.0, "vat": 25.0, "currency": "SEK" },
-      "credited": false,
-      "passageType": "FreePassage",
-      "billingDetailsAdu": 900112233,
-      "paymentClaimReferense": "PCR-2026-10010001",
-      "informationRecipientId": "A4000C"
-    },
-    {
-      "id": 301245002,
-      "transactionId": 301245002,
-      "transactionDateTime": "2026-02-09T08:14:03Z",
-      "passageReportId": 88451231,
-      "tollEventTime": "2026-02-09T08:13:59Z",
-      "laneNumber": 4,
-      "vehicleClass": 3,
-      "localAgreementNumber": "LA-2024-005678",
-      "customerNumber": "CUST-774411",
+      "localAgreementNumber": "LA-2025-464915",
+      "customerNumber": "CUST-482726",
       "transactionType": "serviceFee",
-      "lpn": { "number": "DE12345", "countryCode": "DE" },
-      "personalAccountNumber": "PAN-998877665",
-      "iTicketId": 5566001,
-      "lpnFromTss": {
-        "front": { "number": "DE12345", "countryCode": "DE" },
-        "rear": null,
-        "manual": null
+      "lpn": {
+        "number": "XX378AA",
+        "countryCode": "DE"
       },
-      "price": { "amountWithoutVAT": 12.0, "amountWithVAT": 15.0, "vat": 25.0, "currency": "SEK" },
-      "credited": true,
-      "passageType": "Voucher",
-      "billingDetailsAdu": 900112234,
-      "paymentClaimReferense": "PCR-2026-10010002",
-      "informationRecipientId": "A4000C"
-    },
-    {
-      "id": 301245013,
-      "transactionId": 301245013,
-      "transactionDateTime": "2026-02-01T07:12:45Z",
-      "passageReportId": 88451242,
-      "tollEventTime": "2026-02-01T07:12:30Z",
-      "laneNumber": 2,
-      "vehicleClass": 1,
-      "localAgreementNumber": "LA-2025-010001",
-      "customerNumber": "CUST-100001",
-      "transactionType": "toll",
-      "lpn": { "number": "SE101AA", "countryCode": "SE" },
-      "personalAccountNumber": "PAN-100000001",
+      "personalAccountNumber": "PAN-320842944",
       "iTicketId": null,
       "lpnFromTss": {
-        "front": { "number": "SE101AA", "countryCode": "SE" },
+        "front": {
+          "number": "XX274AA",
+          "countryCode": "FI"
+        },
         "rear": null,
         "manual": null
       },
-      "price": { "amountWithoutVAT": 24, "amountWithVAT": 30, "vat": 25, "currency": "SEK" },
+      "price": {
+        "amountWithoutVAT": 28.42,
+        "amountWithVAT": 35.53,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
       "credited": false,
-      "passageType": "Normal",
-      "billingDetailsAdu": 900112245,
-      "paymentClaimReferense": "PCR-2026-10010013",
+      "passageType": "Voucher",
+      "billingDetailsAdu": 900110579,
+      "paymentClaimReferense": "PCR-2026-18994470",
       "informationRecipientId": "A4010A"
     },
     {
-      "id": 301245014,
-      "transactionId": 301245014,
-      "transactionDateTime": "2026-02-02T08:33:12Z",
-      "passageReportId": 88451243,
-      "tollEventTime": "2026-02-02T08:33:00Z",
-      "laneNumber": 3,
-      "vehicleClass": 2,
-      "localAgreementNumber": "LA-2025-010002",
-      "customerNumber": "CUST-100002",
-      "transactionType": "toll",
-      "lpn": { "number": "NO202BB", "countryCode": "NO" },
-      "personalAccountNumber": "PAN-100000002",
+      "id": 500000001,
+      "transactionId": 500000001,
+      "transactionDateTime": "2026-02-10T00:44:00Z",
+      "passageReportId": 91703274,
+      "tollEventTime": "2026-02-10T00:43:45Z",
+      "laneNumber": 1,
+      "vehicleClass": 3,
+      "localAgreementNumber": "LA-2025-696235",
+      "customerNumber": "CUST-201887",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX663AA",
+        "countryCode": "PL"
+      },
+      "personalAccountNumber": "PAN-468791731",
       "iTicketId": null,
       "lpnFromTss": {
-        "front": { "number": "NO202BB", "countryCode": "NO" },
-        "rear": { "number": "NO202BB", "countryCode": "NO" },
+        "front": {
+          "number": "XX539AA",
+          "countryCode": "NL"
+        },
+        "rear": null,
         "manual": null
       },
-      "price": { "amountWithoutVAT": 32, "amountWithVAT": 40, "vat": 25, "currency": "SEK" },
+      "price": {
+        "amountWithoutVAT": 23.75,
+        "amountWithVAT": 29.69,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
       "credited": false,
       "passageType": "FreePassage",
-      "billingDetailsAdu": 900112246,
-      "paymentClaimReferense": "PCR-2026-10010014",
+      "billingDetailsAdu": 900113188,
+      "paymentClaimReferense": "PCR-2026-19760062",
       "informationRecipientId": "A4010B"
     },
     {
-      "id": 301245015,
-      "transactionId": 301245015,
-      "transactionDateTime": "2026-02-03T09:05:51Z",
-      "passageReportId": 88451244,
-      "tollEventTime": "2026-02-03T09:05:40Z",
+      "id": 500000002,
+      "transactionId": 500000002,
+      "transactionDateTime": "2026-02-12T15:53:00Z",
+      "passageReportId": 94874386,
+      "tollEventTime": "2026-02-12T15:52:49Z",
       "laneNumber": 1,
       "vehicleClass": 3,
-      "localAgreementNumber": "LA-2025-010003",
-      "customerNumber": "CUST-100003",
-      "transactionType": "serviceFee",
-      "lpn": { "number": "DK303CC", "countryCode": "DK" },
-      "personalAccountNumber": "PAN-100000003",
-      "iTicketId": 5566010,
-      "lpnFromTss": {
-        "front": { "number": "DK303CC", "countryCode": "DK" },
-        "rear": null,
-        "manual": null
-      },
-      "price": { "amountWithoutVAT": 16, "amountWithVAT": 20, "vat": 25, "currency": "SEK" },
-      "credited": true,
-      "passageType": "Voucher",
-      "billingDetailsAdu": 900112247,
-      "paymentClaimReferense": "PCR-2026-10010015",
-      "informationRecipientId": "A4010C"
-    },
-    {
-      "id": 301245016,
-      "transactionId": 301245016,
-      "transactionDateTime": "2026-02-04T10:44:18Z",
-      "passageReportId": 88451245,
-      "tollEventTime": "2026-02-04T10:44:05Z",
-      "laneNumber": 4,
-      "vehicleClass": 1,
-      "localAgreementNumber": "LA-2025-010004",
-      "customerNumber": "CUST-100004",
+      "localAgreementNumber": "LA-2025-655838",
+      "customerNumber": "CUST-392361",
       "transactionType": "toll",
-      "lpn": { "number": "FI404DD", "countryCode": "FI" },
-      "personalAccountNumber": "PAN-100000004",
-      "iTicketId": null,
+      "lpn": {
+        "number": "XX145AA",
+        "countryCode": "DE"
+      },
+      "personalAccountNumber": "PAN-220469720",
+      "iTicketId": 5003680,
       "lpnFromTss": {
-        "front": { "number": "FI404DD", "countryCode": "FI" },
+        "front": {
+          "number": "XX420AA",
+          "countryCode": "DE"
+        },
         "rear": null,
         "manual": null
       },
-      "price": { "amountWithoutVAT": 28, "amountWithVAT": 35, "vat": 25, "currency": "SEK" },
-      "credited": false,
+      "price": {
+        "amountWithoutVAT": 25.66,
+        "amountWithVAT": 32.08,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
       "passageType": "Normal",
-      "billingDetailsAdu": 900112248,
-      "paymentClaimReferense": "PCR-2026-10010016",
-      "informationRecipientId": "A4010D"
+      "billingDetailsAdu": 900116188,
+      "paymentClaimReferense": "PCR-2026-16204510",
+      "informationRecipientId": "A4010A"
     },
     {
-      "id": 301245017,
-      "transactionId": 301245017,
-      "transactionDateTime": "2026-02-05T11:15:39Z",
-      "passageReportId": 88451246,
-      "tollEventTime": "2026-02-05T11:15:25Z",
+      "id": 500000003,
+      "transactionId": 500000003,
+      "transactionDateTime": "2026-02-01T19:10:00Z",
+      "passageReportId": 98488861,
+      "tollEventTime": "2026-02-01T19:09:46Z",
       "laneNumber": 5,
-      "vehicleClass": 4,
-      "localAgreementNumber": "LA-2025-010005",
-      "customerNumber": "CUST-100005",
-      "transactionType": "toll",
-      "lpn": { "number": "DE505EE", "countryCode": "DE" },
-      "personalAccountNumber": "PAN-100000005",
-      "iTicketId": null,
-      "lpnFromTss": {
-        "front": { "number": "DE505EE", "countryCode": "DE" },
-        "rear": { "number": "DE505EE", "countryCode": "DE" },
-        "manual": null
-      },
-      "price": { "amountWithoutVAT": 40, "amountWithVAT": 50, "vat": 25, "currency": "SEK" },
-      "credited": false,
-      "passageType": "FreePassage",
-      "billingDetailsAdu": 900112249,
-      "paymentClaimReferense": "PCR-2026-10010017",
-      "informationRecipientId": "A4010E"
-    },
-    {
-      "id": 301245018,
-      "transactionId": 301245018,
-      "transactionDateTime": "2026-02-06T12:27:02Z",
-      "passageReportId": 88451247,
-      "tollEventTime": "2026-02-06T12:26:50Z",
-      "laneNumber": 2,
-      "vehicleClass": 2,
-      "localAgreementNumber": "LA-2025-010006",
-      "customerNumber": "CUST-100006",
-      "transactionType": "toll",
-      "lpn": { "number": "NL606FF", "countryCode": "NL" },
-      "personalAccountNumber": "PAN-100000006",
-      "iTicketId": null,
-      "lpnFromTss": {
-        "front": { "number": "NL606FF", "countryCode": "NL" },
-        "rear": null,
-        "manual": null
-      },
-      "price": { "amountWithoutVAT": 20, "amountWithVAT": 25, "vat": 25, "currency": "SEK" },
-      "credited": false,
-      "passageType": "Normal",
-      "billingDetailsAdu": 900112250,
-      "paymentClaimReferense": "PCR-2026-10010018",
-      "informationRecipientId": "A4011A"
-    },
-    {
-      "id": 301245019,
-      "transactionId": 301245019,
-      "transactionDateTime": "2026-02-08T13:49:55Z",
-      "passageReportId": 88451248,
-      "tollEventTime": "2026-02-08T13:49:40Z",
-      "laneNumber": 3,
-      "vehicleClass": 3,
-      "localAgreementNumber": "LA-2025-010007",
-      "customerNumber": "CUST-100007",
-      "transactionType": "serviceFee",
-      "lpn": { "number": "FR707GG", "countryCode": "FR" },
-      "personalAccountNumber": "PAN-100000007",
-      "iTicketId": 5566011,
-      "lpnFromTss": {
-        "front": { "number": "FR707GG", "countryCode": "FR" },
-        "rear": null,
-        "manual": null
-      },
-      "price": { "amountWithoutVAT": 12, "amountWithVAT": 15, "vat": 25, "currency": "SEK" },
-      "credited": true,
-      "passageType": "Voucher",
-      "billingDetailsAdu": 900112251,
-      "paymentClaimReferense": "PCR-2026-10010019",
-      "informationRecipientId": "A4011B"
-    },
-    {
-      "id": 301245020,
-      "transactionId": 301245020,
-      "transactionDateTime": "2026-02-10T15:03:21Z",
-      "passageReportId": 88451249,
-      "tollEventTime": "2026-02-10T15:03:10Z",
-      "laneNumber": 1,
       "vehicleClass": 1,
-      "localAgreementNumber": "LA-2025-010008",
-      "customerNumber": "CUST-100008",
+      "localAgreementNumber": "LA-2025-834935",
+      "customerNumber": "CUST-412786",
       "transactionType": "toll",
-      "lpn": { "number": "GB808HH", "countryCode": "GB" },
-      "personalAccountNumber": "PAN-100000008",
+      "lpn": {
+        "number": "XX174AA",
+        "countryCode": "PL"
+      },
+      "personalAccountNumber": "PAN-394187432",
       "iTicketId": null,
       "lpnFromTss": {
-        "front": { "number": "GB808HH", "countryCode": "GB" },
+        "front": {
+          "number": "XX317AA",
+          "countryCode": "PL"
+        },
         "rear": null,
         "manual": null
       },
-      "price": { "amountWithoutVAT": 22, "amountWithVAT": 27.5, "vat": 25, "currency": "SEK" },
-      "credited": false,
-      "passageType": "Normal",
-      "billingDetailsAdu": 900112252,
-      "paymentClaimReferense": "PCR-2026-10010020",
-      "informationRecipientId": "A4011C"
-    },
-    {
-      "id": 301245021,
-      "transactionId": 301245021,
-      "transactionDateTime": "2026-02-11T16:41:09Z",
-      "passageReportId": 88451250,
-      "tollEventTime": "2026-02-11T16:40:55Z",
-      "laneNumber": 4,
-      "vehicleClass": 5,
-      "localAgreementNumber": "LA-2025-010009",
-      "customerNumber": "CUST-100009",
-      "transactionType": "toll",
-      "lpn": { "number": "ES909II", "countryCode": "ES" },
-      "personalAccountNumber": "PAN-100000009",
-      "iTicketId": null,
-      "lpnFromTss": {
-        "front": { "number": "ES909II", "countryCode": "ES" },
-        "rear": { "number": "ES909II", "countryCode": "ES" },
-        "manual": null
+      "price": {
+        "amountWithoutVAT": 37.58,
+        "amountWithVAT": 46.97,
+        "vat": 25.0,
+        "currency": "SEK"
       },
-      "price": { "amountWithoutVAT": 36, "amountWithVAT": 45, "vat": 25, "currency": "SEK" },
       "credited": false,
       "passageType": "FreePassage",
-      "billingDetailsAdu": 900112253,
-      "paymentClaimReferense": "PCR-2026-10010021",
+      "billingDetailsAdu": 900112504,
+      "paymentClaimReferense": "PCR-2026-17642924",
       "informationRecipientId": "A4011D"
     },
     {
-      "id": 301245022,
-      "transactionId": 301245022,
-      "transactionDateTime": "2026-02-12T18:02:37Z",
-      "passageReportId": 88451251,
-      "tollEventTime": "2026-02-12T18:02:20Z",
-      "laneNumber": 6,
-      "vehicleClass": 2,
-      "localAgreementNumber": "LA-2025-010010",
-      "customerNumber": "CUST-100010",
+      "id": 500000004,
+      "transactionId": 500000004,
+      "transactionDateTime": "2026-02-13T23:24:00Z",
+      "passageReportId": 94842252,
+      "tollEventTime": "2026-02-13T23:23:55Z",
+      "laneNumber": 3,
+      "vehicleClass": 4,
+      "localAgreementNumber": "LA-2025-769931",
+      "customerNumber": "CUST-672743",
       "transactionType": "toll",
-      "lpn": { "number": "PL010JJ", "countryCode": "PL" },
-      "personalAccountNumber": "PAN-100000010",
-      "iTicketId": null,
+      "lpn": {
+        "number": "XX602AA",
+        "countryCode": "FR"
+      },
+      "personalAccountNumber": "PAN-375700154",
+      "iTicketId": 5871514,
       "lpnFromTss": {
-        "front": { "number": "PL010JJ", "countryCode": "PL" },
+        "front": {
+          "number": "XX932AA",
+          "countryCode": "GB"
+        },
         "rear": null,
         "manual": null
       },
-      "price": { "amountWithoutVAT": 30, "amountWithVAT": 37.5, "vat": 25, "currency": "SEK" },
+      "price": {
+        "amountWithoutVAT": 38.27,
+        "amountWithVAT": 47.84,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900116114,
+      "paymentClaimReferense": "PCR-2026-11936942",
+      "informationRecipientId": "A4011C"
+    },
+    {
+      "id": 500000005,
+      "transactionId": 500000005,
+      "transactionDateTime": "2026-02-12T19:57:00Z",
+      "passageReportId": 92659503,
+      "tollEventTime": "2026-02-12T19:56:53Z",
+      "laneNumber": 5,
+      "vehicleClass": 3,
+      "localAgreementNumber": "LA-2025-848434",
+      "customerNumber": "CUST-465058",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX754AA",
+        "countryCode": "GB"
+      },
+      "personalAccountNumber": "PAN-157494393",
+      "iTicketId": 5803256,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX728AA",
+          "countryCode": "GB"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 27.36,
+        "amountWithVAT": 34.2,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Voucher",
+      "billingDetailsAdu": 900115553,
+      "paymentClaimReferense": "PCR-2026-16790016",
+      "informationRecipientId": "A4010D"
+    },
+    {
+      "id": 500000006,
+      "transactionId": 500000006,
+      "transactionDateTime": "2026-02-01T02:23:00Z",
+      "passageReportId": 90972249,
+      "tollEventTime": "2026-02-01T02:22:47Z",
+      "laneNumber": 6,
+      "vehicleClass": 4,
+      "localAgreementNumber": "LA-2025-827611",
+      "customerNumber": "CUST-407944",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX754AA",
+        "countryCode": "ES"
+      },
+      "personalAccountNumber": "PAN-818553105",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX740AA",
+          "countryCode": "NO"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 25.27,
+        "amountWithVAT": 31.59,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "Voucher",
+      "billingDetailsAdu": 900111459,
+      "paymentClaimReferense": "PCR-2026-10939520",
+      "informationRecipientId": "A4011A"
+    },
+    {
+      "id": 500000007,
+      "transactionId": 500000007,
+      "transactionDateTime": "2026-02-14T18:48:00Z",
+      "passageReportId": 94464518,
+      "tollEventTime": "2026-02-14T18:47:48Z",
+      "laneNumber": 6,
+      "vehicleClass": 4,
+      "localAgreementNumber": "LA-2025-915792",
+      "customerNumber": "CUST-825888",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX292AA",
+        "countryCode": "FR"
+      },
+      "personalAccountNumber": "PAN-650747627",
+      "iTicketId": 5282179,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX395AA",
+          "countryCode": "FI"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 29.55,
+        "amountWithVAT": 36.94,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "FreePassage",
+      "billingDetailsAdu": 900112801,
+      "paymentClaimReferense": "PCR-2026-17956850",
+      "informationRecipientId": "A4011D"
+    },
+    {
+      "id": 500000008,
+      "transactionId": 500000008,
+      "transactionDateTime": "2026-02-08T19:36:00Z",
+      "passageReportId": 91801083,
+      "tollEventTime": "2026-02-08T19:35:49Z",
+      "laneNumber": 6,
+      "vehicleClass": 5,
+      "localAgreementNumber": "LA-2025-145862",
+      "customerNumber": "CUST-618552",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX183AA",
+        "countryCode": "DE"
+      },
+      "personalAccountNumber": "PAN-796990605",
+      "iTicketId": 5490765,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX903AA",
+          "countryCode": "FI"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 19.24,
+        "amountWithVAT": 24.05,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "FreePassage",
+      "billingDetailsAdu": 900114593,
+      "paymentClaimReferense": "PCR-2026-16079783",
+      "informationRecipientId": "A4011A"
+    },
+    {
+      "id": 500000009,
+      "transactionId": 500000009,
+      "transactionDateTime": "2026-02-01T22:50:00Z",
+      "passageReportId": 96600251,
+      "tollEventTime": "2026-02-01T22:49:45Z",
+      "laneNumber": 6,
+      "vehicleClass": 5,
+      "localAgreementNumber": "LA-2025-841224",
+      "customerNumber": "CUST-481570",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX721AA",
+        "countryCode": "FI"
+      },
+      "personalAccountNumber": "PAN-135397808",
+      "iTicketId": 5368320,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX950AA",
+          "countryCode": "FI"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 21.54,
+        "amountWithVAT": 26.92,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
       "credited": false,
       "passageType": "Normal",
-      "billingDetailsAdu": 900112254,
-      "paymentClaimReferense": "PCR-2026-10010022",
-      "informationRecipientId": "A4011E"
+      "billingDetailsAdu": 900112412,
+      "paymentClaimReferense": "PCR-2026-19031747",
+      "informationRecipientId": "A4010A"
+    },
+    {
+      "id": 500000010,
+      "transactionId": 500000010,
+      "transactionDateTime": "2026-02-06T11:46:00Z",
+      "passageReportId": 96764089,
+      "tollEventTime": "2026-02-06T11:45:47Z",
+      "laneNumber": 6,
+      "vehicleClass": 2,
+      "localAgreementNumber": "LA-2025-981896",
+      "customerNumber": "CUST-262422",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX596AA",
+        "countryCode": "ES"
+      },
+      "personalAccountNumber": "PAN-725441491",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX310AA",
+          "countryCode": "PL"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 34.64,
+        "amountWithVAT": 43.3,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Voucher",
+      "billingDetailsAdu": 900115027,
+      "paymentClaimReferense": "PCR-2026-13146711",
+      "informationRecipientId": "A4010A"
+    },
+    {
+      "id": 500000011,
+      "transactionId": 500000011,
+      "transactionDateTime": "2026-02-12T08:46:00Z",
+      "passageReportId": 91065813,
+      "tollEventTime": "2026-02-12T08:45:55Z",
+      "laneNumber": 4,
+      "vehicleClass": 1,
+      "localAgreementNumber": "LA-2025-213982",
+      "customerNumber": "CUST-381650",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX252AA",
+        "countryCode": "SE"
+      },
+      "personalAccountNumber": "PAN-698124074",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX115AA",
+          "countryCode": "NL"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 37.58,
+        "amountWithVAT": 46.97,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900115001,
+      "paymentClaimReferense": "PCR-2026-14968926",
+      "informationRecipientId": "A4010A"
+    },
+    {
+      "id": 500000012,
+      "transactionId": 500000012,
+      "transactionDateTime": "2026-02-12T17:46:00Z",
+      "passageReportId": 96527043,
+      "tollEventTime": "2026-02-12T17:45:54Z",
+      "laneNumber": 1,
+      "vehicleClass": 2,
+      "localAgreementNumber": "LA-2025-835003",
+      "customerNumber": "CUST-269083",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX678AA",
+        "countryCode": "DE"
+      },
+      "personalAccountNumber": "PAN-113634673",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX126AA",
+          "countryCode": "NO"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 27.85,
+        "amountWithVAT": 34.81,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "FreePassage",
+      "billingDetailsAdu": 900111349,
+      "paymentClaimReferense": "PCR-2026-17511219",
+      "informationRecipientId": "A4010A"
+    },
+    {
+      "id": 500000013,
+      "transactionId": 500000013,
+      "transactionDateTime": "2026-02-02T08:07:00Z",
+      "passageReportId": 90701792,
+      "tollEventTime": "2026-02-02T08:06:45Z",
+      "laneNumber": 3,
+      "vehicleClass": 5,
+      "localAgreementNumber": "LA-2025-148392",
+      "customerNumber": "CUST-343119",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX251AA",
+        "countryCode": "GB"
+      },
+      "personalAccountNumber": "PAN-931175418",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX191AA",
+          "countryCode": "DE"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 27.22,
+        "amountWithVAT": 34.02,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Voucher",
+      "billingDetailsAdu": 900113538,
+      "paymentClaimReferense": "PCR-2026-10193228",
+      "informationRecipientId": "A4011B"
+    },
+    {
+      "id": 500000014,
+      "transactionId": 500000014,
+      "transactionDateTime": "2026-02-11T11:52:00Z",
+      "passageReportId": 88847444,
+      "tollEventTime": "2026-02-11T11:51:53Z",
+      "laneNumber": 4,
+      "vehicleClass": 1,
+      "localAgreementNumber": "LA-2025-901971",
+      "customerNumber": "CUST-233569",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX989AA",
+        "countryCode": "ES"
+      },
+      "personalAccountNumber": "PAN-875089947",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX134AA",
+          "countryCode": "NL"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 19.34,
+        "amountWithVAT": 24.18,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900111251,
+      "paymentClaimReferense": "PCR-2026-17208158",
+      "informationRecipientId": "A4011B"
+    },
+    {
+      "id": 500000015,
+      "transactionId": 500000015,
+      "transactionDateTime": "2026-02-04T21:36:00Z",
+      "passageReportId": 89770687,
+      "tollEventTime": "2026-02-04T21:35:44Z",
+      "laneNumber": 5,
+      "vehicleClass": 1,
+      "localAgreementNumber": "LA-2025-783414",
+      "customerNumber": "CUST-947932",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX911AA",
+        "countryCode": "PL"
+      },
+      "personalAccountNumber": "PAN-519240959",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX377AA",
+          "countryCode": "DE"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 28.16,
+        "amountWithVAT": 35.2,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900113157,
+      "paymentClaimReferense": "PCR-2026-16621672",
+      "informationRecipientId": "A4011D"
+    },
+    {
+      "id": 500000016,
+      "transactionId": 500000016,
+      "transactionDateTime": "2026-02-14T10:46:00Z",
+      "passageReportId": 92763224,
+      "tollEventTime": "2026-02-14T10:45:41Z",
+      "laneNumber": 1,
+      "vehicleClass": 5,
+      "localAgreementNumber": "LA-2025-960061",
+      "customerNumber": "CUST-252875",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX985AA",
+        "countryCode": "GB"
+      },
+      "personalAccountNumber": "PAN-300117588",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX354AA",
+          "countryCode": "ES"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 38.61,
+        "amountWithVAT": 48.26,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900111379,
+      "paymentClaimReferense": "PCR-2026-17139014",
+      "informationRecipientId": "A4010B"
+    },
+    {
+      "id": 500000017,
+      "transactionId": 500000017,
+      "transactionDateTime": "2026-02-02T19:12:00Z",
+      "passageReportId": 93603067,
+      "tollEventTime": "2026-02-02T19:11:50Z",
+      "laneNumber": 6,
+      "vehicleClass": 5,
+      "localAgreementNumber": "LA-2025-506081",
+      "customerNumber": "CUST-970007",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX659AA",
+        "countryCode": "NO"
+      },
+      "personalAccountNumber": "PAN-710559548",
+      "iTicketId": 5633190,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX195AA",
+          "countryCode": "SE"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 26.41,
+        "amountWithVAT": 33.01,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "FreePassage",
+      "billingDetailsAdu": 900114592,
+      "paymentClaimReferense": "PCR-2026-11948322",
+      "informationRecipientId": "A4011D"
+    },
+    {
+      "id": 500000018,
+      "transactionId": 500000018,
+      "transactionDateTime": "2026-02-03T12:00:00Z",
+      "passageReportId": 96622853,
+      "tollEventTime": "2026-02-03T11:59:45Z",
+      "laneNumber": 1,
+      "vehicleClass": 2,
+      "localAgreementNumber": "LA-2025-174893",
+      "customerNumber": "CUST-985551",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX351AA",
+        "countryCode": "DE"
+      },
+      "personalAccountNumber": "PAN-923116728",
+      "iTicketId": 5652035,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX938AA",
+          "countryCode": "PL"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 14.89,
+        "amountWithVAT": 18.61,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900111580,
+      "paymentClaimReferense": "PCR-2026-18821690",
+      "informationRecipientId": "A4011B"
+    },
+    {
+      "id": 500000019,
+      "transactionId": 500000019,
+      "transactionDateTime": "2026-02-05T07:54:00Z",
+      "passageReportId": 92471243,
+      "tollEventTime": "2026-02-05T07:53:43Z",
+      "laneNumber": 2,
+      "vehicleClass": 5,
+      "localAgreementNumber": "LA-2025-846613",
+      "customerNumber": "CUST-940481",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX922AA",
+        "countryCode": "DE"
+      },
+      "personalAccountNumber": "PAN-511453265",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX291AA",
+          "countryCode": "NO"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 29.61,
+        "amountWithVAT": 37.01,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "FreePassage",
+      "billingDetailsAdu": 900118067,
+      "paymentClaimReferense": "PCR-2026-15621178",
+      "informationRecipientId": "A4010B"
+    },
+    {
+      "id": 500000020,
+      "transactionId": 500000020,
+      "transactionDateTime": "2026-02-04T13:39:00Z",
+      "passageReportId": 93815450,
+      "tollEventTime": "2026-02-04T13:38:51Z",
+      "laneNumber": 4,
+      "vehicleClass": 1,
+      "localAgreementNumber": "LA-2025-891028",
+      "customerNumber": "CUST-385503",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX650AA",
+        "countryCode": "DE"
+      },
+      "personalAccountNumber": "PAN-531035548",
+      "iTicketId": 5583287,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX937AA",
+          "countryCode": "FR"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 33.4,
+        "amountWithVAT": 41.75,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "FreePassage",
+      "billingDetailsAdu": 900112994,
+      "paymentClaimReferense": "PCR-2026-14408442",
+      "informationRecipientId": "A4010D"
+    },
+    {
+      "id": 500000021,
+      "transactionId": 500000021,
+      "transactionDateTime": "2026-02-12T04:01:00Z",
+      "passageReportId": 95695095,
+      "tollEventTime": "2026-02-12T04:00:50Z",
+      "laneNumber": 3,
+      "vehicleClass": 3,
+      "localAgreementNumber": "LA-2025-412848",
+      "customerNumber": "CUST-499412",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX956AA",
+        "countryCode": "DE"
+      },
+      "personalAccountNumber": "PAN-520447350",
+      "iTicketId": 5902241,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX863AA",
+          "countryCode": "SE"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 33.95,
+        "amountWithVAT": 42.44,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "FreePassage",
+      "billingDetailsAdu": 900119909,
+      "paymentClaimReferense": "PCR-2026-12359847",
+      "informationRecipientId": "A4000C"
+    },
+    {
+      "id": 500000022,
+      "transactionId": 500000022,
+      "transactionDateTime": "2026-02-04T22:26:00Z",
+      "passageReportId": 98671517,
+      "tollEventTime": "2026-02-04T22:25:50Z",
+      "laneNumber": 1,
+      "vehicleClass": 3,
+      "localAgreementNumber": "LA-2025-361135",
+      "customerNumber": "CUST-855043",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX975AA",
+        "countryCode": "FI"
+      },
+      "personalAccountNumber": "PAN-958886705",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX526AA",
+          "countryCode": "NO"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 31.42,
+        "amountWithVAT": 39.28,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900114721,
+      "paymentClaimReferense": "PCR-2026-13567549",
+      "informationRecipientId": "A4010C"
+    },
+    {
+      "id": 500000023,
+      "transactionId": 500000023,
+      "transactionDateTime": "2026-02-12T09:17:00Z",
+      "passageReportId": 91087160,
+      "tollEventTime": "2026-02-12T09:16:47Z",
+      "laneNumber": 6,
+      "vehicleClass": 5,
+      "localAgreementNumber": "LA-2025-684524",
+      "customerNumber": "CUST-497660",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX959AA",
+        "countryCode": "FR"
+      },
+      "personalAccountNumber": "PAN-652066165",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX881AA",
+          "countryCode": "FR"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 22.44,
+        "amountWithVAT": 28.05,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "Voucher",
+      "billingDetailsAdu": 900118331,
+      "paymentClaimReferense": "PCR-2026-14328214",
+      "informationRecipientId": "A4000C"
+    },
+    {
+      "id": 500000024,
+      "transactionId": 500000024,
+      "transactionDateTime": "2026-02-05T20:17:00Z",
+      "passageReportId": 88380795,
+      "tollEventTime": "2026-02-05T20:16:54Z",
+      "laneNumber": 4,
+      "vehicleClass": 3,
+      "localAgreementNumber": "LA-2025-975262",
+      "customerNumber": "CUST-863042",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX865AA",
+        "countryCode": "NO"
+      },
+      "personalAccountNumber": "PAN-762619195",
+      "iTicketId": 5472219,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX634AA",
+          "countryCode": "DK"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 22.51,
+        "amountWithVAT": 28.14,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Voucher",
+      "billingDetailsAdu": 900110806,
+      "paymentClaimReferense": "PCR-2026-15835697",
+      "informationRecipientId": "A4010C"
+    },
+    {
+      "id": 500000025,
+      "transactionId": 500000025,
+      "transactionDateTime": "2026-02-08T11:36:00Z",
+      "passageReportId": 93782465,
+      "tollEventTime": "2026-02-08T11:35:52Z",
+      "laneNumber": 1,
+      "vehicleClass": 1,
+      "localAgreementNumber": "LA-2025-984527",
+      "customerNumber": "CUST-640396",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX489AA",
+        "countryCode": "DE"
+      },
+      "personalAccountNumber": "PAN-972983844",
+      "iTicketId": 5029929,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX947AA",
+          "countryCode": "NO"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 28.98,
+        "amountWithVAT": 36.23,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Voucher",
+      "billingDetailsAdu": 900111711,
+      "paymentClaimReferense": "PCR-2026-17900363",
+      "informationRecipientId": "A4011D"
+    },
+    {
+      "id": 500000026,
+      "transactionId": 500000026,
+      "transactionDateTime": "2026-02-12T15:28:00Z",
+      "passageReportId": 98790146,
+      "tollEventTime": "2026-02-12T15:27:50Z",
+      "laneNumber": 6,
+      "vehicleClass": 3,
+      "localAgreementNumber": "LA-2025-857534",
+      "customerNumber": "CUST-380767",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX702AA",
+        "countryCode": "DE"
+      },
+      "personalAccountNumber": "PAN-209612241",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX793AA",
+          "countryCode": "DK"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 24.1,
+        "amountWithVAT": 30.12,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "Voucher",
+      "billingDetailsAdu": 900116399,
+      "paymentClaimReferense": "PCR-2026-17997873",
+      "informationRecipientId": "A4011A"
+    },
+    {
+      "id": 500000027,
+      "transactionId": 500000027,
+      "transactionDateTime": "2026-02-12T01:28:00Z",
+      "passageReportId": 96378993,
+      "tollEventTime": "2026-02-12T01:27:42Z",
+      "laneNumber": 2,
+      "vehicleClass": 5,
+      "localAgreementNumber": "LA-2025-961957",
+      "customerNumber": "CUST-866135",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX248AA",
+        "countryCode": "SE"
+      },
+      "personalAccountNumber": "PAN-921390974",
+      "iTicketId": 5498001,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX233AA",
+          "countryCode": "FR"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 15.7,
+        "amountWithVAT": 19.62,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Voucher",
+      "billingDetailsAdu": 900111367,
+      "paymentClaimReferense": "PCR-2026-19373395",
+      "informationRecipientId": "A4010C"
+    },
+    {
+      "id": 500000028,
+      "transactionId": 500000028,
+      "transactionDateTime": "2026-02-07T20:44:00Z",
+      "passageReportId": 98378871,
+      "tollEventTime": "2026-02-07T20:43:55Z",
+      "laneNumber": 6,
+      "vehicleClass": 1,
+      "localAgreementNumber": "LA-2025-814119",
+      "customerNumber": "CUST-671342",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX788AA",
+        "countryCode": "SE"
+      },
+      "personalAccountNumber": "PAN-813015557",
+      "iTicketId": 5862696,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX651AA",
+          "countryCode": "FR"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 31.37,
+        "amountWithVAT": 39.21,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "FreePassage",
+      "billingDetailsAdu": 900116074,
+      "paymentClaimReferense": "PCR-2026-15779940",
+      "informationRecipientId": "A4010C"
+    },
+    {
+      "id": 500000029,
+      "transactionId": 500000029,
+      "transactionDateTime": "2026-02-11T21:44:00Z",
+      "passageReportId": 98107013,
+      "tollEventTime": "2026-02-11T21:43:47Z",
+      "laneNumber": 2,
+      "vehicleClass": 3,
+      "localAgreementNumber": "LA-2025-511714",
+      "customerNumber": "CUST-687403",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX319AA",
+        "countryCode": "NL"
+      },
+      "personalAccountNumber": "PAN-738372270",
+      "iTicketId": 5279033,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX656AA",
+          "countryCode": "DK"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 34.48,
+        "amountWithVAT": 43.1,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "FreePassage",
+      "billingDetailsAdu": 900112043,
+      "paymentClaimReferense": "PCR-2026-13761876",
+      "informationRecipientId": "A4000C"
+    },
+    {
+      "id": 500000030,
+      "transactionId": 500000030,
+      "transactionDateTime": "2026-02-14T06:04:00Z",
+      "passageReportId": 89307164,
+      "tollEventTime": "2026-02-14T06:03:53Z",
+      "laneNumber": 2,
+      "vehicleClass": 5,
+      "localAgreementNumber": "LA-2025-740898",
+      "customerNumber": "CUST-338635",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX996AA",
+        "countryCode": "SE"
+      },
+      "personalAccountNumber": "PAN-738019275",
+      "iTicketId": 5404907,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX475AA",
+          "countryCode": "GB"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 24.97,
+        "amountWithVAT": 31.21,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900111731,
+      "paymentClaimReferense": "PCR-2026-10765077",
+      "informationRecipientId": "A4010D"
+    },
+    {
+      "id": 500000031,
+      "transactionId": 500000031,
+      "transactionDateTime": "2026-02-06T20:14:00Z",
+      "passageReportId": 97043498,
+      "tollEventTime": "2026-02-06T20:13:48Z",
+      "laneNumber": 1,
+      "vehicleClass": 2,
+      "localAgreementNumber": "LA-2025-104249",
+      "customerNumber": "CUST-275572",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX562AA",
+        "countryCode": "FR"
+      },
+      "personalAccountNumber": "PAN-926188098",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX259AA",
+          "countryCode": "FI"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 10.66,
+        "amountWithVAT": 13.32,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Voucher",
+      "billingDetailsAdu": 900119594,
+      "paymentClaimReferense": "PCR-2026-15618132",
+      "informationRecipientId": "A4011D"
+    },
+    {
+      "id": 500000032,
+      "transactionId": 500000032,
+      "transactionDateTime": "2026-02-07T10:46:00Z",
+      "passageReportId": 92719066,
+      "tollEventTime": "2026-02-07T10:45:55Z",
+      "laneNumber": 4,
+      "vehicleClass": 3,
+      "localAgreementNumber": "LA-2025-949407",
+      "customerNumber": "CUST-882555",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX179AA",
+        "countryCode": "NL"
+      },
+      "personalAccountNumber": "PAN-549951007",
+      "iTicketId": 5814063,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX584AA",
+          "countryCode": "SE"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 35.6,
+        "amountWithVAT": 44.5,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900114702,
+      "paymentClaimReferense": "PCR-2026-19081074",
+      "informationRecipientId": "A4011D"
+    },
+    {
+      "id": 500000033,
+      "transactionId": 500000033,
+      "transactionDateTime": "2026-02-14T02:51:00Z",
+      "passageReportId": 92005428,
+      "tollEventTime": "2026-02-14T02:50:42Z",
+      "laneNumber": 4,
+      "vehicleClass": 1,
+      "localAgreementNumber": "LA-2025-473266",
+      "customerNumber": "CUST-549114",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX434AA",
+        "countryCode": "ES"
+      },
+      "personalAccountNumber": "PAN-269650307",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX827AA",
+          "countryCode": "ES"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 22.47,
+        "amountWithVAT": 28.09,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "Voucher",
+      "billingDetailsAdu": 900115738,
+      "paymentClaimReferense": "PCR-2026-17272289",
+      "informationRecipientId": "A4010A"
+    },
+    {
+      "id": 500000034,
+      "transactionId": 500000034,
+      "transactionDateTime": "2026-02-11T23:15:00Z",
+      "passageReportId": 97586573,
+      "tollEventTime": "2026-02-11T23:14:41Z",
+      "laneNumber": 1,
+      "vehicleClass": 2,
+      "localAgreementNumber": "LA-2025-188398",
+      "customerNumber": "CUST-206609",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX367AA",
+        "countryCode": "ES"
+      },
+      "personalAccountNumber": "PAN-223521167",
+      "iTicketId": 5978593,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX644AA",
+          "countryCode": "PL"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 16.52,
+        "amountWithVAT": 20.65,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "FreePassage",
+      "billingDetailsAdu": 900110905,
+      "paymentClaimReferense": "PCR-2026-16277491",
+      "informationRecipientId": "A4011B"
+    },
+    {
+      "id": 500000035,
+      "transactionId": 500000035,
+      "transactionDateTime": "2026-02-07T16:21:00Z",
+      "passageReportId": 94708951,
+      "tollEventTime": "2026-02-07T16:20:40Z",
+      "laneNumber": 6,
+      "vehicleClass": 4,
+      "localAgreementNumber": "LA-2025-985448",
+      "customerNumber": "CUST-109271",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX841AA",
+        "countryCode": "DE"
+      },
+      "personalAccountNumber": "PAN-623271355",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX512AA",
+          "countryCode": "SE"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 20.31,
+        "amountWithVAT": 25.39,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900117326,
+      "paymentClaimReferense": "PCR-2026-10809501",
+      "informationRecipientId": "A4010B"
+    },
+    {
+      "id": 500000036,
+      "transactionId": 500000036,
+      "transactionDateTime": "2026-02-10T12:00:00Z",
+      "passageReportId": 95283809,
+      "tollEventTime": "2026-02-10T11:59:42Z",
+      "laneNumber": 4,
+      "vehicleClass": 1,
+      "localAgreementNumber": "LA-2025-210646",
+      "customerNumber": "CUST-313925",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX851AA",
+        "countryCode": "NL"
+      },
+      "personalAccountNumber": "PAN-294301228",
+      "iTicketId": 5895203,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX340AA",
+          "countryCode": "FR"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 38.65,
+        "amountWithVAT": 48.31,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "FreePassage",
+      "billingDetailsAdu": 900110707,
+      "paymentClaimReferense": "PCR-2026-10854049",
+      "informationRecipientId": "A4010A"
+    },
+    {
+      "id": 500000037,
+      "transactionId": 500000037,
+      "transactionDateTime": "2026-02-04T09:47:00Z",
+      "passageReportId": 94233004,
+      "tollEventTime": "2026-02-04T09:46:47Z",
+      "laneNumber": 6,
+      "vehicleClass": 2,
+      "localAgreementNumber": "LA-2025-683498",
+      "customerNumber": "CUST-857331",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX652AA",
+        "countryCode": "SE"
+      },
+      "personalAccountNumber": "PAN-158437076",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX482AA",
+          "countryCode": "NO"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 34.64,
+        "amountWithVAT": 43.3,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900118867,
+      "paymentClaimReferense": "PCR-2026-17972309",
+      "informationRecipientId": "A4011D"
+    },
+    {
+      "id": 500000038,
+      "transactionId": 500000038,
+      "transactionDateTime": "2026-02-01T22:17:00Z",
+      "passageReportId": 94666979,
+      "tollEventTime": "2026-02-01T22:16:44Z",
+      "laneNumber": 4,
+      "vehicleClass": 1,
+      "localAgreementNumber": "LA-2025-562934",
+      "customerNumber": "CUST-213325",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX671AA",
+        "countryCode": "NO"
+      },
+      "personalAccountNumber": "PAN-384107037",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX586AA",
+          "countryCode": "ES"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 17.88,
+        "amountWithVAT": 22.35,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "FreePassage",
+      "billingDetailsAdu": 900112683,
+      "paymentClaimReferense": "PCR-2026-17419100",
+      "informationRecipientId": "A4011B"
+    },
+    {
+      "id": 500000039,
+      "transactionId": 500000039,
+      "transactionDateTime": "2026-02-06T08:21:00Z",
+      "passageReportId": 97792531,
+      "tollEventTime": "2026-02-06T08:20:47Z",
+      "laneNumber": 1,
+      "vehicleClass": 4,
+      "localAgreementNumber": "LA-2025-114574",
+      "customerNumber": "CUST-940221",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX180AA",
+        "countryCode": "SE"
+      },
+      "personalAccountNumber": "PAN-987127642",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX224AA",
+          "countryCode": "DE"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 14.75,
+        "amountWithVAT": 18.44,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900115770,
+      "paymentClaimReferense": "PCR-2026-13416791",
+      "informationRecipientId": "A4011A"
+    },
+    {
+      "id": 500000040,
+      "transactionId": 500000040,
+      "transactionDateTime": "2026-02-10T19:29:00Z",
+      "passageReportId": 92630338,
+      "tollEventTime": "2026-02-10T19:28:54Z",
+      "laneNumber": 4,
+      "vehicleClass": 2,
+      "localAgreementNumber": "LA-2025-501446",
+      "customerNumber": "CUST-891320",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX428AA",
+        "countryCode": "DK"
+      },
+      "personalAccountNumber": "PAN-247899823",
+      "iTicketId": 5334744,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX597AA",
+          "countryCode": "DK"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 15.39,
+        "amountWithVAT": 19.24,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "Voucher",
+      "billingDetailsAdu": 900110900,
+      "paymentClaimReferense": "PCR-2026-15484118",
+      "informationRecipientId": "A4000C"
+    },
+    {
+      "id": 500000041,
+      "transactionId": 500000041,
+      "transactionDateTime": "2026-02-09T19:48:00Z",
+      "passageReportId": 98392380,
+      "tollEventTime": "2026-02-09T19:47:45Z",
+      "laneNumber": 4,
+      "vehicleClass": 5,
+      "localAgreementNumber": "LA-2025-264107",
+      "customerNumber": "CUST-803596",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX636AA",
+        "countryCode": "DK"
+      },
+      "personalAccountNumber": "PAN-148915087",
+      "iTicketId": 5787149,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX662AA",
+          "countryCode": "FR"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 38.1,
+        "amountWithVAT": 47.62,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "FreePassage",
+      "billingDetailsAdu": 900116051,
+      "paymentClaimReferense": "PCR-2026-18303324",
+      "informationRecipientId": "A4011A"
+    },
+    {
+      "id": 500000042,
+      "transactionId": 500000042,
+      "transactionDateTime": "2026-02-11T22:49:00Z",
+      "passageReportId": 98036213,
+      "tollEventTime": "2026-02-11T22:48:44Z",
+      "laneNumber": 6,
+      "vehicleClass": 1,
+      "localAgreementNumber": "LA-2025-920951",
+      "customerNumber": "CUST-848938",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX421AA",
+        "countryCode": "FI"
+      },
+      "personalAccountNumber": "PAN-164759785",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX177AA",
+          "countryCode": "GB"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 29.34,
+        "amountWithVAT": 36.67,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900111685,
+      "paymentClaimReferense": "PCR-2026-18489634",
+      "informationRecipientId": "A4000C"
+    },
+    {
+      "id": 500000043,
+      "transactionId": 500000043,
+      "transactionDateTime": "2026-02-14T01:20:00Z",
+      "passageReportId": 92443354,
+      "tollEventTime": "2026-02-14T01:19:51Z",
+      "laneNumber": 5,
+      "vehicleClass": 3,
+      "localAgreementNumber": "LA-2025-177216",
+      "customerNumber": "CUST-839841",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX532AA",
+        "countryCode": "SE"
+      },
+      "personalAccountNumber": "PAN-336145283",
+      "iTicketId": 5329429,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX587AA",
+          "countryCode": "DE"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 25.98,
+        "amountWithVAT": 32.48,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Voucher",
+      "billingDetailsAdu": 900119554,
+      "paymentClaimReferense": "PCR-2026-19835010",
+      "informationRecipientId": "A4010C"
+    },
+    {
+      "id": 500000044,
+      "transactionId": 500000044,
+      "transactionDateTime": "2026-02-08T06:27:00Z",
+      "passageReportId": 98090979,
+      "tollEventTime": "2026-02-08T06:26:48Z",
+      "laneNumber": 4,
+      "vehicleClass": 2,
+      "localAgreementNumber": "LA-2025-336124",
+      "customerNumber": "CUST-906770",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX616AA",
+        "countryCode": "FI"
+      },
+      "personalAccountNumber": "PAN-355692991",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX604AA",
+          "countryCode": "DK"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 30.76,
+        "amountWithVAT": 38.45,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "FreePassage",
+      "billingDetailsAdu": 900115713,
+      "paymentClaimReferense": "PCR-2026-13469642",
+      "informationRecipientId": "A4011C"
+    },
+    {
+      "id": 500000045,
+      "transactionId": 500000045,
+      "transactionDateTime": "2026-02-10T11:04:00Z",
+      "passageReportId": 91596975,
+      "tollEventTime": "2026-02-10T11:03:54Z",
+      "laneNumber": 2,
+      "vehicleClass": 2,
+      "localAgreementNumber": "LA-2025-441741",
+      "customerNumber": "CUST-392285",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX871AA",
+        "countryCode": "NO"
+      },
+      "personalAccountNumber": "PAN-985537981",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX117AA",
+          "countryCode": "NL"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 10.72,
+        "amountWithVAT": 13.4,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900113414,
+      "paymentClaimReferense": "PCR-2026-10669398",
+      "informationRecipientId": "A4010B"
+    },
+    {
+      "id": 500000046,
+      "transactionId": 500000046,
+      "transactionDateTime": "2026-02-03T09:08:00Z",
+      "passageReportId": 88145574,
+      "tollEventTime": "2026-02-03T09:07:52Z",
+      "laneNumber": 1,
+      "vehicleClass": 1,
+      "localAgreementNumber": "LA-2025-423228",
+      "customerNumber": "CUST-937250",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX355AA",
+        "countryCode": "SE"
+      },
+      "personalAccountNumber": "PAN-925617135",
+      "iTicketId": 5321559,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX900AA",
+          "countryCode": "PL"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 15.1,
+        "amountWithVAT": 18.88,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": true,
+      "passageType": "Voucher",
+      "billingDetailsAdu": 900119503,
+      "paymentClaimReferense": "PCR-2026-16625719",
+      "informationRecipientId": "A4010B"
+    },
+    {
+      "id": 500000047,
+      "transactionId": 500000047,
+      "transactionDateTime": "2026-02-07T02:28:00Z",
+      "passageReportId": 94857073,
+      "tollEventTime": "2026-02-07T02:27:46Z",
+      "laneNumber": 4,
+      "vehicleClass": 5,
+      "localAgreementNumber": "LA-2025-788823",
+      "customerNumber": "CUST-227516",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX228AA",
+        "countryCode": "ES"
+      },
+      "personalAccountNumber": "PAN-747370867",
+      "iTicketId": null,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX381AA",
+          "countryCode": "GB"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 26.59,
+        "amountWithVAT": 33.24,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900119987,
+      "paymentClaimReferense": "PCR-2026-18019974",
+      "informationRecipientId": "A4010B"
+    },
+    {
+      "id": 500000048,
+      "transactionId": 500000048,
+      "transactionDateTime": "2026-02-09T02:44:00Z",
+      "passageReportId": 91462962,
+      "tollEventTime": "2026-02-09T02:43:55Z",
+      "laneNumber": 6,
+      "vehicleClass": 2,
+      "localAgreementNumber": "LA-2025-653975",
+      "customerNumber": "CUST-919417",
+      "transactionType": "serviceFee",
+      "lpn": {
+        "number": "XX621AA",
+        "countryCode": "DK"
+      },
+      "personalAccountNumber": "PAN-316643396",
+      "iTicketId": 5109963,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX472AA",
+          "countryCode": "NL"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 17.03,
+        "amountWithVAT": 21.29,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900112485,
+      "paymentClaimReferense": "PCR-2026-13300743",
+      "informationRecipientId": "A4010A"
+    },
+    {
+      "id": 500000049,
+      "transactionId": 500000049,
+      "transactionDateTime": "2026-02-01T18:22:00Z",
+      "passageReportId": 94841657,
+      "tollEventTime": "2026-02-01T18:21:52Z",
+      "laneNumber": 3,
+      "vehicleClass": 3,
+      "localAgreementNumber": "LA-2025-306641",
+      "customerNumber": "CUST-504345",
+      "transactionType": "toll",
+      "lpn": {
+        "number": "XX914AA",
+        "countryCode": "NL"
+      },
+      "personalAccountNumber": "PAN-692904013",
+      "iTicketId": 5072317,
+      "lpnFromTss": {
+        "front": {
+          "number": "XX272AA",
+          "countryCode": "PL"
+        },
+        "rear": null,
+        "manual": null
+      },
+      "price": {
+        "amountWithoutVAT": 38.37,
+        "amountWithVAT": 47.96,
+        "vat": 25.0,
+        "currency": "SEK"
+      },
+      "credited": false,
+      "passageType": "Normal",
+      "billingDetailsAdu": 900116984,
+      "paymentClaimReferense": "PCR-2026-15450113",
+      "informationRecipientId": "A4010D"
     }
   ]
 }

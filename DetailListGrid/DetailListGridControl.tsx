@@ -32,6 +32,14 @@ export interface IProps {
     service: TransactionService;
 }
 
+interface IPagningState {
+    currentPage: number,
+    pageSizeLimit: number,
+    totalItems: number,
+    items: IMockData[],
+    isDataLoaded: boolean
+}
+
 // interface IColumnWidth {
 //     name: string,
 //     width: number;
@@ -43,8 +51,8 @@ initializeIcons();
 
 export const DetailListGridControl: React.FC<IProps> = (props) => {
     const strings = useStrings();
-    console.log({strings})
     console.log("rendered")
+
     const [columns, setColumns] = React.useState(getColumns(mockColumns, props.columnLabelOverrides));
     const [items, setItems] = React.useState<IMockData[]>([]);
     const [isDataLoaded, setIsDataLoaded] = React.useState(props.isModelApp);
@@ -57,16 +65,29 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
     const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);    
 
     const [activeFilters, setActiveFilters] = React.useState<IActiveFilter[]>([]);
+    const [paging, setPaging] = React.useState<IPagningState>({
+        currentPage: 1,
+        pageSizeLimit: 11,
+        totalItems: 0,
+        items: [],
+        isDataLoaded: false
+    })
 
-    React.useEffect(() => {
-        const loadData = async () => {
-            setIsDataLoaded(false);
-            const transactions = await props.service.getTransactions();
+    const loadData = async (page: number = 1) => {
+        setIsDataLoaded(false);
+        setPaging(prev => ({...prev, isDataLoaded: false}));
+
+        const transactions = await props.service.getTransactions(page, paging.pageSizeLimit);
+
+            // const transactions = await props.service.getTransactions();
             if (transactions.length > 0) {
                 setItems(mapTransactionsToRows(columns, transactions));
             }
             setIsDataLoaded(true);
         };
+
+    React.useEffect(() => {
+        
         loadData();
 
     }, []);
@@ -105,8 +126,6 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
             handleFilterDate(column, ev.currentTarget as HTMLElement);
             return;
         }
-
-
         let isSortedDescending = column?.isSortedDescending;
 
         // If we've sorted this column, flip it.
@@ -164,18 +183,6 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
     // };
 
     React.useEffect(() => {
-        
-        // columns.forEach(col => {
-        //     const activeFilterForColumn = activeFilters.find(f => f.columnKey === col.key);
-        //     if (activeFilterForColumn) {
-        //         col.isFiltered = true;
-        //     } else {
-        //         col.isFiltered = false;
-        //     }
-        // });
-        
-        // setColumns([...columns]);
-        
         setColumns(prevColumns =>
             prevColumns.map(col => ({
                 ...col,
@@ -212,6 +219,11 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
         setItems(mapTransactionsToRows(columns, allTransactions));
         setActiveFilters([]);
         setIsDataLoaded(true);
+    }
+
+    const handleNextPageClick = () => {
+        paging.currentPage++;
+        loadData(paging.currentPage);
     }
     
     const selection = React.useRef(
@@ -277,7 +289,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                     }}
                     onChange={(_, option) => setSelectedDropdownKey(option?.key as string)}
                 />
-                <Stack.Item>
+                {/* <Stack.Item> */}
                     <SearchBox
                         styles={searchBoxStyles}
                         // placeholder="Search transactions"
@@ -285,14 +297,14 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                         onEscape={ev => {
                             console.log('Custom onEscape Called');
                         }}
-                        // onClear={ev => handleSearchBoxClear()}
+                        // onClear={() => {setSelectedDropdownKey("") }}
                         onChange={(_, newValue) => console.log('SearchBox onChange fired: ' + newValue)}
                         onSearch={(newValue) => {
                             handleSearch(newValue);
                         }}
                     />
                     {/* <span>*Välj ett fält i dropdownen först</span> */}
-                </Stack.Item>
+                {/* </Stack.Item> */}
 
             </Stack>
 
@@ -301,13 +313,13 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                 styles={{
                     root: {
                         height: "100%",
-                        overflowY: "auto",
-                        overflowX: "auto",
+                        // overflowY: "auto",
+                        // overflowX: "scroll",
                     },
                 }}
             >
                 <div
-                    style={{ position: 'relative', height: '100%' }}>
+                    style={{ position: 'relative', height: '100%',  }}>
                     <ScrollablePane scrollbarVisibility={ScrollbarVisibility.auto}>
                         <ShimmeredDetailsList
                             enableShimmer={!isDataLoaded}
@@ -323,7 +335,8 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                             checkButtonAriaLabel="Row checkbox"
                             selectionMode={SelectionMode.multiple}
                             onRenderDetailsHeader={_onRenderDetailsHeader}
-                            layoutMode={DetailsListLayoutMode.justified}
+                            // layoutMode={DetailsListLayoutMode.justified}
+                            layoutMode={DetailsListLayoutMode.fixedColumns}
                             constrainMode={ConstrainMode.unconstrained}
                             selection={selection.current}
                         />
@@ -332,15 +345,19 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
             </Stack.Item>
             <Stack.Item 
                 align="start"  
-                styles={{root: {border:"1px solid red", width: "100%", overflow: "hidden"}}}
+                styles={{root: {width: "100%", 
+                    // overflow: "hidden"
+                }}}
                 >
                 <div className="detailList-footer">
                     <Label className="detailList-gridLabels">{strings.FooterRecordsLabel}: {items.length.toString()} ({selectedItemCount} {strings.FooterSelected})</Label>
                     <CommandBarButton
-                        // iconProps={{ iconName: 'ClearFilter' }}
                         text={strings.FooterButtonNext}
                         disabled={false}
-                        // onClick={clearFilters}
+                        onClick={() => {
+                            
+                            handleNextPageClick();
+                        }}
                     />
                 </div>
             </Stack.Item>
@@ -390,7 +407,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
 
 // };
 
-// Updates the column widths based upon the current side of the control on the form.
+// // Updates the column widths based upon the current side of the control on the form.
 // const updateColumnWidths = (columns: IColumn[], pcfContext: ComponentFramework.Context<IInputs>): IColumn[] => {
 //     const columnWidthDistribution = getColumnWidthDistribution(pcfContext);
 //     const currentColumns = columns;

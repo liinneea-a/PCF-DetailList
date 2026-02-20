@@ -23,7 +23,7 @@
 // }
 
 //dropdownFilterableFields
-// [
-//   { "key": "transactionId", "text": "Transaction ID" },
-//   { "key": "passageReportId", "text": "Passage report" }
-// ]
+[
+  { "key": "transactionId", "text": "Transaction ID" },
+  { "key": "passageReportId", "text": "Passage report" }
+]

@@ -15,21 +15,26 @@
   </resheader>
 
   <!-- ===== PCF control strings (default/neutral) ===== -->
-
-  <!-- Config properties -->
-  <data name="Column_Label_Overrides_Display_Key" xml:space="preserve">
-    <value>Kolumnetiketter overrides</value>
-  </data>
-  <data name="Column_Label_Overrides_Desc_Key" xml:space="preserve">
-    <value>Dropdown_Options_Key SVE</value>
-  </data>
+    <data name="Column_Label_Overrides_Display_Key" xml:space="preserve">
+    <value>Kolumnrubriker (egna etiketter)</value>
+    </data>
+    <data name="Column_Label_Overrides_Desc_Key" xml:space="preserve">
+    <value>Ange egna visningsnamn för kolumner. Värdet ska vara JSON där fältnamn mappas till önskad etikett.</value>
+    </data>
 
     <data name="Dropdown_Options_Display_Key" xml:space="preserve">
-        <value>Test key sve</value>
+    <value>Filterfält i dropdown</value>
     </data>
     <data name="Dropdown_Options_Desc_Key" xml:space="preserve">
-        <value>Test key sve</value>
+    <value>Ange vilka fält som ska kunna väljas i filter-dropdownen. Värdet ska vara JSON med nyckel och visningstext.</value>
     </data>
+
+    <!-- <data name="Number_Of_Rows_Display_Key" xml:space="preserve">
+    <value>Rader per sida</value>
+    </data>
+    <data name="Number_Of_Rows_Desc_Key" xml:space="preserve">
+    <value>Bestämmer hur många poster som hämtas och visas per sida i listan.</value>
+    </data> -->
 
     <!-- Component labels -->
 
@@ -65,6 +70,15 @@
     <data name="DateFilterCalloutSelectedDate" xml:space="preserve">
         <value>Valt datum</value>
     </data>
+       <data name="DateFilterCalloutDropdownPlaceholder" xml:space="preserve">
+        <value>Välj ett alternativ</value>
+    </data>
+    <data name="DateFilterCalloutButtonPrimary" xml:space="preserve">
+        <value>Tillämpa</value>
+    </data>
+     <data name="DateFilterCalloutButtonSecondary" xml:space="preserve">
+        <value>Rensa</value>
+    </data>
 
     <!-- Callout dropdown option labels -->
     <data name="DateFilterCalloutDropdownOptionDate" xml:space="preserve">
@@ -79,4 +93,145 @@
     <data name="DateFilterCalloutDropdownOptionToday" xml:space="preserve">
         <value>Idag</value>
     </data>
+
+    <!-- Calendar strings -->
+     <data name="CalendarGoToDay" xml:space="preserve">
+        <value>Gå till idag</value>
+    </data>
+    <!-- Months -->
+    <data name="CalendarMonthJan" xml:space="preserve">
+    <value>Januari</value>
+    </data>
+    <data name="CalendarMonthJanShort" xml:space="preserve">
+        <value>Jan</value>
+    </data>
+
+    <data name="CalendarMonthFeb" xml:space="preserve">
+        <value>Februari</value>
+    </data>
+    <data name="CalendarMonthFebShort" xml:space="preserve">
+        <value>Feb</value>
+    </data>
+
+    <data name="CalendarMonthMar" xml:space="preserve">
+        <value>Mars</value>
+    </data>
+    <data name="CalendarMonthMarShort" xml:space="preserve">
+        <value>Mar</value>
+    </data>
+
+    <data name="CalendarMonthApr" xml:space="preserve">
+        <value>April</value>
+    </data>
+    <data name="CalendarMonthAprShort" xml:space="preserve">
+        <value>Apr</value>
+    </data>
+
+    <data name="CalendarMonthMay" xml:space="preserve">
+        <value>Maj</value>
+    </data>
+    <data name="CalendarMonthMayShort" xml:space="preserve">
+        <value>Maj</value>
+    </data>
+
+    <data name="CalendarMonthJun" xml:space="preserve">
+        <value>Juni</value>
+    </data>
+    <data name="CalendarMonthJunShort" xml:space="preserve">
+        <value>Jun</value>
+    </data>
+
+    <data name="CalendarMonthJul" xml:space="preserve">
+        <value>Juli</value>
+    </data>
+    <data name="CalendarMonthJulShort" xml:space="preserve">
+        <value>Jul</value>
+    </data>
+
+    <data name="CalendarMonthAug" xml:space="preserve">
+        <value>Augusti</value>
+    </data>
+    <data name="CalendarMonthAugShort" xml:space="preserve">
+        <value>Aug</value>
+    </data>
+
+    <data name="CalendarMonthSep" xml:space="preserve">
+        <value>September</value>
+    </data>
+    <data name="CalendarMonthSepShort" xml:space="preserve">
+        <value>Sep</value>
+    </data>
+
+    <data name="CalendarMonthOct" xml:space="preserve">
+        <value>Oktober</value>
+    </data>
+    <data name="CalendarMonthOctShort" xml:space="preserve">
+        <value>Okt</value>
+    </data>
+
+    <data name="CalendarMonthNov" xml:space="preserve">
+        <value>November</value>
+    </data>
+    <data name="CalendarMonthNovShort" xml:space="preserve">
+        <value>Nov</value>
+    </data>
+
+    <data name="CalendarMonthDec" xml:space="preserve">
+        <value>December</value>
+    </data>
+    <data name="CalendarMonthDecShort" xml:space="preserve">
+        <value>Dec</value>
+    </data>
+
+    <!-- Days -->
+    <data name="CalendarDayMon" xml:space="preserve">
+    <value>Måndag</value>
+    </data>
+    <data name="CalendarDayMonShort" xml:space="preserve">
+        <value>Mån</value>
+    </data>
+
+    <data name="CalendarDayTue" xml:space="preserve">
+        <value>Tisdag</value>
+    </data>
+    <data name="CalendarDayTueShort" xml:space="preserve">
+        <value>Tis</value>
+    </data>
+
+    <data name="CalendarDayWed" xml:space="preserve">
+        <value>Onsdag</value>
+    </data>
+    <data name="CalendarDayWedShort" xml:space="preserve">
+        <value>Ons</value>
+    </data>
+
+    <data name="CalendarDayThu" xml:space="preserve">
+        <value>Torsdag</value>
+    </data>
+    <data name="CalendarDayThuShort" xml:space="preserve">
+        <value>Tor</value>
+    </data>
+
+    <data name="CalendarDayFri" xml:space="preserve">
+        <value>Fredag</value>
+    </data>
+    <data name="CalendarDayFriShort" xml:space="preserve">
+        <value>Fre</value>
+    </data>
+
+    <data name="CalendarDaySat" xml:space="preserve">
+        <value>Lördag</value>
+    </data>
+    <data name="CalendarDaySatShort" xml:space="preserve">
+        <value>Lör</value>
+    </data>
+
+    <data name="CalendarDaySun" xml:space="preserve">
+        <value>Söndag</value>
+    </data>
+    <data name="CalendarDaySunShort" xml:space="preserve">
+        <value>Sön</value>
+    </data>
+
+
 </root>

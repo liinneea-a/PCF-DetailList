@@ -47,7 +47,8 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 		this._isModelApp = window.hasOwnProperty('getGlobalContextObject');
 		this._dataSetVersion = 0;
 
-		const isLocal = window.location.hostname === "localhost";
+		// const isLocal = window.location.hostname === "localhost";
+		const isLocal = false;
 		this._service = new TransactionService(isLocal);
 		this.strings = loadStrings(this._context);
 
@@ -68,7 +69,6 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 		this._detailList.setAttribute("id", "detailList");
 		// if data-is-scrollable is not set then grid will not show all results.
 		this._detailList.setAttribute("data-is-scrollable", "true");
-
 		//we need to set the grid height.  If the allocated height is not -1 then we are in a canvas app 
 		//and we need to set the heigh based upon the allocated height of the container.
 		if (this._context.mode.allocatedHeight !== -1) {
@@ -82,13 +82,26 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 			// const rowspan = (this._context.mode as any).rowSpan;
 			// if (rowspan) this._detailList.style.height = `${(rowspan * 1.5).toString()}em`;
 
-			this._detailList.style.height = '500px'; //default height if rowSpan is not available
+			// this._detailList.style.height = '500px'; //default height if rowSpan is not available
+			
+
+			// const rowsPerPageParam = Number(this._context.parameters.numberOfRowsPerPage.raw);
+			const rowsPerPageParam = 11;
+			if(rowsPerPageParam > 0) {
+				
+				// 42px is the detaillist rows height. 148px is the total height of filter and footer sections. 
+				this._detailList.style.height = `${(rowsPerPageParam * 42) + 148}px`;
+				console.log(this._detailList.style.height);
+			} else {
+				this._detailList.style.height = "45rem"; 
+			}
+			
 		}
 
 		this._container.appendChild(this._detailList);
 
 		//set the paging size to 5000
-		context.parameters.sampleDataSet.paging.setPageSize(5000);
+		// context.parameters.sampleDataSet.paging.setPageSize(5000);
 	}
 
 
@@ -98,8 +111,8 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 	 */
 	public updateView(context: ComponentFramework.Context<IInputs>): void {
 		console.log("updateView")
-		const dataSet = context.parameters.sampleDataSet;
-		if (dataSet.loading) return;
+		// const dataSet = context.parameters.sampleDataSet;
+		// if (dataSet.loading) return;
 
 		//Are we in a canvas app?
 		if (!this._isModelApp) {
@@ -113,14 +126,14 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 
 			//console.log(`TS: updateView, dataSet.paging.pageSize ${dataSet.paging.pageSize}`);	
 			//console.log(`TS: updateView, dataSet.paging.totalResultCount ${dataSet.paging.totalResultCount}`)
-			dataSet.paging.setPageSize(dataSet.paging.totalResultCount);
+			// dataSet.paging.setPageSize(dataSet.paging.totalResultCount);
 		}
 
 		//if data set has additional pages retrieve them before running anything else
-		if (this._isModelApp && dataSet.paging.hasNextPage) {
-			dataSet.paging.loadNextPage();
-			return;
-		}
+		// if (this._isModelApp && dataSet.paging.hasNextPage) {
+		// 	dataSet.paging.loadNextPage();
+		// 	return;
+		// }
 
 		try {
 			const columnLabelOverridesRaw = context.parameters.columnLabelOverrides.raw;
@@ -175,7 +188,7 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 	 */
 	public destroy(): void {
 		// Add code to cleanup control if necessary
-		// ReactDOM.unmountComponentAtNode(this._detailList);
+		ReactDOM.unmountComponentAtNode(this._detailList);
 	}
 
 }

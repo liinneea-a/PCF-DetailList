@@ -1,6 +1,9 @@
 ### Get all transactions
 GET http://localhost:3001/transactions
 
+### PAGING: Get all transactions
+GET http://localhost:3001/transactions?_page=2&_limit=10
+
 ### Get a transaction by transactionId
 GET http://localhost:3001/transactions?transactionId=301245001
 

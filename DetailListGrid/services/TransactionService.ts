@@ -5,14 +5,21 @@ import { IMockData } from "../types/IMockData";
 export class TransactionService {
 
     constructor(
-        private useMock: boolean = true,
+        private useJsonServer: boolean = true,
         private url: string = "http://localhost:3001/transactions"
     ) { }
 
-    public async getTransactions(): Promise<IMockData[]> {
-        if (!this.useMock) {
+    public async getTransactions(pageNumber: number = 1, limit: number = 10): Promise<IMockData[]> {
+        console.log("use mock:", this.useJsonServer)
+
+        if (this.useJsonServer) {
+            console.log("using json server")
             try {
-                const res = await fetch(this.url);
+                const url = `${this.url}?_page=${pageNumber}&_limit=${limit}`;
+                console.log({url});
+
+                // const res = await fetch(this.url);
+                const res = await fetch(url);
                 const data = await res.json();
 
                 if (data && data.length > 0) {
@@ -28,12 +35,12 @@ export class TransactionService {
                 return [] as IMockData[];
             }
         }
-
+        console.log("using mockdata")
         return mockData;
     }
 
     public async getSearchFilteredTransactions(param: string, field: string): Promise<IMockData[]> {
-        if (!this.useMock) {
+        if (this.useJsonServer) {
             try {
                 const res = await fetch(`${this.url}?${field}_like=${param}`);
                 const data = await res.json();
@@ -59,7 +66,7 @@ export class TransactionService {
     }
 
     public async getDateFilteredTransactions(date: Date, operator: DateFilterOperator, col: string): Promise<IMockData[]> {
-        if (!this.useMock) {
+        if (this.useJsonServer) {
             let queryParam = '';
 
             switch (operator) {
