@@ -1,0 +1,98 @@
+import { TransactionResult } from "../types/ITransactionresult";
+
+export const mockTransactionsResponse: TransactionResult[] = [
+  {
+    numberOfTransactions: 2,
+    transactions: [
+      {
+        transactionId: 100234,
+        transactionDateTime: "2026-01-15T08:32:11Z",
+        passageReportId: 77821,
+        tollEventTime: "2026-01-15T08:32:15Z",
+        laneNumber: 4,
+        vehicleClass: 2,
+        localAgreementNumber: "AG-44521",
+        customerNumber: "CUST-9981",
+        transactionType: "toll",
+
+        lpn: {
+          number: "ABC123",
+          countryCode: "SE"
+        },
+
+        personalAccountNumber: "PAN-778899",
+        iTicketId: 45621,
+
+        lpnFromTss: {
+          front: { number: "ABC123", countryCode: "SE" },
+          rear: { number: "ABC123", countryCode: "SE" }
+        },
+
+        price: {
+          amountWithoutVAT: 20,
+          amountWithVAT: 25,
+          vat: 25,
+          currency: "SEK"
+        },
+
+        credited: false,
+        passageType: "LocalAgreement_BIZZ",
+        PassageTypeFriendlyName: "Bizz agreement",
+
+        billingDetailsAdu: 9912,
+        paymentClaimReference: "PCR-88221",
+        informationRecipientId: "A4000C",
+        InformationrecipientIdFriendlyName: "Toll Services AB",
+
+        posReceiptId: "POS-2231",
+        reasonCode: "",
+        reasonCodeFriendlyName: "",
+        internalRemark: "",
+        inoiceText: ""
+      },
+
+      {
+        transactionId: 100235,
+        transactionDateTime: "2026-01-16T17:12:02Z",
+        passageReportId: 77822,
+        tollEventTime: "2026-01-16T17:12:04Z",
+        laneNumber: 1,
+        vehicleClass: 1,
+        localAgreementNumber: "",
+        customerNumber: "",
+        transactionType: "toll",
+
+        lpn: {
+          number: "XYZ789",
+          countryCode: "NO"
+        },
+
+        lpnFromTss: {
+          front: { number: "XYZ789", countryCode: "NO" }
+        },
+
+        price: {
+          amountWithoutVAT: 32,
+          amountWithVAT: 40,
+          vat: 25,
+          currency: "SEK"
+        },
+
+        credited: true,
+        passageType: "NoAgreement_FreeFlow",
+        PassageTypeFriendlyName: "Free flow without agreement",
+
+        billingDetailsAdu: 0,
+        paymentClaimReference: "PCR-88222",
+        informationRecipientId: "A4000C",
+        InformationrecipientIdFriendlyName: "Toll Services AB",
+
+        posReceiptId: "",
+        reasonCode: "MANUAL_REVIEW",
+        reasonCodeFriendlyName: "Manual review required",
+        internalRemark: "Plate confidence low, corrected manually",
+        inoiceText: "Manual adjustment applied"
+      }
+    ]
+  }
+];

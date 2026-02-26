@@ -1,0 +1,295 @@
+openapi: 3.0.3
+info:
+  title: Transaction Data API
+  description: API for OSB -> CRM Transaction Data
+  version: 1.0.0
+
+servers:
+  - url: https://a.c.com
+    description: Production environment
+
+paths:
+  /api/transactions:
+    get:
+      summary: List transactions
+      description: Returns a list of transactions based on the provided filter criteria.
+      parameters:
+        - name: transactionTimeFrom
+          in: query
+          description: Start date/time for the transactions search (inclusive).
+          schema:
+            type: string
+            format: date-time
+
+        - name: transactionTimeTo
+          in: query
+          description: End date/time for the transactions search (inclusive).
+          schema:
+            type: string
+            format: date-time
+
+        - name: lpn
+          in: query
+          description: License Plate Number to filter on.
+          schema:
+            type: string
+
+        - name: lpnCountryCode
+          in: query
+          description: Country code of the license plate (ISO 3166-1 alpha2).
+          schema:
+            type: string
+            minLength: 2
+            maxLength: 2
+
+        - name: personalAccountNumber
+          in: query
+          description: Personal Account Number (pan)
+          schema:
+            type: string
+
+        - name: paymentClaimReference
+          in: query
+          description: PaymentClaim reference for transaction.
+          schema:
+            type: string
+
+        - name: localAgreementNo
+          in: query
+          description: Local agreement number associated with the transactions.
+          schema:
+            type: string
+        - name: customerNumber
+          in: query
+          description: Local agreement number associated with the transactions.
+          schema:
+            type: string
+
+        - name: credited
+          in: query
+          description: Indicates whether the transactions has been credited.
+          schema:
+            type: boolean
+
+        - name: passageType
+          in: query
+          description: Search for a specific passageType. 
+          schema:
+            type: string
+            enum: 
+              - NotSet
+              - PosCardOrCash
+              - FreePassage
+              - EvacuationOpening
+              - OnlineTicket
+              - Voucher
+              - LocalAgreement_PeriodCard
+              - LocalAgreement_BIZZ
+              - LocalAgreement_Lpn
+              - IssuerAgreement_BIZZ
+              - IssuerAgreement_Lpn
+              - NoAgreement_TailGating
+              - NoAgreement_FreeFlow
+              - NoAgreement_Other       
+        - name: informationRecipientId
+          in: query
+          description: Actor Code (i.e. A4000C) for the recipient TSP for BillingDetails and PaymentClaims
+          schema:
+            type: string
+
+        - name: iTicketId
+          in: query
+          schema:
+            type: integer
+          description: Id of charged iTicket (OnlineTicket or voucher)
+
+        - name: posReceiptId
+          in: query
+          schema:
+            type: integer
+          description: Id of POS posReceipt
+
+        - name: page
+          in: query
+          required: true
+          schema:
+            type: integer
+            minimum: 0
+          description: Page number
+
+        - name: pageSize
+          in: query
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: Number of items per page
+
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+          description: Sort by field. Value shall be "fieldName"|"order" where order is either asc or desc 
+      responses:
+        '200':
+          description: A list of passage reports.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionResult'
+components:
+  schemas:
+    TransactionResult: 
+      type: object
+      description: Result of a transaction search.
+      properties: 
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/OSBTransaction'
+        numberOfTransactions:
+          type: integer
+          description: total number of results 
+    OSBTransaction:
+      type: object
+      description: Represents a single toll transaction event.
+      properties:
+        transactionId: 
+            type: integer
+            format: int32
+            description: Unique internal identifier for the transaction created in TollingPlatform
+        transactionDateTime:
+          type: string
+          format: date-time
+          description: Date and time when the vehicle entered the tolling point.
+
+        passageReportId: 
+          type: integer
+          format: int32
+          description: Unique identifier for the passage report.
+
+        tollEventTime:
+          type: string
+          format: date-time
+          description: Date and time when the transaction was created
+        
+        laneNumber:
+          type: integer
+          format: int32
+          description: Lane number where the passage occurred.
+
+        vehicleClass: 
+          type: integer
+          format: int32
+          description: Vehicle category.
+
+        localAgreementNumber:
+          type: string
+          description: Local agreement number linked to the transaction.
+
+        customerNumber: 
+          type: string
+          description: Local agreement customer number linked to the transaction. 
+
+        transactionType:
+          type: string
+          description: Type of transaction. Specified in 12855. (i.e. toll, tollCredit, serviceFee)
+
+        lpn: 
+          $ref: '#/components/schemas/Lpn'
+          description: Charged LPN
+        
+        personalAccountNumber: 
+          type: string
+          description: PersonalAccountNumber (aka Pan) of charged Obe
+
+        iTicketId: 
+          type: integer
+          description: Id of charged iTicket (OnlineTicket or voucher)
+
+        lpnFromTss:
+          type: object
+          description: License plate numbers detected from TSS
+          properties:
+            front:
+              $ref: '#/components/schemas/Lpn'
+            rear:
+              $ref: '#/components/schemas/Lpn'
+            manual:
+              $ref: '#/components/schemas/Lpn'
+
+        price:
+          type: object
+          description: Price charged for the transaction.
+          properties:
+            amountWithoutVAT:
+              type: number
+              format: double
+              description: Monetary amount charged without VAT.
+            amountWithVAT:
+              type: number
+              format: double
+              description: Monetary amount charged including VAT.
+            vat:
+              type: number
+              format: double
+              description: VAT as percentage value
+            currency:
+              type: string
+              description: Currency code (ISO 4217).
+              minLength: 3
+              maxLength: 3
+
+        credited:
+          type: boolean
+          description: Indicates whether the transaction has been credited. If Credited there shall be one transaction with same PaymentClaimReference that holds the debit transaction
+
+        passageType:
+          type: string
+          description: The type of passage this Transaction refers to. Outcome as defined in the passageType enum in the query parameters.
+        PassageTypeFriendlyName:
+          type: string
+          description: Descriptive FriendlyName of passageType.
+
+
+        billingDetailsAdu:
+            type: number
+            description: AduIdentifier for the billing details that is sent for this transaction
+        paymentClaimReference: 
+            type: string
+            description: PaymentClaimReference used to connect BillingDetails and PaymentClaims for this transaction
+        informationRecipientId: 
+            type: string
+            description: InformationrecepientId in Hex, as ActorCode, (i.e. A4000C) for the receiver of BillingDetails and PaymentClaims
+        InformationrecipientIdFriendlyName: 
+            type: string
+            description: The name of the TollServiceProvider that 
+        posReceiptId: 
+            type: string
+            description: Id of a POS Receipt
+        reasonCode: 
+            type: string
+            description: ReasonCode for passage, ie. when passageType is FreePassage
+        reasonCodeFriendlyName: 
+            type: string
+            description: Friendlyname for reasonCode for passage
+        internalRemark: 
+            type: string
+            description: Comment added when ie. a passage has been changed or credited.
+        inoiceText: 
+            type: string
+            description: Comment added when ie. a passage has been changed or credited.        
+    Lpn:
+      type: object
+      description: License plate number information.
+      properties:
+        number:
+          type: string
+          description: License plate number.
+        countryCode: 
+          type: string
+          description: Country code of the license plate (ISO 3166-1 alpha-2).
+          minLength: 2
+          maxLength: 2
