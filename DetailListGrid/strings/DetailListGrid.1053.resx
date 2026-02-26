@@ -15,11 +15,17 @@
   </resheader>
 
   <!-- ===== PCF control strings (default/neutral) ===== -->
+    <data name="DetailsListGrid_Display_Key" xml:space="preserve">
+        <value>Tolling PCF lista</value>
+    </data>
+    <data name="DetailsListGrid_Description_Key" xml:space="preserve">
+        <value>Visar en lista med transaktioner hämtade från Tolling API. Ger en tabellvy med möjlighet att anpassa kolumnrubriker samt stöd för filtrering och sök. Används för att granska Tolling‑poster i en modellbaserad app.</value>
+    </data>
     <data name="Column_Label_Overrides_Display_Key" xml:space="preserve">
-    <value>Kolumnrubriker (egna etiketter)</value>
+        <value>Kolumnrubriker (egna etiketter)</value>
     </data>
     <data name="Column_Label_Overrides_Desc_Key" xml:space="preserve">
-    <value>Ange egna visningsnamn för kolumner. Värdet ska vara JSON där fältnamn mappas till önskad etikett.</value>
+        <value>Ange egna visningsnamn för kolumner. Värdet ska vara JSON där fältnamn mappas till önskad etikett.</value>
     </data>
 
     <data name="Dropdown_Options_Display_Key" xml:space="preserve">
@@ -29,12 +35,13 @@
     <value>Ange vilka fält som ska kunna väljas i filter-dropdownen. Värdet ska vara JSON med nyckel och visningstext.</value>
     </data>
 
-    <!-- <data name="Number_Of_Rows_Display_Key" xml:space="preserve">
+          <data name="Number_of_Rows_Per_Page_Display_Key" xml:space="preserve">
     <value>Rader per sida</value>
     </data>
-    <data name="Number_Of_Rows_Desc_Key" xml:space="preserve">
+    <data name="Number_of_Rows_Per_Page_Desc_Key" xml:space="preserve">
     <value>Bestämmer hur många poster som hämtas och visas per sida i listan.</value>
-    </data> -->
+    </data>
+
 
     <!-- Component labels -->
 

@@ -86,10 +86,8 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
             setIsDataLoaded(true);
         };
 
-    React.useEffect(() => {
-        
+    React.useEffect(() => {     
         loadData();
-
     }, []);
 
     // Set the isDataLoaded state based upon the paging totalRecordCount

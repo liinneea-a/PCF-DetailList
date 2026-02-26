@@ -17,6 +17,12 @@
   <!-- ===== PCF control strings (English) ===== -->
 
   <!-- Config properties -->
+  <data name="DetailsListGrid_Display_Key" xml:space="preserve">
+  <value>Tolling PCF list</value>
+  </data>
+   <data name="DetailsListGrid_Description_Key" xml:space="preserve">
+        <value>Displays a list of transactions retrieved from the Tolling API. Provides a table view with customizable column headers and support for filtering and search. Used for reviewing Tolling records in a model-driven app.</value>
+    </data>
   <data name="Column_Label_Overrides_Display_Key" xml:space="preserve">
   <value>Column label overrides</value>
   </data>
@@ -31,12 +37,12 @@
     <value>Define which fields can be selected in the filter dropdown. The value should be JSON containing field keys and their display names.</value>
   </data>
 
-      <!-- <data name="Number_Of_Rows_Display_Key" xml:space="preserve">
-    <value>Rader per sida</value>
+      <data name="Number_of_Rows_Per_Page_Display_Key" xml:space="preserve">
+    <value>Rows per page</value>
     </data>
-    <data name="Number_Of_Rows_Desc_Key" xml:space="preserve">
-    <value>Bestämmer hur många poster som hämtas och visas per sida i listan.</value>
-    </data> -->
+    <data name="Number_of_Rows_Per_Page_Desc_Key" xml:space="preserve">
+    <value>Defines how many records are fetched and displayed per page in the list.</value>
+    </data>
 
   <!-- Component labels -->
 

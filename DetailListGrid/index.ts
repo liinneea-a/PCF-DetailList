@@ -1,7 +1,7 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { IProps, DetailListGridControl } from './DetailListGridControl'; 
+import { IProps, DetailListGridControl } from './DetailListGridControl';
 import { IColumnLabelOverride } from "./types/IColumnLabel";
 import { IDropdownFilterableField } from "./types/IDropdownFilterableFields";
 // import {IProps, DetailListGridControl}  from './DetailListGridControl_original'
@@ -21,8 +21,8 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 	private _isModelApp: boolean;
 	private _service: TransactionService;
 
-	private strings!: Strings
-	
+	private strings!: Strings;
+
 	private _props: IProps;
 
 	constructor() {
@@ -47,8 +47,8 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 		this._isModelApp = window.hasOwnProperty('getGlobalContextObject');
 		this._dataSetVersion = 0;
 
-		// const isLocal = window.location.hostname === "localhost";
-		const isLocal = false;
+		const isLocal = window.location.hostname === "localhost";
+		// const isLocal = false;
 		this._service = new TransactionService(isLocal);
 		this.strings = loadStrings(this._context);
 
@@ -83,19 +83,19 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 			// if (rowspan) this._detailList.style.height = `${(rowspan * 1.5).toString()}em`;
 
 			// this._detailList.style.height = '500px'; //default height if rowSpan is not available
-			
 
-			// const rowsPerPageParam = Number(this._context.parameters.numberOfRowsPerPage.raw);
-			const rowsPerPageParam = 11;
-			if(rowsPerPageParam > 0) {
-				
-				// 42px is the detaillist rows height. 148px is the total height of filter and footer sections. 
-				this._detailList.style.height = `${(rowsPerPageParam * 42) + 148}px`;
-				console.log(this._detailList.style.height);
-			} else {
-				this._detailList.style.height = "45rem"; 
-			}
-			
+
+			// const rowsPerPageParam = this._context.parameters.numberOfRowsPerPage.raw == "val" || this._context.parameters.numberOfRowsPerPage.raw == null ? 0 : Number(this._context.parameters.numberOfRowsPerPage.raw);
+			// console.log(`rowsPerPageParam: ${rowsPerPageParam}`);
+			// if(rowsPerPageParam > 0) {
+
+			// 	// 42px is the detaillist rows height. 148px is the total height of filter and footer sections. 
+			// 	this._detailList.style.height = `${(rowsPerPageParam * 42) + 148}px`;
+			// 	console.log(this._detailList.style.height);
+			// } else {
+			// 	this._detailList.style.height = "45rem"; 
+			// }
+
 		}
 
 		this._container.appendChild(this._detailList);
@@ -110,7 +110,7 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 	 * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
 	 */
 	public updateView(context: ComponentFramework.Context<IInputs>): void {
-		console.log("updateView")
+		console.log("updateView");
 		// const dataSet = context.parameters.sampleDataSet;
 		// if (dataSet.loading) return;
 
@@ -135,6 +135,9 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 		// 	return;
 		// }
 
+
+
+
 		try {
 			const columnLabelOverridesRaw = context.parameters.columnLabelOverrides.raw;
 			if (columnLabelOverridesRaw !== null && columnLabelOverridesRaw !== "val") {
@@ -153,6 +156,17 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 
 		} catch (error) {
 			console.error("Error parsing JSON input for column labels or dropdown filterable fields. Please check the input format.", error);
+		}
+
+		const rowsPerPageParam = this._context.parameters.numberOfRowsPerPage.raw == "val" || this._context.parameters.numberOfRowsPerPage.raw == null ? 0 : Number(this._context.parameters.numberOfRowsPerPage.raw);
+		console.log(`rowsPerPageParam: ${rowsPerPageParam}`);
+		if (rowsPerPageParam > 0) {
+
+			// 42px is the detaillist rows height. 148px is the total height of filter and footer sections. 
+			this._detailList.style.height = `${(rowsPerPageParam * 42) + 148}px`;
+			console.log(this._detailList.style.height);
+		} else {
+			this._detailList.style.height = "45rem";
 		}
 
 
@@ -190,5 +204,4 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 		// Add code to cleanup control if necessary
 		ReactDOM.unmountComponentAtNode(this._detailList);
 	}
-
 }
