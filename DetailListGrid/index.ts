@@ -60,7 +60,6 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 			
 
 			configParameters: {
-				columnLabelOverrides: {},
 				dropdownFilterableFields: [],
 				numberOfRowsPerPage: 0
 			}
@@ -109,13 +108,6 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 
 	private loadParameters() {
 		try {
-			const columnLabelOverridesRaw = this._context.parameters.columnLabelOverrides.raw;
-			if (columnLabelOverridesRaw !== null && columnLabelOverridesRaw !== "val") {
-				this._props.configParameters.columnLabelOverrides = JSON.parse(columnLabelOverridesRaw) as IColumnLabelOverride;
-			} else {
-				this._props.configParameters.columnLabelOverrides = {};
-			}
-
 			const dropdownFilterableFieldsRaw = this._context.parameters.dropdownFilterableFields.raw;
 
 			if (dropdownFilterableFieldsRaw !== null && dropdownFilterableFieldsRaw !== "val") {

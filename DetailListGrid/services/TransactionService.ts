@@ -17,7 +17,7 @@ export class TransactionService {
                 // const res = await fetch(this.url);
                 const res = await fetch(url);
                 const data = await res.json();
-                console.log({ data });
+                // console.log({ data });
                 if (data && data.length > 0) {
                     return data as IMockData[];
                 } else {

@@ -5,14 +5,14 @@
 //   { "key": "tollEventTime", "label": "Toll event time" }
 // ]
 
-//columnLabelOverrides
-{
-  "transactionId": {"label": "Transaction ID"},
-  "transactionDateTime": {"label": "Transaction date time"},
-  "passageReportId": {"label": "Passage report"},
-  "tollEventTime": {"label": "Toll event time"},
-  "localAgreementNumber": {"label": "Local agreement number"}
-}
+// //columnLabelOverrides
+// {
+//   "transactionId": {"label": "Transaction ID"},
+//   "transactionDateTime": {"label": "Transaction date time"},
+//   "passageReportId": {"label": "Passage report"},
+//   "tollEventTime": {"label": "Toll event time"},
+//   "localAgreementNumber": {"label": "Local agreement number"}
+// }
 
 
 // {

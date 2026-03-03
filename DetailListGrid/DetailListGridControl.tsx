@@ -2,8 +2,6 @@ import * as React from 'react';
 import { IInputs } from "./generated/ManifestTypes";
 import { getColumns, mapTransactionsToRows } from './helpers/dataMappingHelper';
 import { getUserLanguage } from './helpers/languageHelper';
-import { mockColumns, mockData } from './mockData/mockData';
-import { IColumnLabelOverride } from './types/IColumnLabel';
 import { CommandBarButton, ConstrainMode, DetailsListLayoutMode, DetailsRow, Dropdown, IColumn, IDetailsHeaderProps, IIconProps, initializeIcons, IObjectWithKey, IRenderFunction, ISearchBoxStyles, ITooltipHostProps, Label, ScrollablePane, ScrollbarVisibility, SearchBox, SelectionMode, ShimmeredDetailsList, Stack, Sticky, StickyPositionType, TooltipHost } from '@fluentui/react';
 // import { fetchData, fetchFilterdData } from './dataService';
 import { IDropdownFilterableField } from './types/IDropdownFilterableFields';
@@ -22,6 +20,7 @@ import { TransactionService } from './services/TransactionService';
 import { IActiveFilter } from './types/IActiveFilter';
 import { useStrings } from './contexts/StringsContext';
 import { ListRowExpanded } from './components/ListRowExpanded';
+import { columnsConfig } from './mockData/ColumnConfig';
 
 
 export interface IProps {
@@ -32,7 +31,6 @@ export interface IProps {
     configParameters: IConfigParameters;
 }
 interface IConfigParameters {
-    columnLabelOverrides: IColumnLabelOverride;
     dropdownFilterableFields: IDropdownFilterableField[];
     numberOfRowsPerPage: number;
 }
@@ -57,8 +55,10 @@ initializeIcons();
 export const DetailListGridControl: React.FC<IProps> = (props) => {
     const strings = useStrings();
 
-    const [columns, setColumns] = React.useState(getColumns(mockColumns, props.configParameters.columnLabelOverrides));
+    const [columns, setColumns] = React.useState(getColumns(columnsConfig));
+
     const [items, setItems] = React.useState<IMockData[]>([]);
+
     const [isDataLoaded, setIsDataLoaded] = React.useState(props.isModelApp);
     // react hook to store the number of selected items in the grid which will be displayed in the grid footer.
     const [selectedItemCount, setSelectedItemCount] = React.useState(0);
@@ -89,6 +89,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
             // const transactions = await props.service.getTransactions();
             if (transactions.length > 0) {
                 setItems(mapTransactionsToRows(columns, transactions));
+
             }
             setIsDataLoaded(true);
         };
@@ -198,7 +199,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
         setIsDataLoaded(false);
         if (selectedDropdownKey === "all" || selectedDropdownKey === "") {
             const allTransactions = await props.service.getTransactions(paging.currentPage, paging.pageSizeLimit);
-            setItems(mapTransactionsToRows(columns, allTransactions));
+            setItems(mapTransactionsToRows(columns,allTransactions));
         } else {
             const filteredTransactions = await props.service.getSearchFilteredTransactions(newValue, selectedDropdownKey);
             setItems(mapTransactionsToRows(columns, filteredTransactions));

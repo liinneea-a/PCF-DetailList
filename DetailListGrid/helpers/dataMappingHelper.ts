@@ -2,41 +2,42 @@ import { IMockData } from "../types/IMockData";
 import { DataType, IMockColumn } from "../types/IMockColumn";
 import { IColumnLabelOverride } from "../types/IColumnLabel";
 import { IColumn } from "@fluentui/react";
+import { IColumnConfig } from "../types/IColumnConfig";
+import { columnsConfig } from "../mockData/ColumnConfig";
 // import { getTransactions } from "../services/tollingService";
 // getTransactions();
 
 
-
-
-export const mapTransactionsToRows = (columns: IColumn[], data: IMockData[]) => {
-    const resultSet = data.map(function (item) {
-
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const newRecord: any = {
-            key: item.transactionId
-        };
-
-        for (const column of columns) {
-            newRecord[column.key] = item[column.key as keyof IMockData];
-        }
-        return newRecord;
-    });
-    return resultSet;
+const getValueByPath = (obj: IMockData, path: string): unknown => {
+    const value = path.split(".").reduce((acc, key) => (acc as any)?.[key], obj as any);
+    return value;
 };
 
-export const getColumns = (columns: IMockColumn[], columnLabelOverrides: IColumnLabelOverride): IColumn[] => {
+export const mapTransactionsToRows = (columns: IColumn[], transactionData: IMockData[]) => {
+    const listRowsData = transactionData.map(function (transactionItem) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const newListItem: any = {
+            key: transactionItem.transactionId
+        };
+        for (const column of columns) {
+            newListItem[column.key] = getValueByPath(transactionItem, column.data.fieldPath!);
+        }
+   
+        return newListItem;
+    });
+    return listRowsData;
+};
+
+export const getColumns = (columnsConfig: IColumnConfig[]): IColumn[] => {
     const iColumns: IColumn[] = [];
-    const hasColumnOverrides = Object.keys(columnLabelOverrides).length > 0;
-    // const columnWidthDistribution = getColumnWidthDistribution(pcfContext);
  
-    for (const column of columns) {
-        
+    for (const columnObj of columnsConfig) {
+
         const iColumn: IColumn = {
-            // key: column.name,
-            key: column.fieldName,
-            name: hasColumnOverrides && columnLabelOverrides[column.fieldName] ? columnLabelOverrides[column.fieldName].label : column.name,
-            fieldName: column.fieldName,
-            currentWidth: 100,
+            key: columnObj.key,
+            fieldName: columnObj.key,
+            name: columnObj.label,
+            currentWidth: columnObj.width || 100,
             minWidth: 5,
             maxWidth: 100,
             isResizable: true,
@@ -44,42 +45,23 @@ export const getColumns = (columns: IMockColumn[], columnLabelOverrides: IColumn
             sortDescendingAriaLabel: 'Sorted Z to A',
             className: 'detailList-cell',
             headerClassName: 'detailList-gridLabels',
-            data: { isPrimary: column.isPrimary, dataType: column.dataType },
+            data: { isPrimary: columnObj.isPrimary, dataType: columnObj.dataType, fieldPath: columnObj.fieldPath },
+            isSorted: false,
+            onRender: (rowItem, i, col) => {
+
+                if (columnObj.dataType === "date" ) {
+                    console.log(rowItem[columnObj.key]);
+                    const dateValue = new Date(rowItem[columnObj.key]);
+                    return dateValue.toLocaleString();
+                } else {
+                    return rowItem[columnObj.key];
+                }
+    
+            }
             // iconName: "Filter",
             // onRender: (item) => item. // Pass additional metadata for use in onRender and sorting
         };
-        // If column contains date data, format it in the grid.
-        // if (column.dataType === DataType.Date) {
-        //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        //     iColumn.onRender = (item?: any, i?: number, col?: IColumn) => {
-        //         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        //         const value = item && item[col!.fieldName as keyof any];
-        //         if(!value) {return}
-
-        //         return new Date(value).toLocaleString();
-        //     };
-        // }
-
-        // //create links for primary field and entity reference.            
-        // if (column.dataType.startsWith('Lookup.') || column.isPrimary)
-        // {
-        //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        //     iColumn.onRender = (item: any, index: number | undefined, column: IColumn | undefined)=> (                                    
-        //         <Link key={item.key} onClick={() => navigate(item, column!.fieldName, pcfContext) }>{item[column!.fieldName!]}</Link>                    
-        //     );
-        // }
-        // else if(column.dataType === 'SingleLine.Email'){
-        //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        //     iColumn.onRender = (item: any, index: number | undefined, column: IColumn | undefined)=> (                                    
-        //         <Link href={`mailto:${item[column!.fieldName!]}`} >{item[column!.fieldName!]}</Link>  
-        //     );
-        // }
-        // else if(column.dataType === 'SingleLine.Phone'){
-        //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        //     iColumn.onRender = (item: any, index: number | undefined, column: IColumn | undefined)=> (                                    
-        //         <Link href={`skype:${item[column!.fieldName!]}?call`} >{item[column!.fieldName!]}</Link>                    
-        //     );
-        // }
+       
 
         //set sorting information
         // const isSorted = dataSet?.sorting?.findIndex(s => s.name === column.name) !== -1 || false
@@ -87,8 +69,8 @@ export const getColumns = (columns: IMockColumn[], columnLabelOverrides: IColumn
         // if (isSorted){
         //     iColumn.isSortedDescending = dataSet?.sorting?.find(s => s.name === column.name)?.sortDirection === 1 || false;
         // }
-
         iColumn.isSorted = false;
+        // console.log("iColumn: ", iColumn);
         iColumns.push(iColumn);
     }
     return iColumns;

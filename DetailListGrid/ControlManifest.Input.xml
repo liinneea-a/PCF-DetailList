@@ -2,7 +2,6 @@
 <manifest>
   <control namespace="osk.PCF" constructor="DetailListGrid" version="0.0.1" display-name-key="DetailsListGrid_Display_Key" description-key="" control-type="standard">
     <!-- dataset node represents a set of entity records on CDS; allow more than one datasets -->
-    <property name="columnLabelOverrides" display-name-key="Column_Label_Overrides_Display_Key" description-key="Column_Label_Overrides_Desc_Key" of-type="SingleLine.TextArea" usage="input" required="true" />
     <property name="dropdownFilterableFields" display-name-key="Dropdown_Options_Display_Key" description-key="Dropdown_Options_Desc_Key" of-type="SingleLine.TextArea" usage="input" required="true" />
     <property name="numberOfRowsPerPage" display-name-key="Number_of_Rows_Per_Page_Display_Key" description-key="Number_of_Rows_Per_Page_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
     
