@@ -67,6 +67,9 @@
   <data name="FooterSelected" xml:space="preserve">
     <value>selected</value>
   </data>
+      <data name="FooterButtonPrevious" xml:space="preserve">
+        <value>Previous</value>
+    </data>
   <data name="FooterButtonNext" xml:space="preserve">
     <value>Next</value>
   </data>

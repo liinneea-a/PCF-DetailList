@@ -69,6 +69,9 @@
     <data name="FooterButtonNext" xml:space="preserve">
         <value>Nästa</value>
     </data>
+    <data name="FooterButtonPrevious" xml:space="preserve">
+        <value>Föregående</value>
+    </data>
 
     <!-- Date filter callout -->
       <data name="DateFilterCalloutTitle" xml:space="preserve">

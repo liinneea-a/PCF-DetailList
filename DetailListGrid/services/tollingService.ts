@@ -26,10 +26,8 @@
 
 // export const getSearchFilteredTransactions = async (param: string, field: string) => {
 //     try {
-//         console.log(`${url}?${field}=${param}`)
 //         const res = await fetch(`${url}?${field}_like=${param}`);
 //         const data = await res.json();
-//         console.log({data})
 
 //         if (data && data.length > 0) {
 //             return data as IMockData[];
@@ -45,7 +43,6 @@
 
 // export const getDateFilteredTransactions = async (date: Date, operator: DateFilterOperator, col: string): Promise<IMockData[]> => {
 //     let queryParam = '';
-//     console.log(date)
 //     let filterDate = new Date(date);
 //     filterDate.setHours(0, 0, 0, 0); // Set to the start of the day for accurate filtering
 
@@ -74,7 +71,6 @@
 //     try {
 //         const res = await fetch(`${url}?${queryParam}`);
 //         const data = await res.json();
-//         console.log({ data });
 //         return data;
 
 //     } catch (error) {

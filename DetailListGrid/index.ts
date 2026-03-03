@@ -57,8 +57,13 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 			service: this._service,
 			isModelApp: this._isModelApp,
 			dataSetVersion: this._dataSetVersion,
-			columnLabelOverrides: {},
-			dropdownFilterableFields: []
+			
+
+			configParameters: {
+				columnLabelOverrides: {},
+				dropdownFilterableFields: [],
+				numberOfRowsPerPage: 0
+			}
 		};
 
 		// set the container to display to relative so that our Scrollable Panel does not cover up the
@@ -86,12 +91,10 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 
 
 			// const rowsPerPageParam = this._context.parameters.numberOfRowsPerPage.raw == "val" || this._context.parameters.numberOfRowsPerPage.raw == null ? 0 : Number(this._context.parameters.numberOfRowsPerPage.raw);
-			// console.log(`rowsPerPageParam: ${rowsPerPageParam}`);
 			// if(rowsPerPageParam > 0) {
 
 			// 	// 42px is the detaillist rows height. 148px is the total height of filter and footer sections. 
 			// 	this._detailList.style.height = `${(rowsPerPageParam * 42) + 148}px`;
-			// 	console.log(this._detailList.style.height);
 			// } else {
 			// 	this._detailList.style.height = "45rem"; 
 			// }
@@ -104,13 +107,44 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 		// context.parameters.sampleDataSet.paging.setPageSize(5000);
 	}
 
+	private loadParameters() {
+		try {
+			const columnLabelOverridesRaw = this._context.parameters.columnLabelOverrides.raw;
+			if (columnLabelOverridesRaw !== null && columnLabelOverridesRaw !== "val") {
+				this._props.configParameters.columnLabelOverrides = JSON.parse(columnLabelOverridesRaw) as IColumnLabelOverride;
+			} else {
+				this._props.configParameters.columnLabelOverrides = {};
+			}
 
+			const dropdownFilterableFieldsRaw = this._context.parameters.dropdownFilterableFields.raw;
+
+			if (dropdownFilterableFieldsRaw !== null && dropdownFilterableFieldsRaw !== "val") {
+				this._props.configParameters.dropdownFilterableFields = JSON.parse(dropdownFilterableFieldsRaw) as IDropdownFilterableField[];
+			} else {
+				this._props.configParameters.dropdownFilterableFields = [];
+			}
+
+		} catch (error) {
+			console.error("Error parsing JSON input for column labels or dropdown filterable fields. Please check the input format.", error);
+		}
+
+
+		const rowsPerPageParam = this._context.parameters.numberOfRowsPerPage.raw == "val" || this._context.parameters.numberOfRowsPerPage.raw == null ? 0 : Number(this._context.parameters.numberOfRowsPerPage.raw);
+		this._props.configParameters.numberOfRowsPerPage = rowsPerPageParam;
+		if (rowsPerPageParam > 0) {
+
+			// 42px is the detaillist rows height. 150px is the total height of filter and footer sections. 
+			this._detailList.style.height = `${(rowsPerPageParam * 42) + 150}px`;
+		} else {
+			this._detailList.style.height = "45rem";
+		}
+
+	}
 	/**
 	 * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
 	 * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
 	 */
 	public updateView(context: ComponentFramework.Context<IInputs>): void {
-		console.log("updateView");
 		// const dataSet = context.parameters.sampleDataSet;
 		// if (dataSet.loading) return;
 
@@ -124,50 +158,15 @@ export class DetailListGrid implements ComponentFramework.StandardControl<IInput
 			// navigate back.  In order to fix this we need to reset the paging to the count of the records that
 			// will come back and do a reset on the paging.  I believe this is all due to a MS bug.	
 
-			//console.log(`TS: updateView, dataSet.paging.pageSize ${dataSet.paging.pageSize}`);	
-			//console.log(`TS: updateView, dataSet.paging.totalResultCount ${dataSet.paging.totalResultCount}`)
 			// dataSet.paging.setPageSize(dataSet.paging.totalResultCount);
 		}
+		this.loadParameters();
 
 		//if data set has additional pages retrieve them before running anything else
 		// if (this._isModelApp && dataSet.paging.hasNextPage) {
 		// 	dataSet.paging.loadNextPage();
 		// 	return;
 		// }
-
-
-
-
-		try {
-			const columnLabelOverridesRaw = context.parameters.columnLabelOverrides.raw;
-			if (columnLabelOverridesRaw !== null && columnLabelOverridesRaw !== "val") {
-				this._props.columnLabelOverrides = JSON.parse(columnLabelOverridesRaw) as IColumnLabelOverride;
-			} else {
-				this._props.columnLabelOverrides = {};
-			}
-
-			const dropdownFilterableFieldsRaw = context.parameters.dropdownFilterableFields.raw;
-
-			if (dropdownFilterableFieldsRaw !== null && dropdownFilterableFieldsRaw !== "val") {
-				this._props.dropdownFilterableFields = JSON.parse(dropdownFilterableFieldsRaw) as IDropdownFilterableField[];
-			} else {
-				this._props.dropdownFilterableFields = [];
-			}
-
-		} catch (error) {
-			console.error("Error parsing JSON input for column labels or dropdown filterable fields. Please check the input format.", error);
-		}
-
-		const rowsPerPageParam = this._context.parameters.numberOfRowsPerPage.raw == "val" || this._context.parameters.numberOfRowsPerPage.raw == null ? 0 : Number(this._context.parameters.numberOfRowsPerPage.raw);
-		console.log(`rowsPerPageParam: ${rowsPerPageParam}`);
-		if (rowsPerPageParam > 0) {
-
-			// 42px is the detaillist rows height. 148px is the total height of filter and footer sections. 
-			this._detailList.style.height = `${(rowsPerPageParam * 42) + 148}px`;
-			console.log(this._detailList.style.height);
-		} else {
-			this._detailList.style.height = "45rem";
-		}
 
 
 		//useEffect on the dataSet itself was not picking up on all the updates so pass in a dataset version

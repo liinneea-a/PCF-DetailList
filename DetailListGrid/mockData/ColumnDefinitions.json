@@ -8,7 +8,7 @@
 //columnLabelOverrides
 {
   "transactionId": {"label": "Transaction ID"},
-  "transactionDateTime": {"label": "Transaction date"},
+  "transactionDateTime": {"label": "Transaction date time"},
   "passageReportId": {"label": "Passage report"},
   "tollEventTime": {"label": "Toll event time"},
   "localAgreementNumber": {"label": "Local agreement number"}
@@ -25,5 +25,9 @@
 //dropdownFilterableFields
 [
   { "key": "transactionId", "text": "Transaction ID" },
-  { "key": "passageReportId", "text": "Passage report" }
+  { "key": "passageReportId", "text": "Passage report" },
+  { "key": "personalAccountNumber", "text": "Personal account number" },
+  { "key": "paymentClaimReference", "text": "Payment claim reference" },
+  { "key": "localAgreementNumber", "text": "Local agreement number" },
+  { "key": "customerNumber", "text": "Customer number" }
 ]

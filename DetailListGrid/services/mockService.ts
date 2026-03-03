@@ -4,8 +4,6 @@
 
 
 // export const getTransactions = async () => {
-//     console.log("mockservice");
-
 //     try {
 //         return mockData;
 //     } catch (error) {
@@ -15,11 +13,7 @@
 // };
 
 // export const getSearchFilteredTransactions = async (param: string, field: string) => {
-//     console.log("mockservice");
-
-//     try {
-//         console.log(`Fetching filtered transactions from mock service with param: ${param} and field: ${field}...`);
-//         return mockData.filter((item) => item[field as keyof typeof item]?.toString().includes(param));
+//     try {//         return mockData.filter((item) => item[field as keyof typeof item]?.toString().includes(param));
 
 //     } catch (error) {
 //         console.error('Error fetching filtered transactions:', error);
@@ -28,8 +22,6 @@
 // };
 
 // export const getDateFilteredTransactions = async (date: Date, operator: DateFilterOperator, col: string): Promise<IMockData[]> => {
-//     console.log("mockservice");
-
 //     let filterDate = new Date(date);
 //     filterDate.setHours(0, 0, 0, 0); // Set to the start of the day for accurate filtering
 

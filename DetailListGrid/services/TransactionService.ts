@@ -1,4 +1,4 @@
-import { mockData } from "../mockData/testData";
+import { mockData } from "../mockData/mockData";
 import { DateFilterOperator } from "../types/DateFilterOperator";
 import { IMockData } from "../types/IMockData";
 
@@ -9,19 +9,15 @@ export class TransactionService {
         private url: string = "http://localhost:3001/transactions"
     ) { }
 
-    public async getTransactions(pageNumber: number = 1, limit: number = 10): Promise<IMockData[]> {
-        console.log("use mock:", this.useJsonServer)
-
+    public async getTransactions(pageNumber: number, limit: number): Promise<IMockData[]> {
         if (this.useJsonServer) {
-            console.log("using json server")
             try {
                 const url = `${this.url}?_page=${pageNumber}&_limit=${limit}`;
-                console.log({url});
 
                 // const res = await fetch(this.url);
                 const res = await fetch(url);
                 const data = await res.json();
-
+                console.log({ data });
                 if (data && data.length > 0) {
                     return data as IMockData[];
                 } else {
@@ -35,7 +31,6 @@ export class TransactionService {
                 return [] as IMockData[];
             }
         }
-        console.log("using mockdata")
         return mockData;
     }
 
@@ -59,7 +54,6 @@ export class TransactionService {
 
 
 
-        console.log(`TransactionService: getSearchFilteredTransactions param=${param}, field=${field}`);
         return mockData.filter(item =>
             item[field as keyof typeof item]?.toString().includes(param)
         );
@@ -68,6 +62,7 @@ export class TransactionService {
     public async getDateFilteredTransactions(date: Date, operator: DateFilterOperator, col: string): Promise<IMockData[]> {
         if (this.useJsonServer) {
             let queryParam = '';
+            console.log(col)
 
             switch (operator) {
                 case DateFilterOperator.Date:
@@ -108,10 +103,6 @@ export class TransactionService {
                 return [] as IMockData[];
             }
         }
-
-
-
-        console.log(`TransactionService: getDateFilteredTransactions date=${date.toISOString()}, operator=${operator}, col=${col}`);
 
         const filterDate = new Date(date);
         filterDate.setHours(0, 0, 0, 0);

@@ -1,27 +1,108 @@
 {
-  "transactionsResult": [
-    {
-      "numberOfTransactions": 2,
-      "transactions": [
+    "transactions": [
         {
-          "transactionId": 100234,
-          "transactionDateTime": "2026-01-15T08:32:11Z",
-          "passageReportId": 77821,
-          "tollEventTime": "2026-01-15T08:32:15Z",
-          "laneNumber": 4,
-          "vehicleClass": 2,
-          "localAgreementNumber": "AG-44521",
-          "customerNumber": "CUST-9981",
+            "transactionId": 100234,
+            "transactionDateTime": "2026-01-15T08:32:11Z",
+            "passageReportId": 77821,
+            "tollEventTime": "2026-01-15T08:32:15Z",
+            "laneNumber": 4,
+            "vehicleClass": 2,
+            "localAgreementNumber": "AG-44521",
+            "customerNumber": "CUST-9981",
+            "transactionType": "toll",
+            "lpn": {
+                "number": "ABC123",
+                "countryCode": "SE"
+            },
+            "personalAccountNumber": "PAN-778899",
+            "iTicketId": 45621,
+            "lpnFromTss": {
+                "front": {
+                    "number": "ABC123",
+                    "countryCode": "SE"
+                },
+                "rear": {
+                    "number": "ABC123",
+                    "countryCode": "SE"
+                }
+            },
+            "price": {
+                "amountWithoutVAT": 20,
+                "amountWithVAT": 25,
+                "vat": 25,
+                "currency": "SEK"
+            },
+            "credited": false,
+            "passageType": "LocalAgreement_BIZZ",
+            "PassageTypeFriendlyName": "Bizz agreement",
+            "billingDetailsAdu": 9912,
+            "paymentClaimReference": "PCR-88221",
+            "informationRecipientId": "A4000C",
+            "InformationrecipientIdFriendlyName": "Toll Services AB",
+            "posReceiptId": "POS-2231",
+            "reasonCode": "",
+            "reasonCodeFriendlyName": "",
+            "internalRemark": "",
+            "inoiceText": ""
+        },
+        {
+            "transactionId": 100235,
+            "transactionDateTime": "2026-01-16T17:12:02Z",
+            "passageReportId": 77822,
+            "tollEventTime": "2026-01-16T17:12:04Z",
+            "laneNumber": 1,
+            "vehicleClass": 1,
+            "localAgreementNumber": "",
+            "customerNumber": "",
+            "transactionType": "toll",
+            "lpn": {
+                "number": "XYZ789",
+                "countryCode": "NO"
+            },
+            "lpnFromTss": {
+                "front": {
+                    "number": "XYZ789",
+                    "countryCode": "NO"
+                }
+            },
+            "price": {
+                "amountWithoutVAT": 32,
+                "amountWithVAT": 40,
+                "vat": 25,
+                "currency": "SEK"
+            },
+            "credited": true,
+            "passageType": "NoAgreement_FreeFlow",
+            "PassageTypeFriendlyName": "Free flow without agreement",
+            "billingDetailsAdu": 0,
+            "paymentClaimReference": "PCR-88222",
+            "informationRecipientId": "A4000C",
+            "InformationrecipientIdFriendlyName": "Toll Services AB",
+            "posReceiptId": "",
+            "reasonCode": "MANUAL_REVIEW",
+            "reasonCodeFriendlyName": "Manual review required",
+            "internalRemark": "Plate confidence low, corrected manually",
+            "inoiceText": "Manual adjustment applied"
+        },
+          {
+          "transactionId": 100000,
+          "transactionDateTime": "2026-01-01T08:00:00Z",
+          "passageReportId": 77000,
+          "tollEventTime": "2026-01-01T08:02:00Z",
+          "laneNumber": 1,
+          "vehicleClass": 1,
+          "localAgreementNumber": "AG-44000",
+          "customerNumber": "CUST-9000",
           "transactionType": "toll",
           "lpn": {
-            "number": "ABC123",
-            "countryCode": "SE"
+            "number": "REG000",
+            "countryCode": "NO"
           },
-          "personalAccountNumber": "PAN-778899",
-          "iTicketId": 45621,
           "lpnFromTss": {
-            "front": { "number": "ABC123", "countryCode": "SE" },
-            "rear": { "number": "ABC123", "countryCode": "SE" }
+            "front": {
+              "number": "REG000",
+              "countryCode": "SE"
+            }
           },
           "price": {
             "amountWithoutVAT": 20,
@@ -29,64 +110,1929 @@
             "vat": 25,
             "currency": "SEK"
           },
-          "credited": false,
+          "credited": true,
           "passageType": "LocalAgreement_BIZZ",
           "PassageTypeFriendlyName": "Bizz agreement",
-          "billingDetailsAdu": 9912,
-          "paymentClaimReference": "PCR-88221",
+          "billingDetailsAdu": 9900,
+          "paymentClaimReference": "PCR-88000",
           "informationRecipientId": "A4000C",
           "InformationrecipientIdFriendlyName": "Toll Services AB",
-          "posReceiptId": "POS-2231",
-          "reasonCode": "",
-          "reasonCodeFriendlyName": "",
-          "internalRemark": "",
+          "posReceiptId": "POS-2000",
+          "reasonCode": "MANUAL_REVIEW",
+          "reasonCodeFriendlyName": "Manual review required",
+          "internalRemark": "Auto-generated test item",
           "inoiceText": ""
         },
         {
-          "transactionId": 100235,
-          "transactionDateTime": "2026-01-16T17:12:02Z",
-          "passageReportId": 77822,
-          "tollEventTime": "2026-01-16T17:12:04Z",
-          "laneNumber": 1,
+          "transactionId": 100001,
+          "transactionDateTime": "2026-01-01T08:13:00Z",
+          "passageReportId": 77001,
+          "tollEventTime": "2026-01-01T08:15:00Z",
+          "laneNumber": 2,
+          "vehicleClass": 2,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG001",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG001",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 21,
+            "amountWithVAT": 26,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9901,
+          "paymentClaimReference": "PCR-88001",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100002,
+          "transactionDateTime": "2026-01-01T08:26:00Z",
+          "passageReportId": 77002,
+          "tollEventTime": "2026-01-01T08:28:00Z",
+          "laneNumber": 3,
+          "vehicleClass": 3,
+          "localAgreementNumber": "AG-44002",
+          "customerNumber": "CUST-9002",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG002",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG002",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 22,
+            "amountWithVAT": 27,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9902,
+          "paymentClaimReference": "PCR-88002",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100003,
+          "transactionDateTime": "2026-01-01T08:39:00Z",
+          "passageReportId": 77003,
+          "tollEventTime": "2026-01-01T08:41:00Z",
+          "laneNumber": 4,
           "vehicleClass": 1,
           "localAgreementNumber": "",
           "customerNumber": "",
           "transactionType": "toll",
           "lpn": {
-            "number": "XYZ789",
+            "number": "REG003",
             "countryCode": "NO"
           },
           "lpnFromTss": {
-            "front": { "number": "XYZ789", "countryCode": "NO" }
+            "front": {
+              "number": "REG003",
+              "countryCode": "SE"
+            }
           },
           "price": {
-            "amountWithoutVAT": 32,
-            "amountWithVAT": 40,
+            "amountWithoutVAT": 23,
+            "amountWithVAT": 28,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9903,
+          "paymentClaimReference": "PCR-88003",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2003",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100004,
+          "transactionDateTime": "2026-01-01T08:52:00Z",
+          "passageReportId": 77004,
+          "tollEventTime": "2026-01-01T08:54:00Z",
+          "laneNumber": 5,
+          "vehicleClass": 2,
+          "localAgreementNumber": "AG-44004",
+          "customerNumber": "CUST-9004",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG004",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG004",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 24,
+            "amountWithVAT": 29,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9904,
+          "paymentClaimReference": "PCR-88004",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100005,
+          "transactionDateTime": "2026-01-01T09:05:00Z",
+          "passageReportId": 77005,
+          "tollEventTime": "2026-01-01T09:07:00Z",
+          "laneNumber": 6,
+          "vehicleClass": 3,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG005",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG005",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 25,
+            "amountWithVAT": 30,
             "vat": 25,
             "currency": "SEK"
           },
           "credited": true,
           "passageType": "NoAgreement_FreeFlow",
           "PassageTypeFriendlyName": "Free flow without agreement",
-          "billingDetailsAdu": 0,
-          "paymentClaimReference": "PCR-88222",
+          "billingDetailsAdu": 9905,
+          "paymentClaimReference": "PCR-88005",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100006,
+          "transactionDateTime": "2026-01-01T09:18:00Z",
+          "passageReportId": 77006,
+          "tollEventTime": "2026-01-01T09:20:00Z",
+          "laneNumber": 1,
+          "vehicleClass": 1,
+          "localAgreementNumber": "AG-44006",
+          "customerNumber": "CUST-9006",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG006",
+            "countryCode": "NO"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG006",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 26,
+            "amountWithVAT": 31,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9906,
+          "paymentClaimReference": "PCR-88006",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2006",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100007,
+          "transactionDateTime": "2026-01-01T09:31:00Z",
+          "passageReportId": 77007,
+          "tollEventTime": "2026-01-01T09:33:00Z",
+          "laneNumber": 2,
+          "vehicleClass": 2,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG007",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG007",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 27,
+            "amountWithVAT": 32,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9907,
+          "paymentClaimReference": "PCR-88007",
           "informationRecipientId": "A4000C",
           "InformationrecipientIdFriendlyName": "Toll Services AB",
           "posReceiptId": "",
           "reasonCode": "MANUAL_REVIEW",
           "reasonCodeFriendlyName": "Manual review required",
-          "internalRemark": "Plate confidence low, corrected manually",
-          "inoiceText": "Manual adjustment applied"
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100008,
+          "transactionDateTime": "2026-01-01T09:44:00Z",
+          "passageReportId": 77008,
+          "tollEventTime": "2026-01-01T09:46:00Z",
+          "laneNumber": 3,
+          "vehicleClass": 3,
+          "localAgreementNumber": "AG-44008",
+          "customerNumber": "CUST-9008",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG008",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG008",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 28,
+            "amountWithVAT": 33,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9908,
+          "paymentClaimReference": "PCR-88008",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100009,
+          "transactionDateTime": "2026-01-01T09:57:00Z",
+          "passageReportId": 77009,
+          "tollEventTime": "2026-01-01T09:59:00Z",
+          "laneNumber": 4,
+          "vehicleClass": 1,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG009",
+            "countryCode": "NO"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG009",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 29,
+            "amountWithVAT": 34,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9909,
+          "paymentClaimReference": "PCR-88009",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2009",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100010,
+          "transactionDateTime": "2026-01-01T10:10:00Z",
+          "passageReportId": 77010,
+          "tollEventTime": "2026-01-01T10:12:00Z",
+          "laneNumber": 5,
+          "vehicleClass": 2,
+          "localAgreementNumber": "AG-44010",
+          "customerNumber": "CUST-9010",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG010",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG010",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 20,
+            "amountWithVAT": 25,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": true,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9910,
+          "paymentClaimReference": "PCR-88010",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100011,
+          "transactionDateTime": "2026-01-01T10:23:00Z",
+          "passageReportId": 77011,
+          "tollEventTime": "2026-01-01T10:25:00Z",
+          "laneNumber": 6,
+          "vehicleClass": 3,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG011",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG011",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 21,
+            "amountWithVAT": 26,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9911,
+          "paymentClaimReference": "PCR-88011",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100012,
+          "transactionDateTime": "2026-01-01T10:36:00Z",
+          "passageReportId": 77012,
+          "tollEventTime": "2026-01-01T10:38:00Z",
+          "laneNumber": 1,
+          "vehicleClass": 1,
+          "localAgreementNumber": "AG-44012",
+          "customerNumber": "CUST-9012",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG012",
+            "countryCode": "NO"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG012",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 22,
+            "amountWithVAT": 27,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9912,
+          "paymentClaimReference": "PCR-88012",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2012",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100013,
+          "transactionDateTime": "2026-01-01T10:49:00Z",
+          "passageReportId": 77013,
+          "tollEventTime": "2026-01-01T10:51:00Z",
+          "laneNumber": 2,
+          "vehicleClass": 2,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG013",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG013",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 23,
+            "amountWithVAT": 28,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9913,
+          "paymentClaimReference": "PCR-88013",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100014,
+          "transactionDateTime": "2026-01-01T11:02:00Z",
+          "passageReportId": 77014,
+          "tollEventTime": "2026-01-01T11:04:00Z",
+          "laneNumber": 3,
+          "vehicleClass": 3,
+          "localAgreementNumber": "AG-44014",
+          "customerNumber": "CUST-9014",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG014",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG014",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 24,
+            "amountWithVAT": 29,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9914,
+          "paymentClaimReference": "PCR-88014",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "MANUAL_REVIEW",
+          "reasonCodeFriendlyName": "Manual review required",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100015,
+          "transactionDateTime": "2026-01-01T11:15:00Z",
+          "passageReportId": 77015,
+          "tollEventTime": "2026-01-01T11:17:00Z",
+          "laneNumber": 4,
+          "vehicleClass": 1,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG015",
+            "countryCode": "NO"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG015",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 25,
+            "amountWithVAT": 30,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": true,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9915,
+          "paymentClaimReference": "PCR-88015",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2015",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100016,
+          "transactionDateTime": "2026-01-01T11:28:00Z",
+          "passageReportId": 77016,
+          "tollEventTime": "2026-01-01T11:30:00Z",
+          "laneNumber": 5,
+          "vehicleClass": 2,
+          "localAgreementNumber": "AG-44016",
+          "customerNumber": "CUST-9016",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG016",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG016",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 26,
+            "amountWithVAT": 31,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9916,
+          "paymentClaimReference": "PCR-88016",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100017,
+          "transactionDateTime": "2026-01-01T11:41:00Z",
+          "passageReportId": 77017,
+          "tollEventTime": "2026-01-01T11:43:00Z",
+          "laneNumber": 6,
+          "vehicleClass": 3,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG017",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG017",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 27,
+            "amountWithVAT": 32,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9917,
+          "paymentClaimReference": "PCR-88017",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100018,
+          "transactionDateTime": "2026-01-01T11:54:00Z",
+          "passageReportId": 77018,
+          "tollEventTime": "2026-01-01T11:56:00Z",
+          "laneNumber": 1,
+          "vehicleClass": 1,
+          "localAgreementNumber": "AG-44018",
+          "customerNumber": "CUST-9018",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG018",
+            "countryCode": "NO"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG018",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 28,
+            "amountWithVAT": 33,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9918,
+          "paymentClaimReference": "PCR-88018",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2018",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100019,
+          "transactionDateTime": "2026-01-01T12:07:00Z",
+          "passageReportId": 77019,
+          "tollEventTime": "2026-01-01T12:09:00Z",
+          "laneNumber": 2,
+          "vehicleClass": 2,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG019",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG019",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 29,
+            "amountWithVAT": 34,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9919,
+          "paymentClaimReference": "PCR-88019",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100020,
+          "transactionDateTime": "2026-01-01T12:20:00Z",
+          "passageReportId": 77020,
+          "tollEventTime": "2026-01-01T12:22:00Z",
+          "laneNumber": 3,
+          "vehicleClass": 3,
+          "localAgreementNumber": "AG-44020",
+          "customerNumber": "CUST-9020",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG020",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG020",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 20,
+            "amountWithVAT": 25,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": true,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9920,
+          "paymentClaimReference": "PCR-88020",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100021,
+          "transactionDateTime": "2026-01-01T12:33:00Z",
+          "passageReportId": 77021,
+          "tollEventTime": "2026-01-01T12:35:00Z",
+          "laneNumber": 4,
+          "vehicleClass": 1,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG021",
+            "countryCode": "NO"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG021",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 21,
+            "amountWithVAT": 26,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9921,
+          "paymentClaimReference": "PCR-88021",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2021",
+          "reasonCode": "MANUAL_REVIEW",
+          "reasonCodeFriendlyName": "Manual review required",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100022,
+          "transactionDateTime": "2026-01-01T12:46:00Z",
+          "passageReportId": 77022,
+          "tollEventTime": "2026-01-01T12:48:00Z",
+          "laneNumber": 5,
+          "vehicleClass": 2,
+          "localAgreementNumber": "AG-44022",
+          "customerNumber": "CUST-9022",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG022",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG022",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 22,
+            "amountWithVAT": 27,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9922,
+          "paymentClaimReference": "PCR-88022",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100023,
+          "transactionDateTime": "2026-01-01T12:59:00Z",
+          "passageReportId": 77023,
+          "tollEventTime": "2026-01-01T13:01:00Z",
+          "laneNumber": 6,
+          "vehicleClass": 3,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG023",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG023",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 23,
+            "amountWithVAT": 28,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9923,
+          "paymentClaimReference": "PCR-88023",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100024,
+          "transactionDateTime": "2026-01-01T13:12:00Z",
+          "passageReportId": 77024,
+          "tollEventTime": "2026-01-01T13:14:00Z",
+          "laneNumber": 1,
+          "vehicleClass": 1,
+          "localAgreementNumber": "AG-44024",
+          "customerNumber": "CUST-9024",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG024",
+            "countryCode": "NO"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG024",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 24,
+            "amountWithVAT": 29,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9924,
+          "paymentClaimReference": "PCR-88024",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2024",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100025,
+          "transactionDateTime": "2026-01-01T13:25:00Z",
+          "passageReportId": 77025,
+          "tollEventTime": "2026-01-01T13:27:00Z",
+          "laneNumber": 2,
+          "vehicleClass": 2,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG025",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG025",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 25,
+            "amountWithVAT": 30,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": true,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9925,
+          "paymentClaimReference": "PCR-88025",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100026,
+          "transactionDateTime": "2026-01-01T13:38:00Z",
+          "passageReportId": 77026,
+          "tollEventTime": "2026-01-01T13:40:00Z",
+          "laneNumber": 3,
+          "vehicleClass": 3,
+          "localAgreementNumber": "AG-44026",
+          "customerNumber": "CUST-9026",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG026",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG026",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 26,
+            "amountWithVAT": 31,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9926,
+          "paymentClaimReference": "PCR-88026",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100027,
+          "transactionDateTime": "2026-01-01T13:51:00Z",
+          "passageReportId": 77027,
+          "tollEventTime": "2026-01-01T13:53:00Z",
+          "laneNumber": 4,
+          "vehicleClass": 1,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG027",
+            "countryCode": "NO"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG027",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 27,
+            "amountWithVAT": 32,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9927,
+          "paymentClaimReference": "PCR-88027",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2027",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100028,
+          "transactionDateTime": "2026-01-01T14:04:00Z",
+          "passageReportId": 77028,
+          "tollEventTime": "2026-01-01T14:06:00Z",
+          "laneNumber": 5,
+          "vehicleClass": 2,
+          "localAgreementNumber": "AG-44028",
+          "customerNumber": "CUST-9028",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG028",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG028",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 28,
+            "amountWithVAT": 33,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9928,
+          "paymentClaimReference": "PCR-88028",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "MANUAL_REVIEW",
+          "reasonCodeFriendlyName": "Manual review required",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100029,
+          "transactionDateTime": "2026-01-01T14:17:00Z",
+          "passageReportId": 77029,
+          "tollEventTime": "2026-01-01T14:19:00Z",
+          "laneNumber": 6,
+          "vehicleClass": 3,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG029",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG029",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 29,
+            "amountWithVAT": 34,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9929,
+          "paymentClaimReference": "PCR-88029",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100030,
+          "transactionDateTime": "2026-01-01T14:30:00Z",
+          "passageReportId": 77030,
+          "tollEventTime": "2026-01-01T14:32:00Z",
+          "laneNumber": 1,
+          "vehicleClass": 1,
+          "localAgreementNumber": "AG-44030",
+          "customerNumber": "CUST-9030",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG030",
+            "countryCode": "NO"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG030",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 20,
+            "amountWithVAT": 25,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": true,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9930,
+          "paymentClaimReference": "PCR-88030",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2030",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100031,
+          "transactionDateTime": "2026-01-01T14:43:00Z",
+          "passageReportId": 77031,
+          "tollEventTime": "2026-01-01T14:45:00Z",
+          "laneNumber": 2,
+          "vehicleClass": 2,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG031",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG031",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 21,
+            "amountWithVAT": 26,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9931,
+          "paymentClaimReference": "PCR-88031",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100032,
+          "transactionDateTime": "2026-01-01T14:56:00Z",
+          "passageReportId": 77032,
+          "tollEventTime": "2026-01-01T14:58:00Z",
+          "laneNumber": 3,
+          "vehicleClass": 3,
+          "localAgreementNumber": "AG-44032",
+          "customerNumber": "CUST-9032",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG032",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG032",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 22,
+            "amountWithVAT": 27,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9932,
+          "paymentClaimReference": "PCR-88032",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100033,
+          "transactionDateTime": "2026-01-01T15:09:00Z",
+          "passageReportId": 77033,
+          "tollEventTime": "2026-01-01T15:11:00Z",
+          "laneNumber": 4,
+          "vehicleClass": 1,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG033",
+            "countryCode": "NO"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG033",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 23,
+            "amountWithVAT": 28,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9933,
+          "paymentClaimReference": "PCR-88033",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2033",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100034,
+          "transactionDateTime": "2026-01-01T15:22:00Z",
+          "passageReportId": 77034,
+          "tollEventTime": "2026-01-01T15:24:00Z",
+          "laneNumber": 5,
+          "vehicleClass": 2,
+          "localAgreementNumber": "AG-44034",
+          "customerNumber": "CUST-9034",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG034",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG034",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 24,
+            "amountWithVAT": 29,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9934,
+          "paymentClaimReference": "PCR-88034",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100035,
+          "transactionDateTime": "2026-01-01T15:35:00Z",
+          "passageReportId": 77035,
+          "tollEventTime": "2026-01-01T15:37:00Z",
+          "laneNumber": 6,
+          "vehicleClass": 3,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG035",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG035",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 25,
+            "amountWithVAT": 30,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": true,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9935,
+          "paymentClaimReference": "PCR-88035",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "MANUAL_REVIEW",
+          "reasonCodeFriendlyName": "Manual review required",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100036,
+          "transactionDateTime": "2026-01-01T15:48:00Z",
+          "passageReportId": 77036,
+          "tollEventTime": "2026-01-01T15:50:00Z",
+          "laneNumber": 1,
+          "vehicleClass": 1,
+          "localAgreementNumber": "AG-44036",
+          "customerNumber": "CUST-9036",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG036",
+            "countryCode": "NO"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG036",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 26,
+            "amountWithVAT": 31,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9936,
+          "paymentClaimReference": "PCR-88036",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2036",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100037,
+          "transactionDateTime": "2026-01-01T16:01:00Z",
+          "passageReportId": 77037,
+          "tollEventTime": "2026-01-01T16:03:00Z",
+          "laneNumber": 2,
+          "vehicleClass": 2,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG037",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG037",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 27,
+            "amountWithVAT": 32,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9937,
+          "paymentClaimReference": "PCR-88037",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100038,
+          "transactionDateTime": "2026-01-01T16:14:00Z",
+          "passageReportId": 77038,
+          "tollEventTime": "2026-01-01T16:16:00Z",
+          "laneNumber": 3,
+          "vehicleClass": 3,
+          "localAgreementNumber": "AG-44038",
+          "customerNumber": "CUST-9038",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG038",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG038",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 28,
+            "amountWithVAT": 33,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9938,
+          "paymentClaimReference": "PCR-88038",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100039,
+          "transactionDateTime": "2026-01-01T16:27:00Z",
+          "passageReportId": 77039,
+          "tollEventTime": "2026-01-01T16:29:00Z",
+          "laneNumber": 4,
+          "vehicleClass": 1,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG039",
+            "countryCode": "NO"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG039",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 29,
+            "amountWithVAT": 34,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9939,
+          "paymentClaimReference": "PCR-88039",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2039",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100040,
+          "transactionDateTime": "2026-01-01T16:40:00Z",
+          "passageReportId": 77040,
+          "tollEventTime": "2026-01-01T16:42:00Z",
+          "laneNumber": 5,
+          "vehicleClass": 2,
+          "localAgreementNumber": "AG-44040",
+          "customerNumber": "CUST-9040",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG040",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG040",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 20,
+            "amountWithVAT": 25,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": true,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9940,
+          "paymentClaimReference": "PCR-88040",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100041,
+          "transactionDateTime": "2026-01-01T16:53:00Z",
+          "passageReportId": 77041,
+          "tollEventTime": "2026-01-01T16:55:00Z",
+          "laneNumber": 6,
+          "vehicleClass": 3,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG041",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG041",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 21,
+            "amountWithVAT": 26,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9941,
+          "paymentClaimReference": "PCR-88041",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100042,
+          "transactionDateTime": "2026-01-01T17:06:00Z",
+          "passageReportId": 77042,
+          "tollEventTime": "2026-01-01T17:08:00Z",
+          "laneNumber": 1,
+          "vehicleClass": 1,
+          "localAgreementNumber": "AG-44042",
+          "customerNumber": "CUST-9042",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG042",
+            "countryCode": "NO"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG042",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 22,
+            "amountWithVAT": 27,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9942,
+          "paymentClaimReference": "PCR-88042",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2042",
+          "reasonCode": "MANUAL_REVIEW",
+          "reasonCodeFriendlyName": "Manual review required",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100043,
+          "transactionDateTime": "2026-01-01T17:19:00Z",
+          "passageReportId": 77043,
+          "tollEventTime": "2026-01-01T17:21:00Z",
+          "laneNumber": 2,
+          "vehicleClass": 2,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG043",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG043",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 23,
+            "amountWithVAT": 28,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9943,
+          "paymentClaimReference": "PCR-88043",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100044,
+          "transactionDateTime": "2026-01-01T17:32:00Z",
+          "passageReportId": 77044,
+          "tollEventTime": "2026-01-01T17:34:00Z",
+          "laneNumber": 3,
+          "vehicleClass": 3,
+          "localAgreementNumber": "AG-44044",
+          "customerNumber": "CUST-9044",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG044",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG044",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 24,
+            "amountWithVAT": 29,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9944,
+          "paymentClaimReference": "PCR-88044",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100045,
+          "transactionDateTime": "2026-01-01T17:45:00Z",
+          "passageReportId": 77045,
+          "tollEventTime": "2026-01-01T17:47:00Z",
+          "laneNumber": 4,
+          "vehicleClass": 1,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG045",
+            "countryCode": "NO"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG045",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 25,
+            "amountWithVAT": 30,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": true,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9945,
+          "paymentClaimReference": "PCR-88045",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2045",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100046,
+          "transactionDateTime": "2026-01-01T17:58:00Z",
+          "passageReportId": 77046,
+          "tollEventTime": "2026-01-01T18:00:00Z",
+          "laneNumber": 5,
+          "vehicleClass": 2,
+          "localAgreementNumber": "AG-44046",
+          "customerNumber": "CUST-9046",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG046",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG046",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 26,
+            "amountWithVAT": 31,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9946,
+          "paymentClaimReference": "PCR-88046",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100047,
+          "transactionDateTime": "2026-01-01T18:11:00Z",
+          "passageReportId": 77047,
+          "tollEventTime": "2026-01-01T18:13:00Z",
+          "laneNumber": 6,
+          "vehicleClass": 3,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG047",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG047",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 27,
+            "amountWithVAT": 32,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9947,
+          "paymentClaimReference": "PCR-88047",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100048,
+          "transactionDateTime": "2026-01-01T18:24:00Z",
+          "passageReportId": 77048,
+          "tollEventTime": "2026-01-01T18:26:00Z",
+          "laneNumber": 1,
+          "vehicleClass": 1,
+          "localAgreementNumber": "AG-44048",
+          "customerNumber": "CUST-9048",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG048",
+            "countryCode": "NO"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG048",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 28,
+            "amountWithVAT": 33,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "LocalAgreement_BIZZ",
+          "PassageTypeFriendlyName": "Bizz agreement",
+          "billingDetailsAdu": 9948,
+          "paymentClaimReference": "PCR-88048",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "POS-2048",
+          "reasonCode": "",
+          "reasonCodeFriendlyName": "",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
+        },
+        {
+          "transactionId": 100049,
+          "transactionDateTime": "2026-01-01T18:37:00Z",
+          "passageReportId": 77049,
+          "tollEventTime": "2026-01-01T18:39:00Z",
+          "laneNumber": 2,
+          "vehicleClass": 2,
+          "localAgreementNumber": "",
+          "customerNumber": "",
+          "transactionType": "toll",
+          "lpn": {
+            "number": "REG049",
+            "countryCode": "SE"
+          },
+          "lpnFromTss": {
+            "front": {
+              "number": "REG049",
+              "countryCode": "SE"
+            }
+          },
+          "price": {
+            "amountWithoutVAT": 29,
+            "amountWithVAT": 34,
+            "vat": 25,
+            "currency": "SEK"
+          },
+          "credited": false,
+          "passageType": "NoAgreement_FreeFlow",
+          "PassageTypeFriendlyName": "Free flow without agreement",
+          "billingDetailsAdu": 9949,
+          "paymentClaimReference": "PCR-88049",
+          "informationRecipientId": "A4000C",
+          "InformationrecipientIdFriendlyName": "Toll Services AB",
+          "posReceiptId": "",
+          "reasonCode": "MANUAL_REVIEW",
+          "reasonCodeFriendlyName": "Manual review required",
+          "internalRemark": "Auto-generated test item",
+          "inoiceText": ""
         }
-      ]
-    }
-  ],
-  "queryExample": {
-    "transactionTimeFrom": "2026-01-01T00:00:00Z",
-    "transactionTimeTo": "2026-01-31T23:59:59Z",
-    "credited": false,
-    "page": 0,
-    "pageSize": 25,
-    "sortOrder": "transactionDateTime|desc"
-  }
+    ]
 }

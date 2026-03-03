@@ -2,9 +2,9 @@ import * as React from 'react';
 import { IInputs } from "./generated/ManifestTypes";
 import { getColumns, mapTransactionsToRows } from './helpers/dataMappingHelper';
 import { getUserLanguage } from './helpers/languageHelper';
-import { mockColumns, mockData } from './mockData/testData';
+import { mockColumns, mockData } from './mockData/mockData';
 import { IColumnLabelOverride } from './types/IColumnLabel';
-import { CommandBarButton, ConstrainMode, DetailsListLayoutMode, Dropdown, IColumn, IDetailsHeaderProps, IIconProps, initializeIcons, IObjectWithKey, IRenderFunction, ISearchBoxStyles, ITooltipHostProps, Label, ScrollablePane, ScrollbarVisibility, SearchBox, SelectionMode, ShimmeredDetailsList, Stack, Sticky, StickyPositionType, TooltipHost } from '@fluentui/react';
+import { CommandBarButton, ConstrainMode, DetailsListLayoutMode, DetailsRow, Dropdown, IColumn, IDetailsHeaderProps, IIconProps, initializeIcons, IObjectWithKey, IRenderFunction, ISearchBoxStyles, ITooltipHostProps, Label, ScrollablePane, ScrollbarVisibility, SearchBox, SelectionMode, ShimmeredDetailsList, Stack, Sticky, StickyPositionType, TooltipHost } from '@fluentui/react';
 // import { fetchData, fetchFilterdData } from './dataService';
 import { IDropdownFilterableField } from './types/IDropdownFilterableFields';
 import { IMockData } from './types/IMockData';
@@ -21,15 +21,20 @@ import { DateFilterOperator } from './types/DateFilterOperator';
 import { TransactionService } from './services/TransactionService';
 import { IActiveFilter } from './types/IActiveFilter';
 import { useStrings } from './contexts/StringsContext';
+import { ListRowExpanded } from './components/ListRowExpanded';
 
 
 export interface IProps {
     pcfContext: ComponentFramework.Context<IInputs>,
     isModelApp: boolean,
     dataSetVersion: number;
+    service: TransactionService;
+    configParameters: IConfigParameters;
+}
+interface IConfigParameters {
     columnLabelOverrides: IColumnLabelOverride;
     dropdownFilterableFields: IDropdownFilterableField[];
-    service: TransactionService;
+    numberOfRowsPerPage: number;
 }
 
 interface IPagningState {
@@ -40,10 +45,10 @@ interface IPagningState {
     isDataLoaded: boolean
 }
 
-// interface IColumnWidth {
-//     name: string,
-//     width: number;
-// }
+interface IColumnWidth {
+    name: string,
+    width: number;
+}
 
 //Initialize the icons otherwise they will not display in a Canvas app.
 //They will display in Model app because Microsoft initializes them in their controls.
@@ -51,9 +56,8 @@ initializeIcons();
 
 export const DetailListGridControl: React.FC<IProps> = (props) => {
     const strings = useStrings();
-    console.log("rendered")
 
-    const [columns, setColumns] = React.useState(getColumns(mockColumns, props.columnLabelOverrides));
+    const [columns, setColumns] = React.useState(getColumns(mockColumns, props.configParameters.columnLabelOverrides));
     const [items, setItems] = React.useState<IMockData[]>([]);
     const [isDataLoaded, setIsDataLoaded] = React.useState(props.isModelApp);
     // react hook to store the number of selected items in the grid which will be displayed in the grid footer.
@@ -62,12 +66,16 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
 
     const [calloutAnchor, setCalloutAnchor] = React.useState<HTMLElement | null>(null);
     const [calloutFilterColumn, setCalloutFilterColumn] = React.useState<string>("");
-    const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);    
+    const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false); 
+    const [isButtonNextDisabled, { setTrue: disableButtonNext, setFalse: enableButtonNext }] = useBoolean(true);
+    const [isButtonPreviousDisabled, { setTrue: disableButtonPrevious, setFalse: enableButtonPrevious }] = useBoolean(true);
+    const [expandedRowKeys, setExpandedRowKeys] = React.useState<number[]>([]);
+       
 
     const [activeFilters, setActiveFilters] = React.useState<IActiveFilter[]>([]);
     const [paging, setPaging] = React.useState<IPagningState>({
         currentPage: 1,
-        pageSizeLimit: 11,
+        pageSizeLimit: props.configParameters.numberOfRowsPerPage,
         totalItems: 0,
         items: [],
         isDataLoaded: false
@@ -78,7 +86,6 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
         setPaging(prev => ({...prev, isDataLoaded: false}));
 
         const transactions = await props.service.getTransactions(page, paging.pageSizeLimit);
-
             // const transactions = await props.service.getTransactions();
             if (transactions.length > 0) {
                 setItems(mapTransactionsToRows(columns, transactions));
@@ -86,9 +93,34 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
             setIsDataLoaded(true);
         };
 
-    React.useEffect(() => {     
+    React.useEffect(() => {
         loadData();
     }, []);
+
+    React.useEffect(() => {
+        if (items.length < paging.pageSizeLimit) {
+            disableButtonNext();
+        } else if (isButtonNextDisabled) {
+            enableButtonNext();
+        }
+
+        if (paging.currentPage === 1) {
+            disableButtonPrevious();
+        } else if (isButtonPreviousDisabled) {
+            enableButtonPrevious();
+        }
+
+    }, [items]);
+
+    React.useEffect(() => {
+        setColumns(prevColumns =>
+            prevColumns.map(col => ({
+                ...col,
+                isFiltered: activeFilters.some(f => f.columnKey === col.key)
+            }))
+        );
+
+    }, [activeFilters]);
 
     // Set the isDataLoaded state based upon the paging totalRecordCount
     // React.useEffect(() => {
@@ -101,14 +133,12 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
     // When the component is updated this will determine if the sampleDataSet has changed.  
     // If it has we will go get the udpated items.
     // React.useEffect(() => {
-    //     //console.log('TSX: props.dataSetVersion was updated');        
     //     // setItems(getItems(columns, mockData));
     // }, [props.dataSetVersion]);
 
     // When the component is updated this will determine if the width of the control has changed.
     // If so the column widths will be adjusted.
     // React.useEffect(() => {
-    //     //console.log('width was updated');
     //     setColumns(updateColumnWidths(columns, props.pcfContext));
     // }, [props.pcfContext.mode.allocatedWidth]);
 
@@ -145,9 +175,13 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
         [items, props.pcfContext, handleFilterDate]
     );
 
+    React.useEffect(() => {     
+        console.log(columns)
+    }, [columns]);
+
     const _onRenderDetailsHeader = (props: IDetailsHeaderProps | undefined, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element => {
         return (
-            <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true}>
+            <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true} >
                 {defaultRender!({
                     ...props!,
                     onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps | undefined) => <TooltipHost {...tooltipHostProps} />
@@ -163,7 +197,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
 
         setIsDataLoaded(false);
         if (selectedDropdownKey === "all" || selectedDropdownKey === "") {
-            const allTransactions = await props.service.getTransactions();
+            const allTransactions = await props.service.getTransactions(paging.currentPage, paging.pageSizeLimit);
             setItems(mapTransactionsToRows(columns, allTransactions));
         } else {
             const filteredTransactions = await props.service.getSearchFilteredTransactions(newValue, selectedDropdownKey);
@@ -180,15 +214,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
     //     setIsDataLoaded(true);
     // };
 
-    React.useEffect(() => {
-        setColumns(prevColumns =>
-            prevColumns.map(col => ({
-                ...col,
-                isFiltered: activeFilters.some(f => f.columnKey === col.key)
-            }))
-        )
 
-    }, [activeFilters]);
 
     const applyDateFilter = async (date: Date, operator: DateFilterOperator, columnKey: string) => {
         setIsDataLoaded(false);
@@ -213,7 +239,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
 
     const clearFilters = async () => {
         setIsDataLoaded(false);
-        const allTransactions = await props.service.getTransactions();
+        const allTransactions = await props.service.getTransactions(paging.currentPage, paging.pageSizeLimit);
         setItems(mapTransactionsToRows(columns, allTransactions));
         setActiveFilters([]);
         setIsDataLoaded(true);
@@ -222,6 +248,12 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
     const handleNextPageClick = () => {
         paging.currentPage++;
         loadData(paging.currentPage);
+    }
+    const handlePreviousPageClick = () => {
+        if (paging.currentPage > 1) {
+            paging.currentPage--;
+            loadData(paging.currentPage);
+        }
     }
     
     const selection = React.useRef(
@@ -233,9 +265,12 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
         })
     );
 
-    const searchBoxStyles: Partial<ISearchBoxStyles> = { root: { width: 200 } };
-    const dropdownOptions = props.dropdownFilterableFields.map(field => ({ key: field.key, text: field.text }));
+    React.useEffect(() => {
+        console.log(expandedRowKeys)
+    }, [expandedRowKeys])
 
+    const searchBoxStyles: Partial<ISearchBoxStyles> = { root: { width: 200 } };
+    const dropdownOptions = props.configParameters.dropdownFilterableFields.map(field => ({ key: field.key, text: field.text }));
 
     return (
         <Stack grow
@@ -316,8 +351,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                     },
                 }}
             >
-                <div
-                    style={{ position: 'relative', height: '100%',  }}>
+                <div style={{ position: 'relative', height: '100%'}}>
                     <ScrollablePane scrollbarVisibility={ScrollbarVisibility.auto}>
                         <ShimmeredDetailsList
                             enableShimmer={!isDataLoaded}
@@ -336,7 +370,48 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                             // layoutMode={DetailsListLayoutMode.justified}
                             layoutMode={DetailsListLayoutMode.fixedColumns}
                             constrainMode={ConstrainMode.unconstrained}
+                            // constrainMode={ConstrainMode.horizontalConstrained}
                             selection={selection.current}
+                            onItemInvoked={(item) => {
+                                setExpandedRowKeys((prevKeys) => {
+                                    if (prevKeys.includes(item.key)) {
+                                        return prevKeys.filter(key => key !== item.key);
+                                    } else {
+                                        return [...prevKeys, item.key];
+                                    }
+                                });
+                                setItems(prev => [...prev]);
+                            }}
+
+                            onRenderRow={(props, defaultRender) => {
+                                if (!props) return null;
+
+                                const isExpanded = expandedRowKeys.includes(props.item.transactionId);
+                                if (isExpanded) {
+                                    return (
+                                        <>
+                                            {/* <DetailsRow {...props} /> */}
+                                           { defaultRender && defaultRender(props)} 
+
+                                            {isExpanded && (
+                                                <span 
+                                                    style={{
+                                                        border: "1px solid red",
+                                                        display: "block",
+                                                        padding: 10,
+                                                        margin: 10,
+                                                        height: "200px"
+                                                        }}>
+                                                    hej
+                                                </span>
+                                            )}
+                                        </>
+                                    );
+                                } else {
+                                    // return defaultRender ? defaultRender(props) : <DetailsRow {...props} />;
+                                    return  defaultRender!(props) 
+                                }
+                            }}
                         />
                     </ScrollablePane>
                 </div>
@@ -350,8 +425,15 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
                 <div className="detailList-footer">
                     <Label className="detailList-gridLabels">{strings.FooterRecordsLabel}: {items.length.toString()} ({selectedItemCount} {strings.FooterSelected})</Label>
                     <CommandBarButton
+                        text={strings.FooterButtonPrevious}
+                        disabled={isButtonPreviousDisabled}
+                        onClick={() => {
+                            handlePreviousPageClick();
+                        }}
+                    />
+                    <CommandBarButton
                         text={strings.FooterButtonNext}
-                        disabled={false}
+                        disabled={isButtonNextDisabled}
                         onClick={() => {
                             
                             handleNextPageClick();
@@ -379,7 +461,6 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
 
 //     // Considering need to remove border & padding length
 //     const totalWidth: number = pcfContext.mode.allocatedWidth - 250;
-//     //console.log(`new total width: ${totalWidth}`);
 //     let widthSum = 0;
 
 //     columnsOnView.forEach(function (columnItem) {
@@ -405,7 +486,7 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
 
 // };
 
-// // Updates the column widths based upon the current side of the control on the form.
+// // // Updates the column widths based upon the current side of the control on the form.
 // const updateColumnWidths = (columns: IColumn[], pcfContext: ComponentFramework.Context<IInputs>): IColumn[] => {
 //     const columnWidthDistribution = getColumnWidthDistribution(pcfContext);
 //     const currentColumns = columns;
@@ -414,7 +495,9 @@ export const DetailListGridControl: React.FC<IProps> = (props) => {
 //     return currentColumns.map(col => {
 
 //         const newMaxWidth = columnWidthDistribution.find(x => x.name === col.fieldName);
-//         if (newMaxWidth) col.maxWidth = newMaxWidth.width;
+//         if (newMaxWidth) {
+//             col.maxWidth = newMaxWidth.width;        
+//         }
 
 //         return col;
 //     });

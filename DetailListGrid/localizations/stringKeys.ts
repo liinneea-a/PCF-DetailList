@@ -8,6 +8,7 @@ export const StringKeys = {
     // Footer
     FooterRecordsLabel: "FooterRecordsLabel",
     FooterSelected: "FooterSelected",
+    FooterButtonPrevious: "FooterButtonPrevious",
     FooterButtonNext: "FooterButtonNext",
 
     // Date filter callout

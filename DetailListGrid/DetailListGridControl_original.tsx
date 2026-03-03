@@ -55,14 +55,12 @@
 //     // When the component is updated this will determine if the sampleDataSet has changed.  
 //     // If it has we will go get the udpated items.
 //     React.useEffect(() => {
-//         //console.log('TSX: props.dataSetVersion was updated');        
 //         setItems(getItems(columns, props.pcfContext));
 //         }, [props.dataSetVersion]);  
     
 //     // When the component is updated this will determine if the width of the control has changed.
 //     // If so the column widths will be adjusted.
 //     React.useEffect(() => {
-//         //console.log('width was updated');
 //         setColumns(updateColumnWidths(columns, props.pcfContext));
 //         }, [props.pcfContext.mode.allocatedWidth]);        
     
@@ -118,8 +116,6 @@
 //             </Sticky>
 //         )
 //     }
-//     // // console.log({items})
-//     // console.log({columns})
 //     return (   
 //         <Stack grow
 //             styles={{
@@ -214,7 +210,6 @@
 //     const iColumns: IColumn[] = [];
 
 //     const columnWidthDistribution = getColumnWidthDistribution(pcfContext);
-//     console.log(dataSet.columns)
 //     for (const column of dataSet.columns){
 //         const iColumn: IColumn = {
 //             key: column.name,
@@ -272,7 +267,6 @@
 
 //     // Considering need to remove border & padding length
 //     const totalWidth:number = pcfContext.mode.allocatedWidth - 250;
-//     //console.log(`new total width: ${totalWidth}`);
 //     let widthSum = 0;
     
 //     columnsOnView.forEach(function (columnItem) {

@@ -10,20 +10,14 @@ import { IColumn } from "@fluentui/react";
 
 export const mapTransactionsToRows = (columns: IColumn[], data: IMockData[]) => {
     const resultSet = data.map(function (item) {
+
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const newRecord: any = {
             key: item.transactionId
         };
 
         for (const column of columns) {
-            // let value = item[column.key as keyof IMockData];
-
-            //  if(column.data && column.data.dataType === DataType.Date){
-            //     value = new Date(item[column.key as keyof IMockData] as string).toLocaleString();
-            // }
-
             newRecord[column.key] = item[column.key as keyof IMockData];
-            // newRecord[column.key] = value;
         }
         return newRecord;
     });
@@ -38,7 +32,8 @@ export const getColumns = (columns: IMockColumn[], columnLabelOverrides: IColumn
     for (const column of columns) {
         
         const iColumn: IColumn = {
-            key: column.name,
+            // key: column.name,
+            key: column.fieldName,
             name: hasColumnOverrides && columnLabelOverrides[column.fieldName] ? columnLabelOverrides[column.fieldName].label : column.name,
             fieldName: column.fieldName,
             currentWidth: 100,
@@ -53,18 +48,17 @@ export const getColumns = (columns: IMockColumn[], columnLabelOverrides: IColumn
             // iconName: "Filter",
             // onRender: (item) => item. // Pass additional metadata for use in onRender and sorting
         };
-
         // If column contains date data, format it in the grid.
-        if (column.dataType === DataType.Date) {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            iColumn.onRender = (item?: any, i?: number, col?: IColumn) => {
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                const value = item && item[col!.fieldName as keyof any];
-                if(!value) {return}
+        // if (column.dataType === DataType.Date) {
+        //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        //     iColumn.onRender = (item?: any, i?: number, col?: IColumn) => {
+        //         // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        //         const value = item && item[col!.fieldName as keyof any];
+        //         if(!value) {return}
 
-                return new Date(value).toLocaleString();
-            };
-        }
+        //         return new Date(value).toLocaleString();
+        //     };
+        // }
 
         // //create links for primary field and entity reference.            
         // if (column.dataType.startsWith('Lookup.') || column.isPrimary)
@@ -88,7 +82,6 @@ export const getColumns = (columns: IMockColumn[], columnLabelOverrides: IColumn
         // }
 
         //set sorting information
-        // console.log(dataSet.sorting)
         // const isSorted = dataSet?.sorting?.findIndex(s => s.name === column.name) !== -1 || false
         // iColumn.isSorted = isSorted;
         // if (isSorted){
