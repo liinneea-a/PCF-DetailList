@@ -1,14 +1,14 @@
 import { IMockData } from "../types/IMockData";
-import { DataType, IMockColumn } from "../types/IMockColumn";
-import { IColumnLabelOverride } from "../types/IColumnLabel";
+// import { DataType, IMockColumn } from "../types/IMockColumn";
 import { IColumn } from "@fluentui/react";
 import { IColumnConfig } from "../types/IColumnConfig";
-import { columnsConfig } from "../mockData/ColumnConfig";
+// import { columnsConfig } from "../mockData/ColumnConfig";
 // import { getTransactions } from "../services/tollingService";
 // getTransactions();
 
 
 const getValueByPath = (obj: IMockData, path: string): unknown => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const value = path.split(".").reduce((acc, key) => (acc as any)?.[key], obj as any);
     return value;
 };
@@ -22,7 +22,7 @@ export const mapTransactionsToRows = (columns: IColumn[], transactionData: IMock
         for (const column of columns) {
             newListItem[column.key] = getValueByPath(transactionItem, column.data.fieldPath!);
         }
-   
+
         return newListItem;
     });
     return listRowsData;
@@ -30,7 +30,7 @@ export const mapTransactionsToRows = (columns: IColumn[], transactionData: IMock
 
 export const getColumns = (columnsConfig: IColumnConfig[]): IColumn[] => {
     const iColumns: IColumn[] = [];
- 
+
     for (const columnObj of columnsConfig) {
 
         const iColumn: IColumn = {
@@ -49,19 +49,23 @@ export const getColumns = (columnsConfig: IColumnConfig[]): IColumn[] => {
             isSorted: false,
             onRender: (rowItem, i, col) => {
 
-                if (columnObj.dataType === "date" ) {
-                    console.log(rowItem[columnObj.key]);
+                if (columnObj.dataType === "date") {
                     const dateValue = new Date(rowItem[columnObj.key]);
                     return dateValue.toLocaleString();
-                } else {
-                    return rowItem[columnObj.key];
                 }
-    
+
+                if (columnObj.dataType === "boolean") {
+                    return rowItem[columnObj.key] ? "Yes" : "No";
+                }
+
+                return rowItem[columnObj.key];
+
+
             }
             // iconName: "Filter",
             // onRender: (item) => item. // Pass additional metadata for use in onRender and sorting
         };
-       
+
 
         //set sorting information
         // const isSorted = dataSet?.sorting?.findIndex(s => s.name === column.name) !== -1 || false
@@ -70,7 +74,6 @@ export const getColumns = (columnsConfig: IColumnConfig[]): IColumn[] => {
         //     iColumn.isSortedDescending = dataSet?.sorting?.find(s => s.name === column.name)?.sortDirection === 1 || false;
         // }
         iColumn.isSorted = false;
-        // console.log("iColumn: ", iColumn);
         iColumns.push(iColumn);
     }
     return iColumns;

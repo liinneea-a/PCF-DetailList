@@ -43,7 +43,7 @@
             "reasonCode": "",
             "reasonCodeFriendlyName": "",
             "internalRemark": "",
-            "inoiceText": ""
+            "invoiceText": ""
         },
         {
             "transactionId": 100235,
@@ -82,7 +82,7 @@
             "reasonCode": "MANUAL_REVIEW",
             "reasonCodeFriendlyName": "Manual review required",
             "internalRemark": "Plate confidence low, corrected manually",
-            "inoiceText": "Manual adjustment applied"
+            "invoiceText": "Manual adjustment applied"
         },
           {
           "transactionId": 100000,
@@ -121,7 +121,7 @@
           "reasonCode": "MANUAL_REVIEW",
           "reasonCodeFriendlyName": "Manual review required",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100001,
@@ -160,7 +160,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100002,
@@ -199,7 +199,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100003,
@@ -238,7 +238,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100004,
@@ -277,7 +277,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100005,
@@ -316,7 +316,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100006,
@@ -355,7 +355,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100007,
@@ -394,7 +394,7 @@
           "reasonCode": "MANUAL_REVIEW",
           "reasonCodeFriendlyName": "Manual review required",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100008,
@@ -433,7 +433,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100009,
@@ -472,7 +472,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100010,
@@ -511,7 +511,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100011,
@@ -550,7 +550,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100012,
@@ -589,7 +589,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100013,
@@ -628,7 +628,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100014,
@@ -667,7 +667,7 @@
           "reasonCode": "MANUAL_REVIEW",
           "reasonCodeFriendlyName": "Manual review required",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100015,
@@ -706,7 +706,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100016,
@@ -745,7 +745,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100017,
@@ -784,7 +784,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100018,
@@ -823,7 +823,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100019,
@@ -862,7 +862,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100020,
@@ -901,7 +901,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100021,
@@ -940,7 +940,7 @@
           "reasonCode": "MANUAL_REVIEW",
           "reasonCodeFriendlyName": "Manual review required",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100022,
@@ -979,7 +979,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100023,
@@ -1018,7 +1018,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100024,
@@ -1057,7 +1057,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100025,
@@ -1096,7 +1096,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100026,
@@ -1135,7 +1135,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100027,
@@ -1174,7 +1174,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100028,
@@ -1213,7 +1213,7 @@
           "reasonCode": "MANUAL_REVIEW",
           "reasonCodeFriendlyName": "Manual review required",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100029,
@@ -1252,7 +1252,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100030,
@@ -1291,7 +1291,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100031,
@@ -1330,7 +1330,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100032,
@@ -1369,7 +1369,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100033,
@@ -1408,7 +1408,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100034,
@@ -1447,7 +1447,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100035,
@@ -1486,7 +1486,7 @@
           "reasonCode": "MANUAL_REVIEW",
           "reasonCodeFriendlyName": "Manual review required",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100036,
@@ -1525,7 +1525,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100037,
@@ -1564,7 +1564,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100038,
@@ -1603,7 +1603,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100039,
@@ -1642,7 +1642,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100040,
@@ -1681,7 +1681,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100041,
@@ -1720,7 +1720,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100042,
@@ -1759,7 +1759,7 @@
           "reasonCode": "MANUAL_REVIEW",
           "reasonCodeFriendlyName": "Manual review required",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100043,
@@ -1798,7 +1798,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100044,
@@ -1837,7 +1837,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100045,
@@ -1876,7 +1876,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100046,
@@ -1915,7 +1915,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100047,
@@ -1954,7 +1954,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100048,
@@ -1993,7 +1993,7 @@
           "reasonCode": "",
           "reasonCodeFriendlyName": "",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         },
         {
           "transactionId": 100049,
@@ -2032,7 +2032,7 @@
           "reasonCode": "MANUAL_REVIEW",
           "reasonCodeFriendlyName": "Manual review required",
           "internalRemark": "Auto-generated test item",
-          "inoiceText": ""
+          "invoiceText": ""
         }
     ]
 }

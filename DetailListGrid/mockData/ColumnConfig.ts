@@ -191,9 +191,9 @@ export const columnsConfig: IColumnConfig[]  = [
         width: 100
     },
     {
-        key: "inoiceText",
-        fieldPath: "inoiceText",
-        label: "Inoice Text",
+        key: "invoiceText",
+        fieldPath: "invoiceText",
+        label: "Invoice Text",
         dataType: "string",
         isPrimary: false,
         sortable: false,

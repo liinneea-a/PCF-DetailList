@@ -41,7 +41,14 @@ export interface IMockData {
     price: IPrice,
     credited: boolean,
     passageType: string,
+    PassageTypeFriendlyName: string,
     billingDetailsAdu: number,
-    paymentClaimReferense: string,
-    informationRecipientId: string
+    paymentClaimReference: string,
+    informationRecipientId: string,
+    InformationrecipientIdFriendlyName: string,
+    posReceiptId: string,
+    reasonCode: string,
+    reasonCodeFriendlyName: string,
+    internalRemark: string,
+    invoiceText: string
 }
